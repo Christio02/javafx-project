@@ -3,6 +3,8 @@ package exampleproject;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import airlinemanager.Calculator;
+
 public class CalculatorTest {
     @Test
     public void testConstructor() {
