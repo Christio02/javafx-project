@@ -24,9 +24,4 @@ public class App extends Application {
         Application.launch(args);
     }
 
-    /*
-     * 
-     * test comment
-     */
-
 }
