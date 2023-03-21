@@ -31,6 +31,13 @@ public class Flight {
         return this.time;
     }
 
+    public void setFlightNumber(String flightnumber) {
+        for (int i = 0; i < flightnumber.length(); i++) {
+            Character c = flightnumber.charAt(i);
+            String firstPart = flightnumber.substring(0, 4);
+        }
+    }
+
     @Override
     public String toString() {
         return "Flight{" +
