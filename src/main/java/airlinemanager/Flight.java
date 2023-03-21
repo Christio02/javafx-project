@@ -47,6 +47,7 @@ public class Flight {
                     throw new IllegalArgumentException("Cannot have number in first part of flightnumber!");
                 }
             }
+            if (firstPart.contan)
 
             for (char e : lastPart.toCharArray()) {
                 if (Character.isAlphabetic(e)) {
@@ -71,7 +72,7 @@ public class Flight {
     }
 
     public static void main(String[] args) {
-        Flight f1 = new Flight("Oslo", "Trondheim", "SAS", "11.20", "SK2939");
+        Flight f1 = new Flight("Oslo", "Trondheim", "11.20", "Norwegian");
 
         System.out.println(f1);
 
