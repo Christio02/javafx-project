@@ -8,10 +8,9 @@ public class Flight {
     private String time;
     private String flightNumber;
 
-    public Flight(String destination, String start, String airline, String time, String flightNumber) {
+    public Flight(String destination, String start, String time, String flightNumber) {
         this.destination = destination;
         this.start = start;
-        this.airline = airline;
         this.time = time;
         this.flightNumber = flightNumber;
     }
@@ -27,6 +26,7 @@ public class Flight {
     public String getAirline() {
         return this.airline;
     }
+
     public String getTime() {
         return this.time;
     }
@@ -43,10 +43,9 @@ public class Flight {
     }
 
     public static void main(String[] args) {
-        Flight f1 = new Flight("Oslo", "Trondheim", "SAS", "11.20", "SK23891");
+        Flight f1 = new Flight("Oslo", "Trondheim", "11.20", "SK23891");
 
         System.out.println(f1);
-
 
     }
 }
