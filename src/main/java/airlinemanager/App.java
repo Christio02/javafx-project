@@ -13,7 +13,6 @@ import java.util.Objects;
  */
 public class App extends Application {
 
-
     @Override
     public void start(final Stage primaryStage) throws IOException {
         primaryStage.setTitle("Airline booking!");
@@ -24,7 +23,6 @@ public class App extends Application {
     public static void main(final String[] args) {
         Application.launch(args);
     }
-
 
     /*
      * 
