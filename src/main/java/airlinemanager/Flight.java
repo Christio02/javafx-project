@@ -47,7 +47,9 @@ public class Flight {
                     throw new IllegalArgumentException("Cannot have number in first part of flightnumber!");
                 }
             }
-            if (firstPart.contan)
+            if (!firstPart.contains("OY")) {
+                throw new IllegalArgumentException("First part of flightnumber must contain 'DY'");
+            }
 
             for (char e : lastPart.toCharArray()) {
                 if (Character.isAlphabetic(e)) {
