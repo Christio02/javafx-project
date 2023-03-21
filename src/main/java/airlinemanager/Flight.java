@@ -13,7 +13,7 @@ public class Flight {
         this.start = start;
         this.airline = airline;
         this.time = time;
-        this.flightNumber = flightNumber;
+        setFlightNumber(flightNumber);
     }
 
     public String getDestination() {
@@ -32,10 +32,31 @@ public class Flight {
     }
 
     public void setFlightNumber(String flightnumber) {
+        if (flightnumber.isEmpty()) {
+            throw new IllegalArgumentException("Flightnumber cannot be blank!");
+        }
+        if (flightnumber.length() > 6) {
+            throw new IllegalArgumentException("Cannot have a flightnumber longer than 6!");
+        }
         for (int i = 0; i < flightnumber.length(); i++) {
             Character c = flightnumber.charAt(i);
-            String firstPart = flightnumber.substring(0, 4);
+            String firstPart = flightnumber.substring(0, 2);
+            String lastPart = flightnumber.substring(2, flightnumber.length());
+            for (char d : firstPart.toCharArray()) {
+                if (Character.isDigit(d)) {
+                    throw new IllegalArgumentException("Cannot have number in first part of flightnumber!");
+                }
+            }
+
+            for (char e : lastPart.toCharArray()) {
+                if (Character.isAlphabetic(e)) {
+                    throw new IllegalArgumentException("Last part of flightnumber must be numbers!");
+                }
+                
+            }
         }
+
+        this.flightNumber = flightnumber;
     }
 
     @Override
@@ -50,7 +71,7 @@ public class Flight {
     }
 
     public static void main(String[] args) {
-        Flight f1 = new Flight("Oslo", "Trondheim", "SAS", "11.20", "SK23891");
+        Flight f1 = new Flight("Oslo", "Trondheim", "SAS", "11.20", "SK2939");
 
         System.out.println(f1);
 
