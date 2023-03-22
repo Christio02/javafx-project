@@ -1,6 +1,6 @@
 package airlinemanager;
 
-public class Flight {
+public class Flight implements FlightInterface {
     private String destination;
 
     private String start;
@@ -31,6 +31,7 @@ public class Flight {
         return this.time;
     }
 
+    @Override
     public void setFlightNumber(String flightnumber) {
         if (flightnumber.isEmpty()) {
             throw new IllegalArgumentException("Flightnumber cannot be blank!");
@@ -74,6 +75,8 @@ public class Flight {
         Flight f1 = new Flight("Oslo", "Trondheim", "SAS", "11.20", "SK2939");
 
         System.out.println(f1);
+
+        System.out.println(f1 instanceof FlightInterface);
 
 
     }
