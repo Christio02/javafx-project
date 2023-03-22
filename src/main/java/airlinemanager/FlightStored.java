@@ -33,14 +33,28 @@ public class FlightStored {
     public String setTime() {
         Random random = new Random();
 
-        int lowerbound = 0;
-        int upperbound = 2459;
 
-        int randomTime = random.nextInt(upperbound - lowerbound + 1) + lowerbound;
 
-        String intTimeToString = String.format("%04d", randomTime);
+        int lowerBoundHour = 0;
+        int upperBoundHour= 23;
 
-        return intTimeToString;
+        int lowerBoundMinutes = 0;
+        int upperBoundMinutes = 5;
+
+        int randomTimeHour = random.nextInt(upperBoundHour - lowerBoundHour + 1) + lowerBoundHour;
+        int randomTimeMinutes = random.nextInt(upperBoundMinutes - lowerBoundMinutes + 1) * 10 + lowerBoundMinutes;
+
+
+
+       
+
+
+        String intHour = String.format("%02d", randomTimeHour);
+        String intMin = String.format("%02d", randomTimeMinutes);
+
+        String finString = intHour + ":" + intMin;
+
+        return finString;
     }
 
     public String getTime() {
