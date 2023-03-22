@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
-public class Flight extends FlightStored implements FlightInterface   {
+public class Flight extends FlightStored implements FlightInterface {
     private String destination;
 
     private String start;
     private String time;
     private String flightNumber;
 
-    public Flight(String destination, String start, String time, String flightNumber) {
-        super(destination, start, time);
-        
+    public Flight(String time, String flightNumber) {
+        super(time);
+
         setFlightNumber(flightNumber);
     }
 
@@ -26,10 +25,6 @@ public class Flight extends FlightStored implements FlightInterface   {
         return this.start;
     }
 
-    public String getAirline() {
-        return this.airline;
-    }
-
     public String getTime() {
         return this.time;
     }
@@ -38,7 +33,7 @@ public class Flight extends FlightStored implements FlightInterface   {
         Random random = new Random();
         int lowerbound = 10000;
         int upperbound = 99999;
-        int randomInt = random.nextInt(upperbound-lowerbound) + lowerbound; 
+        int randomInt = random.nextInt(upperbound - lowerbound) + lowerbound;
 
         String lastPart = flightNumber.substring(2, flightNumber.length());
         String intToString = Integer.toString(randomInt);
@@ -57,7 +52,7 @@ public class Flight extends FlightStored implements FlightInterface   {
         if (flightnumber.length() > 7) {
             throw new IllegalArgumentException("Cannot have a flightnumber longer than 6!");
         }
-    
+
         String firstPart = flightnumber.substring(0, 2);
         String lastPart = randomFlightnum(flightnumber);
         for (char d : firstPart.toCharArray()) {
@@ -73,7 +68,7 @@ public class Flight extends FlightStored implements FlightInterface   {
             if (Character.isAlphabetic(e)) {
                 throw new IllegalArgumentException("Last part of flightnumber must be numbers!");
             }
-            
+
         }
 
         this.flightNumber = firstPart + lastPart;
@@ -81,24 +76,19 @@ public class Flight extends FlightStored implements FlightInterface   {
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "flightNumber='" + flightNumber + '\'' +
-                "destination='" + destination + '\'' +
-                ", start='" + start + '\'' +
-                ", airline='" + airline + '\'' +
-                ", time='" + time + '\'' +
-                '}';
+        return "Flight" + "\n" +
+                "flightNumber='" + flightNumber + "\n" +
+                "destination='" + super.destination + "\n" +
+                "start='" + super.start + "\n" +
+                "airline='" + "Orwegian" + "\n" +
+                "time='" + time + "\n";
     }
-
 
     public static void main(String[] args) {
 
-        Flight f1 = new Flight("Trondheim", "Oslo", "10.30", "OY34562");
+        Flight f1 = new Flight("10.30", "OY34562");
 
         System.out.println(f1);
-       
 
-
-        
     }
 }
