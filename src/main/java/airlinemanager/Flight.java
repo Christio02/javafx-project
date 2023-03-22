@@ -8,17 +8,16 @@ import java.util.Random;
 
 
 public class Flight extends FlightStored {
-    // private String destination;
+    private String destination;
 
-    // private String start;
-    // private String time;
-    // private String flightNumber;
+    private String start;
+    private String time;    
 
     private FlightStored flightStored;
 
     public Flight() {
         flightStored = new FlightStored();
-        this.flightNumber = setFlightNumber();
+        
     }
 
     public String getDestination() {
@@ -33,8 +32,17 @@ public class Flight extends FlightStored {
         return this.time;
     }
 
+    
+
+    @Override
+    public String toString() {
+        return "Flight [flightStored=" + flightStored + "]";
+    }
 
     public static void main(String[] args) {
+
+        Flight f1 = new Flight();
+        System.out.println(f1);
 
         List<Flight> flights = new ArrayList<>();
        

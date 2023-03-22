@@ -10,27 +10,25 @@ public class FlightStored {
     protected String flightNumber;
 
     public FlightStored() {
-        this.destination = setStartOrDest(null);
-        this.start = setStartOrDest(destination);
+        this.destination = setStartOrDest();
+        this.start = setStartOrDest();
         flightNumber = setFlightNumber();
         setTime();
 
     }
 
-    public String setStartOrDest(String currentDest) {
+    public String setStartOrDest() {
         Random random = new Random();
         String[] locations = { "Oslo", "Trondheim", "Bergen", "Stavanger", "Kristiansand", "Tromsø",
                 "Bodø", "Malaga", "London", "København", "Stockholm", "Paris", "Barcelona"
         };
-
-        // int index = random.nextInt(locations.length);
 
         int index;
         
         do {
             index = random.nextInt(locations.length);
 
-        } while (locations[index].equals(currentDest));
+        } while (locations[index].equals(destination));
 
         String location = locations[index];
 
