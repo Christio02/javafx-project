@@ -112,19 +112,19 @@ public class FlightStored {
     }
 
 
+    
+
+
     @Override
     public String toString() {
-        return "{" +
-            " destination='" + getDestination() + "'" +
-            ", start='" + getStart() + "'" +
-            ", time='" + getTime() + "'" +
-            "}";
+        return "FlightStored [start=" + start + ", destination=" + destination + ", time=" + time + ", flightNumber="
+                + flightNumber + "]";
     }
 
 
     public static void main(String[] args) {
 
-        FlightStored f1 = new FlightStored(null, null, null);
+        FlightStored f1 = new FlightStored(null, null, null, "OY");
 
         System.out.println(f1);
         
