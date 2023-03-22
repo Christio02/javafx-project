@@ -8,10 +8,9 @@ public class Flight implements FlightInterface {
     private String time;
     private String flightNumber;
 
-    public Flight(String destination, String start, String airline, String time, String flightNumber) {
+    public Flight(String destination, String start, String time, String flightNumber) {
         this.destination = destination;
         this.start = start;
-        this.airline = airline;
         this.time = time;
         setFlightNumber(flightNumber);
     }
@@ -27,6 +26,7 @@ public class Flight implements FlightInterface {
     public String getAirline() {
         return this.airline;
     }
+
     public String getTime() {
         return this.time;
     }
@@ -47,6 +47,9 @@ public class Flight implements FlightInterface {
                 if (Character.isDigit(d)) {
                     throw new IllegalArgumentException("Cannot have number in first part of flightnumber!");
                 }
+            }
+            if (!firstPart.contains("OY")) {
+                throw new IllegalArgumentException("First part of flightnumber must contain 'DY'");
             }
 
             for (char e : lastPart.toCharArray()) {
@@ -72,12 +75,9 @@ public class Flight implements FlightInterface {
     }
 
     public static void main(String[] args) {
-        Flight f1 = new Flight("Oslo", "Trondheim", "SAS", "11.20", "SK2939");
+        Flight f1 = new Flight("Oslo", "Trondheim", "11.20", "Norwegian");
 
         System.out.println(f1);
-
-        System.out.println(f1 instanceof FlightInterface);
-
 
     }
 }
