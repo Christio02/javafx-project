@@ -11,7 +11,7 @@ public class Flight extends FlightStored implements FlightInterface {
     private String time;
     private String flightNumber;
 
-    public Flight(String flightNumber) {
+    public Flight() {
         super();
 
         this.flightNumber = setFlightNumber();
@@ -54,7 +54,7 @@ public class Flight extends FlightStored implements FlightInterface {
 
     public static void main(String[] args) {
 
-        Flight f1 = new Flight("OY34562");
+        Flight f1 = new Flight();
 
         System.out.println(f1);
 
