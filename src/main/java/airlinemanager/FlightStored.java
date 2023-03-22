@@ -9,22 +9,22 @@ public class FlightStored {
     protected String time;
     protected String flightNumber;
 
-    public FlightStored(String start, String destination, String time, String flightNumber) {
-        this.start = setStartOrDest();
+    public FlightStored() {
         this.destination = setStartOrDest();
-        this.setTime();
-        this.setFlightNumber(flightNumber);
-        
-    }
+        start = setStartOrDest();
 
+        this.time = setTime();
+
+    }
 
     public String setStartOrDest() {
         Random random = new Random();
         String[] locations = { "Oslo", "Trondheim", "Bergen", "Stavanger", "Kristiansand", "Tromsø",
-        "Bodø", "Malaga", "London", "København", "Stockholm", "Paris", "Barcelona"
+                "Bodø", "Malaga", "London", "København", "Stockholm", "Paris", "Barcelona"
         };
 
         int index = random.nextInt(locations.length);
+
         String location = locations[index];
 
         return location;
@@ -40,7 +40,7 @@ public class FlightStored {
         Random random = new Random();
 
         int lowerBoundHour = 0;
-        int upperBoundHour= 23;
+        int upperBoundHour = 23;
 
         int lowerBoundMinutes = 0;
         int upperBoundMinutes = 5;
@@ -104,9 +104,11 @@ public class FlightStored {
     public String getTime() {
         return this.time;
     }
+
     public String getStart() {
         return this.start;
     }
+
     public String getDestination() {
         return this.destination;
     }
@@ -121,16 +123,12 @@ public class FlightStored {
                 + flightNumber + "]";
     }
 
-
     public static void main(String[] args) {
 
-        FlightStored f1 = new FlightStored(null, null, null, "OY");
+        FlightStored f1 = new FlightStored();
 
         System.out.println(f1);
-        
+
     }
 
-    
-
-    
 }

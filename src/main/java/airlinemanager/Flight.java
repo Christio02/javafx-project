@@ -14,8 +14,10 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     private String time;
     private String flightNumber;
 
-    public Flight(String destination, String start, String time, String flightNumber) {
-        super(destination, start, time, flightNumber);
+    public Flight() {
+        super();
+
+        this.flightNumber = setFlightNumber();
     }
 
     public String getDestination() {
@@ -30,13 +32,17 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return this.time;
     }
 
-    public String getFlightNumber() {
-        return this.flightNumber;
-    }
+    public String setFlightNumber() {
 
-    private int timeStringToInt() {
-        int time = Integer.parseInt(this.time);
-        return time;
+        Random random = new Random();
+
+        String letterPart = "OY";
+        int numberPart = random.nextInt(3000, 6000);
+
+        String flightNumber = letterPart + String.valueOf(numberPart);
+
+        return flightNumber;
+
     }
     
 
