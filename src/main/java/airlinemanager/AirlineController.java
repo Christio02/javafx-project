@@ -9,7 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class AirlineManagerController {
+public class AirlineController {
+
+    Flight flight;
 
     @FXML Button flightView;
     @FXML ListView<Flight> listOfFlights;

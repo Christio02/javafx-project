@@ -1,11 +1,12 @@
 package airlinemanager;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
 
-public class Flight extends FlightStored {
+public class Flight extends FlightStored implements Iterable<Flight> {
     private String destination;
 
     private String start;
@@ -37,5 +38,11 @@ public class Flight extends FlightStored {
 
 
         
+    }
+
+    @Override
+    public Iterator<Flight> iterator() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
     }
 }
