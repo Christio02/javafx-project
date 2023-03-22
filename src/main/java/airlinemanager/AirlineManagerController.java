@@ -12,20 +12,32 @@ import javafx.scene.control.TextField;
 public class AirlineManagerController {
 
     @FXML Button flightView;
-    @FXML ListView<Flight> showFlights;
+    @FXML ListView<Flight> listOfFlights;
 
 
     @FXML
     public void initialize() {
         List<Flight> flights = new ArrayList<>();
-        flights.add(new Flight("Trondheim", "Oslo", "10.20", "OY23678"));
-        flights.add(new Flight("Oslo", "Trondheim", "11.15", "OY33786"));
-        flights.add(new Flight("Trondheim", "Oslo", "10.20", "OY23678"));
-        flights.add(new Flight("Trondheim", "Oslo", "10.20", "OY23678"));
-        flights.add(new Flight("Trondheim", "Oslo", "10.20", "OY23678"));
-        flights.add(new Flight("Trondheim", "Oslo", "10.20", "OY23678"));
-        flights.add(new Flight("Trondheim", "Oslo", "10.20", "OY23678"));
-        flights.add(new Flight("Trondheim", "Oslo", "10.20", "OY23678"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+
+        listOfFlights.getItems().addAll(flights);
+
+    }
+
+    @FXML
+    public void showFlights() {
+        
 
     }
 

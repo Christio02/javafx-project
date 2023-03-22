@@ -30,7 +30,7 @@ public class Flight extends FlightStored {
 
     public static void main(String[] args) {
 
-        Flight f1 = new Flight(null, null, null, null);
+        Flight f1 = new Flight(null, null, null, "OY");
 
         System.out.println(f1);
        
