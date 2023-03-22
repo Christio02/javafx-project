@@ -24,7 +24,7 @@ public class FlightStored {
         };
 
         int index;
-        
+
         do {
             index = random.nextInt(locations.length);
 
@@ -38,7 +38,7 @@ public class FlightStored {
 
     public void setTime() {
         this.time = generateRandomTime();
-    
+
     }
 
     private String generateRandomTime() {
@@ -64,7 +64,7 @@ public class FlightStored {
     }
 
     private String setFlightNumber() {
-       
+
         Random random = new Random();
 
         String letterPart = "OY";
@@ -87,10 +87,6 @@ public class FlightStored {
     public String getDestination() {
         return this.destination;
     }
-
-
-    
-
 
     @Override
     public String toString() {
