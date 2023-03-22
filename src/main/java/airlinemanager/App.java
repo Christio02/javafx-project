@@ -16,7 +16,7 @@ public class App extends Application {
     @Override
     public void start(final Stage primaryStage) throws IOException {
         primaryStage.setTitle("Airline booking!");
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("App.fxml"))));
+        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/App.fxml"))));
         primaryStage.show();
     }
 
