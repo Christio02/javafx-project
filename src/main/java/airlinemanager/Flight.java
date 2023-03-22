@@ -1,12 +1,13 @@
 package airlinemanager;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
 
-public class Flight extends FlightStored implements Iterable<Flight> {
+public class Flight extends FlightStored implements Comparable<Flight> {
     private String destination;
 
     private String start;
@@ -29,20 +30,63 @@ public class Flight extends FlightStored implements Iterable<Flight> {
         return this.time;
     }
 
+    public String getFlightNumber() {
+        return this.flightNumber;
+    }
+
+    private int timeStringToInt() {
+        int time = Integer.parseInt(this.time);
+        return time;
+    }
+    
+
+    @Override
+    public int compareTo(Flight arg0) {
+        if (this.timeStringToInt() > arg0.timeStringToInt()) {
+            return 1;
+
+        } else if (this.timeStringToInt() < arg0.timeStringToInt()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
     public static void main(String[] args) {
 
-        Flight f1 = new Flight(null, null, null, "OY");
+        List<Flight> flights = new ArrayList<>();
+       
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
+        flights.add(new Flight(null, null, null, "OY"));
 
-        System.out.println(f1);
+        for (Flight flight : flights) {
+            flight.timeStringToInt();
+            
+        }
+
+        System.out.println(flights);
+        Collections.sort(flights);
+
+        // System.out.println(flights);
        
 
 
         
     }
 
-    @Override
-    public Iterator<Flight> iterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
-    }
+    
+
+    
+
+   
 }
