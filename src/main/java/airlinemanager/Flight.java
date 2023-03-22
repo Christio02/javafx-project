@@ -9,7 +9,6 @@ public class Flight extends FlightStored implements FlightInterface   {
     private String destination;
 
     private String start;
-    private String airline;
     private String time;
     private String flightNumber;
 
