@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class Flight implements FlightInterface {
+public class Flight extends FlightStored implements FlightInterface   {
     private String destination;
 
     private String start;
@@ -14,9 +14,7 @@ public class Flight implements FlightInterface {
     private String flightNumber;
 
     public Flight(String destination, String start, String time, String flightNumber) {
-        this.destination = destination;
-        this.start = start;
-        this.time = time;
+        super(destination, start, time);
         setFlightNumber(flightNumber);
     }
 
@@ -59,8 +57,7 @@ public class Flight implements FlightInterface {
         if (flightnumber.length() > 7) {
             throw new IllegalArgumentException("Cannot have a flightnumber longer than 6!");
         }
-        // for (int i = 0; i < flightnumber.length(); i++) {
-        //     Character c = flightnumber.charAt(i);
+    
         String firstPart = flightnumber.substring(0, 2);
         String lastPart = randomFlightnum(flightnumber);
         for (char d : firstPart.toCharArray()) {
@@ -78,8 +75,6 @@ public class Flight implements FlightInterface {
             }
             
         }
-
-        
 
         this.flightNumber = firstPart + lastPart;
     }
