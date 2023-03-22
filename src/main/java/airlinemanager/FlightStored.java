@@ -4,17 +4,17 @@ import java.util.Random;
 
 public class FlightStored {
 
-    protected String destination;
     protected String start;
+    protected String destination;
     protected String time;
+    protected String flightNumber;
 
-    public FlightStored(String destination, String start, String time) {
-        this.destination = setStartOrDest();
+    public FlightStored(String start, String destination, String time, String flightNumber) {
         this.start = setStartOrDest();
-
-        this.time = setTime();
-
-
+        this.destination = setStartOrDest();
+        this.setTime();
+        this.setFlightNumber(flightNumber);
+        
     }
 
 
@@ -30,10 +30,14 @@ public class FlightStored {
         return location;
     }
 
-    public String setTime() {
+    public void setTime() {
+        this.time = generateRandomTime();
+    
+    }
+
+    private String generateRandomTime() {
+
         Random random = new Random();
-
-
 
         int lowerBoundHour = 0;
         int upperBoundHour= 23;
@@ -44,17 +48,57 @@ public class FlightStored {
         int randomTimeHour = random.nextInt(upperBoundHour - lowerBoundHour + 1) + lowerBoundHour;
         int randomTimeMinutes = random.nextInt(upperBoundMinutes - lowerBoundMinutes + 1) * 10 + lowerBoundMinutes;
 
-
-
-       
-
-
         String intHour = String.format("%02d", randomTimeHour);
         String intMin = String.format("%02d", randomTimeMinutes);
 
         String finString = intHour + ":" + intMin;
 
         return finString;
+
+    }
+
+    private String randomFlightnum(String flightNumber) {
+        Random random = new Random();
+        int lowerbound = 10000;
+        int upperbound = 99999;
+        int randomInt = random.nextInt(upperbound-lowerbound) + lowerbound; 
+
+        String lastPart = flightNumber.substring(2, flightNumber.length());
+        String intToString = Integer.toString(randomInt);
+
+        lastPart = intToString;
+        return lastPart;
+
+    }
+
+    public void setFlightNumber(String flightnumber) {
+
+        if (flightnumber.isEmpty()) {
+            throw new IllegalArgumentException("Flightnumber cannot be blank!");
+        }
+        if (flightnumber.length() > 7) {
+            throw new IllegalArgumentException("Cannot have a flightnumber longer than 6!");
+        }
+    
+        String firstPart = flightnumber.substring(0, 2);
+        String lastPart = randomFlightnum(flightnumber);
+        for (char d : firstPart.toCharArray()) {
+            if (Character.isDigit(d)) {
+                throw new IllegalArgumentException("Cannot have number in first part of flightnumber!");
+            }
+        }
+        if (!firstPart.contains("OY")) {
+            throw new IllegalArgumentException("First part of flightnumber must contain 'DY'");
+        }
+
+        for (char e : lastPart.toCharArray()) {
+            if (Character.isAlphabetic(e)) {
+                throw new IllegalArgumentException("Last part of flightnumber must be numbers!");
+            }
+            
+        }
+
+        this.flightNumber = firstPart + lastPart;
     }
 
     public String getTime() {
