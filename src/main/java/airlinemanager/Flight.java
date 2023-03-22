@@ -16,7 +16,10 @@ public class Flight extends FlightStored {
     private FlightStored flightStored;
 
     public Flight() {
-        flightStored = new FlightStored();
+    
+        this.destination = super.getDestination();
+        this.start = super.getStart();
+        this.time = super.getTime();
         
     }
 
