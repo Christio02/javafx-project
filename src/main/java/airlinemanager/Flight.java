@@ -11,10 +11,10 @@ public class Flight extends FlightStored implements FlightInterface {
     private String time;
     private String flightNumber;
 
-    public Flight(String time, String flightNumber) {
-        super(time);
+    public Flight(String flightNumber) {
+        super();
 
-        setFlightNumber(flightNumber);
+        this.flightNumber = setFlightNumber();
     }
 
     public String getDestination() {
@@ -29,64 +29,32 @@ public class Flight extends FlightStored implements FlightInterface {
         return this.time;
     }
 
-    private String randomFlightnum(String flightNumber) {
+    public String setFlightNumber() {
+
         Random random = new Random();
-        int lowerbound = 10000;
-        int upperbound = 99999;
-        int randomInt = random.nextInt(upperbound - lowerbound) + lowerbound;
 
-        String lastPart = flightNumber.substring(2, flightNumber.length());
-        String intToString = Integer.toString(randomInt);
+        String letterPart = "OY";
+        int numberPart = random.nextInt(3000, 6000);
 
-        lastPart = intToString;
-        return lastPart;
+        String flightNumber = letterPart + String.valueOf(numberPart);
 
-    }
+        return flightNumber;
 
-    @Override
-    public void setFlightNumber(String flightnumber) {
-
-        if (flightnumber.isEmpty()) {
-            throw new IllegalArgumentException("Flightnumber cannot be blank!");
-        }
-        if (flightnumber.length() > 7) {
-            throw new IllegalArgumentException("Cannot have a flightnumber longer than 6!");
-        }
-
-        String firstPart = flightnumber.substring(0, 2);
-        String lastPart = randomFlightnum(flightnumber);
-        for (char d : firstPart.toCharArray()) {
-            if (Character.isDigit(d)) {
-                throw new IllegalArgumentException("Cannot have number in first part of flightnumber!");
-            }
-        }
-        if (!firstPart.contains("OY")) {
-            throw new IllegalArgumentException("First part of flightnumber must contain 'DY'");
-        }
-
-        for (char e : lastPart.toCharArray()) {
-            if (Character.isAlphabetic(e)) {
-                throw new IllegalArgumentException("Last part of flightnumber must be numbers!");
-            }
-
-        }
-
-        this.flightNumber = firstPart + lastPart;
     }
 
     @Override
     public String toString() {
         return "Flight" + "\n" +
-                "flightNumber='" + flightNumber + "\n" +
-                "destination='" + super.destination + "\n" +
-                "start='" + super.start + "\n" +
-                "airline='" + "Orwegian" + "\n" +
-                "time='" + time + "\n";
+                "flightNumber:" + flightNumber + "\n" +
+                "destination:" + super.destination + "\n" +
+                "start:" + super.start + "\n" +
+                "airline:" + "Orwegian" + "\n" +
+                "Departure:" + super.time + "\n";
     }
 
     public static void main(String[] args) {
 
-        Flight f1 = new Flight("10.30", "OY34562");
+        Flight f1 = new Flight("OY34562");
 
         System.out.println(f1);
 

@@ -8,9 +8,9 @@ public class FlightStored {
     protected String start;
     protected String time;
 
-    public FlightStored(String time) {
+    public FlightStored() {
         this.destination = setStartOrDest();
-        this.start = setStartOrDest();
+        start = setStartOrDest();
 
         this.time = setTime();
 
@@ -23,6 +23,7 @@ public class FlightStored {
         };
 
         int index = random.nextInt(locations.length);
+
         String location = locations[index];
 
         return location;
@@ -71,7 +72,7 @@ public class FlightStored {
 
     public static void main(String[] args) {
 
-        FlightStored f1 = new FlightStored("10:30");
+        FlightStored f1 = new FlightStored();
 
         System.out.println(f1);
 
