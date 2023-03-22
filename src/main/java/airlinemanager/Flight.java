@@ -15,6 +15,7 @@ public class Flight extends FlightStored implements FlightInterface   {
 
     public Flight(String destination, String start, String time, String flightNumber) {
         super(destination, start, time);
+        
         setFlightNumber(flightNumber);
     }
 
