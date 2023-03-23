@@ -13,7 +13,7 @@ public class FlightStored {
         this.destination = setStartOrDest();
         start = setStartOrDest();
 
-        this.time = setTime();
+        setTime();
 
     }
 

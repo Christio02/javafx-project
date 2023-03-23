@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class Flight extends FlightStored implements Comparable<Flight> {
+public class Flight extends FlightStored {
     private String destination;
 
     private String start;
@@ -45,43 +45,10 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     }
     
-
-    @Override
-    public int compareTo(Flight arg0) {
-        if (this.timeStringToInt() > arg0.timeStringToInt()) {
-            return 1;
-
-        } else if (this.timeStringToInt() < arg0.timeStringToInt()) {
-            return -1;
-        } else {
-            return 0;
-        }
-    }
-
     public static void main(String[] args) {
 
         List<Flight> flights = new ArrayList<>();
        
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-        flights.add(new Flight(null, null, null, "OY"));
-
-        for (Flight flight : flights) {
-            flight.timeStringToInt();
-            
-        }
-
-        System.out.println(flights);
-        Collections.sort(flights);
 
         // System.out.println(flights);
        
