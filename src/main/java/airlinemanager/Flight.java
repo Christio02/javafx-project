@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public class Flight extends FlightStored {
+public class Flight extends FlightStored implements Comparable<Flight> {
     private String destination;
 
     private String start;

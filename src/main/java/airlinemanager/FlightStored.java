@@ -38,7 +38,7 @@ public class FlightStored {
 
         Random random = new Random();
 
-        int lowerBoundHour = 0;
+        int lowerBoundHour = 5;
         int upperBoundHour = 23;
 
         int lowerBoundMinutes = 0;
