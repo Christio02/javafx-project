@@ -1,11 +1,13 @@
 package airlinemanager;
 
 import java.util.ArrayList;
+
+import java.util.Collections;
 import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -25,13 +27,8 @@ public class AirlineController {
         flights.add(new Flight());
         flights.add(new Flight());
         flights.add(new Flight());
-        flights.add(new Flight());
-        flights.add(new Flight());
-        flights.add(new Flight());
-        flights.add(new Flight());
-        flights.add(new Flight());
         
-
+        Collections.sort(flights);
         listOfFlights.getItems().addAll(flights);
 
     }

@@ -6,14 +6,12 @@ public class FlightStored {
 
     protected String start;
     protected String destination;
-    protected String time;
     protected String flightNumber;
 
     public FlightStored() {
         this.destination = setStartOrDest();
         this.start = setStartOrDest();
         flightNumber = setFlightNumber();
-        setTime();
 
     }
 
@@ -23,12 +21,12 @@ public class FlightStored {
                 "Bodø", "Malaga", "London", "København", "Stockholm", "Paris", "Barcelona"
         };
 
-        int index;
+        int index; // initzialize index
 
         do {
-            index = random.nextInt(locations.length);
+            index = random.nextInt(locations.length); // do, set index to a random index in the array
 
-        } while (locations[index].equals(destination));
+        } while (locations[index].equals(destination)); // continues until unique dest and start is selected
 
         String location = locations[index];
 
@@ -36,12 +34,7 @@ public class FlightStored {
 
     }
 
-    public void setTime() {
-        this.time = generateRandomTime();
-
-    }
-
-    private String generateRandomTime() {
+    public String generateRandomTime() {
 
         Random random = new Random();
 
@@ -76,10 +69,6 @@ public class FlightStored {
 
     }
 
-    public String getTime() {
-        return this.time;
-    }
-
     public String getStart() {
         return this.start;
     }
@@ -90,8 +79,8 @@ public class FlightStored {
 
     @Override
     public String toString() {
-        return "FlightStored [start=" + start + ", destination=" + destination + ", time=" + time + ", flightNumber="
-                + flightNumber + "]";
+        return "FlightStored [start=" + start + ", destination=" + destination + ", flightNumber="
+                + flightNumber;
     }
 
     public static void main(String[] args) {
