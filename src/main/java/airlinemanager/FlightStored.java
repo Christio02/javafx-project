@@ -57,7 +57,7 @@ public class FlightStored {
         String intHour = String.format("%02d", randomTimeHour);
         String intMin = String.format("%02d", randomTimeMinutes);
 
-        String finString = intHour + ":" + intMin;
+        String finString = intHour + "." + intMin;
 
         return finString;
 
