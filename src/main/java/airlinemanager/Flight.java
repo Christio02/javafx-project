@@ -96,13 +96,15 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         System.out.println(flights);
 
         System.out.println("\n\n");
-        Collections.sort(flights);
+        Collections.sort(flights, new FlightTimeComparator());
 
        System.out.println(flights);
 
 
 
        System.out.println("Sorted list: \n\n");
+
+       flights.stream().map(s -> s.getTime()).forEach(System.out::println);
 
        
        
