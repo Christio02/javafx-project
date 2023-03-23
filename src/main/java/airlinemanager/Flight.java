@@ -64,13 +64,12 @@ public class Flight extends FlightStored {
 
 
         flights.add(f1); flights.add(new Flight()); flights.add(new Flight()); flights.add(new Flight());
-
         System.out.println(flights);
 
         System.out.println("\n\n");
         Collections.sort(flights, new FlightTimeComparator());
 
-       System.out.println(flights);
+        System.out.println(flights);
 
 
 
