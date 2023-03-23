@@ -25,12 +25,6 @@ public class Flight extends FlightStored {
         
     }
 
-    public Flight(String dest, String start, String time) {
-        this.destination = dest;
-        this.start = start;
-        this.time = time;
-    }
-
     public String getDestination() {
         return this.destination;
     }
@@ -63,20 +57,8 @@ public class Flight extends FlightStored {
         List<Flight> flights = new ArrayList<>();
 
 
-        flights.add(f1); flights.add(new Flight()); flights.add(new Flight()); flights.add(new Flight());
-
-        System.out.println(flights);
-
-        System.out.println("\n\n");
-        Collections.sort(flights, new FlightTimeComparator());
-
-       System.out.println(flights);
 
 
-
-       System.out.println("Sorted list: \n\n");
-
-       flights.stream().map(s -> s.getTime()).forEach(System.out::println);
 
        
        
