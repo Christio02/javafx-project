@@ -16,6 +16,8 @@ public class Flight extends FlightStored {
     private FlightStored flightStored;
 
     public Flight() {
+
+        flightStored = new FlightStored();
     
         this.destination = super.getDestination();
         this.start = super.getStart();
@@ -35,6 +37,10 @@ public class Flight extends FlightStored {
         return this.time;
     }
 
+    public String getFlightNumber() {
+        return this.flightNumber;
+    }
+
     
 
     @Override
@@ -47,7 +53,7 @@ public class Flight extends FlightStored {
         Flight f1 = new Flight();
         System.out.println(f1);
 
-        List<Flight> flights = new ArrayList<>();
+        System.out.println(f1.getFlightNumber().substring(0, 2));
        
        
 

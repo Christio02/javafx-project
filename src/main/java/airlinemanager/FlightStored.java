@@ -23,12 +23,12 @@ public class FlightStored {
                 "Bodø", "Malaga", "London", "København", "Stockholm", "Paris", "Barcelona"
         };
 
-        int index;
+        int index; // initzialize index
         
         do {
-            index = random.nextInt(locations.length);
+            index = random.nextInt(locations.length); // do, set index to a random index in the array
 
-        } while (locations[index].equals(destination));
+        } while (locations[index].equals(destination)); // continues until unique dest and start is selected
 
         String location = locations[index];
 
