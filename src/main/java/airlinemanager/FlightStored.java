@@ -6,14 +6,12 @@ public class FlightStored {
 
     protected String start;
     protected String destination;
-    protected String time;
     protected String flightNumber;
 
     public FlightStored() {
         this.destination = setStartOrDest();
         this.start = setStartOrDest();
         flightNumber = setFlightNumber();
-        setTime();
 
     }
 
@@ -24,7 +22,7 @@ public class FlightStored {
         };
 
         int index; // initzialize index
-        
+
         do {
             index = random.nextInt(locations.length); // do, set index to a random index in the array
 
@@ -36,12 +34,7 @@ public class FlightStored {
 
     }
 
-    public void setTime() {
-        this.time = generateRandomTime();
-    
-    }
-
-    private String generateRandomTime() {
+    public String generateRandomTime() {
 
         Random random = new Random();
 
@@ -57,14 +50,14 @@ public class FlightStored {
         String intHour = String.format("%02d", randomTimeHour);
         String intMin = String.format("%02d", randomTimeMinutes);
 
-        String finString = intHour + "." + intMin;
+        String finString = intHour + ":" + intMin;
 
         return finString;
 
     }
 
     private String setFlightNumber() {
-       
+
         Random random = new Random();
 
         String letterPart = "OY";
@@ -76,10 +69,6 @@ public class FlightStored {
 
     }
 
-    public String getTime() {
-        return this.time;
-    }
-
     public String getStart() {
         return this.start;
     }
@@ -88,14 +77,10 @@ public class FlightStored {
         return this.destination;
     }
 
-
-    
-
-
     @Override
     public String toString() {
-        return "FlightStored [start=" + start + ", destination=" + destination + ", time=" + time + ", flightNumber="
-                + flightNumber + "]";
+        return "FlightStored [start=" + start + ", destination=" + destination + ", flightNumber="
+                + flightNumber;
     }
 
     public static void main(String[] args) {
