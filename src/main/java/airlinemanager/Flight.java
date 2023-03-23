@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public class Flight extends FlightStored implements Comparable<Flight> {
+public class Flight extends FlightStored {
     private String destination;
 
     private String start;
@@ -51,34 +51,6 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return this.flightNumber;
     }
 
-    private double convertTimeForComparable() {
-        
-        String time = this.time;
-
-        double doubleTime = Double.parseDouble(time);
-
-        return doubleTime;
-
-    }
-
-    @Override
-    public int compareTo(Flight otherFlight) {
-
-        double flightTime = this.convertTimeForComparable();
-
-        double otherFlightTime = otherFlight.convertTimeForComparable();
-
-        if (flightTime > otherFlightTime) {
-            return -1;
-
-        } else if (flightTime < otherFlightTime) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-
-
     @Override
     public String toString() {
         return "Flight [" + flightStored + "]";
@@ -91,7 +63,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         List<Flight> flights = new ArrayList<>();
 
 
-        flights.add(f1); flights.add(new Flight()); flights.add(new Flight());
+        flights.add(f1); flights.add(new Flight()); flights.add(new Flight()); flights.add(new Flight());
 
         System.out.println(flights);
 

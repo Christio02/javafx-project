@@ -28,7 +28,8 @@ public class AirlineController {
         flights.add(new Flight());
         flights.add(new Flight());
         
-        Collections.sort(flights);
+        // sorts time based on earliest to late
+        Collections.sort(flights, new FlightTimeComparator());
         listOfFlights.getItems().addAll(flights);
 
     }
