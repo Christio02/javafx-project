@@ -16,6 +16,10 @@ public class FlightTest {
     public void TestConstructor() {
         Flight flight = new Flight();
         assertNotEquals(flight.getStart(), flight.getDestination(), "Start and destination should not be the same!");
+        
+        assertEquals("OY", flight.getFlightNumber().substring(0, 2), "Flightnumber letters should be 'OY'!");
+        
+        
 
 
 
