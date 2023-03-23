@@ -69,10 +69,10 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         double otherFlightTime = otherFlight.convertTimeForComparable();
 
         if (flightTime > otherFlightTime) {
-            return 1;
+            return -1;
 
         } else if (flightTime < otherFlightTime) {
-            return -1;
+            return 1;
         } else {
             return 0;
         }
