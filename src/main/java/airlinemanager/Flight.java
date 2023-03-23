@@ -11,13 +11,16 @@ public class Flight extends FlightStored {
     private String destination;
 
     private String start;
-    private String time;
-    private String flightNumber;
+    private String time;    
+
+    private FlightStored flightStored;
 
     public Flight() {
-        super();
-
-        this.flightNumber = setFlightNumber();
+    
+        this.destination = super.getDestination();
+        this.start = super.getStart();
+        this.time = super.getTime();
+        
     }
 
     public String getDestination() {
@@ -32,25 +35,20 @@ public class Flight extends FlightStored {
         return this.time;
     }
 
-    public String setFlightNumber() {
-
-        Random random = new Random();
-
-        String letterPart = "OY";
-        int numberPart = random.nextInt(3000, 6000);
-
-        String flightNumber = letterPart + String.valueOf(numberPart);
-
-        return flightNumber;
-
-    }
     
+
+    @Override
+    public String toString() {
+        return "Flight [flightStored=" + flightStored + "]";
+    }
+
     public static void main(String[] args) {
+
+        Flight f1 = new Flight();
+        System.out.println(f1);
 
         List<Flight> flights = new ArrayList<>();
        
-
-        // System.out.println(flights);
        
 
 

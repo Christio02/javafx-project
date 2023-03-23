@@ -20,7 +20,17 @@ public class AirlineController {
     @FXML
     public void initialize() {
         List<Flight> flights = new ArrayList<>();
+        
         flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        
 
         listOfFlights.getItems().addAll(flights);
 
