@@ -35,7 +35,6 @@ public class FlightTest {
 
         // time checker
 
-        Pattern pattern2 = Pattern.compile("")
         
     }
 
