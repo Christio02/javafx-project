@@ -1,8 +1,11 @@
 package airlinemanager;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
-
-public class Flight extends FlightStored {
+public class Flight extends FlightStored implements Comparable<Flight> {
     private String destination;
 
     private String start;
@@ -20,6 +23,12 @@ public class Flight extends FlightStored {
         this.start = super.getStart();
         this.time = super.getTime();
         
+    }
+
+    public Flight(String dest, String start, String time) {
+        this.destination = dest;
+        this.start = start;
+        this.time = time;
     }
 
     public String getDestination() {
@@ -42,7 +51,33 @@ public class Flight extends FlightStored {
         return this.flightNumber;
     }
 
-    
+    private double convertTimeForComparable() {
+        
+        String time = this.time;
+
+        double doubleTime = Double.parseDouble(time);
+
+        return doubleTime;
+
+    }
+
+    @Override
+    public int compareTo(Flight otherFlight) {
+
+        double flightTime = this.convertTimeForComparable();
+
+        double otherFlightTime = otherFlight.convertTimeForComparable();
+
+        if (flightTime > otherFlightTime) {
+            return 1;
+
+        } else if (flightTime < otherFlightTime) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
 
     @Override
     public String toString() {
@@ -52,7 +87,22 @@ public class Flight extends FlightStored {
     public static void main(String[] args) {
 
         Flight f1 = new Flight();
-        System.out.println(f1);
+
+        List<Flight> flights = new ArrayList<>();
+
+
+        flights.add(f1); flights.add(new Flight()); flights.add(new Flight());
+
+        System.out.println(flights);
+
+        System.out.println("\n\n");
+        Collections.sort(flights);
+
+       System.out.println(flights);
+
+
+
+       System.out.println("Sorted list: \n\n");
 
        
        
@@ -61,6 +111,7 @@ public class Flight extends FlightStored {
         
     }
 
+    
     
 
     
