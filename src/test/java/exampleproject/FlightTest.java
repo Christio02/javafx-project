@@ -9,6 +9,7 @@ import airlinemanager.Flight;
 import airlinemanager.FlightStored;
 
 public class FlightTest {
+
   
 
     @Test
@@ -19,10 +20,16 @@ public class FlightTest {
         
         assertEquals("OY", flight.getFlightNumber().substring(0, 2), "Flightnumber letters should be 'OY'!");
         
+        // checks if there are only numbers after 'OY'
+        for (int i = 0; i < flight.getFlightNumber().substring(2, flight.getFlightNumber().length()).length(); i++) {
+            Character c = flight.getFlightNumber().charAt(i);
+
+            assertEquals(true, Character.isDigit(c));
+
+        }
+
+              
         
-
-
-
     }
 
 }
