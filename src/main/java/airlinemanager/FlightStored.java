@@ -16,7 +16,7 @@ public class FlightStored {
 
     }
 
-    public String setStartOrDest() {
+    private String setStartOrDest() {
         Random random = new Random();
         String[] locations = { "Oslo", "Trondheim", "Bergen", "Stavanger", "Kristiansand", "Tromsø",
                 "Bodø", "Malaga", "London", "København", "Stockholm", "Paris", "Barcelona"
@@ -35,7 +35,7 @@ public class FlightStored {
 
     }
 
-    public String generateRandomTime() {
+    protected String generateRandomTime() {
 
         Random random = new Random();
 
@@ -56,8 +56,6 @@ public class FlightStored {
         return finString;
 
     }
-
-    
 
     public String getTime() {
         return this.time;
