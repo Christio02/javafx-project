@@ -1,24 +1,17 @@
 package airlinemanager;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
-public class flightStored implements Comparable<flightStored> {
+public class FlightStored {
 
     protected String start;
     protected String destination;
     protected String flightNumber;
-    protected String time;
-    protected boolean booked;
 
-    public flightStored() {
+    public FlightStored() {
         this.destination = setStartOrDest();
         this.start = setStartOrDest();
         flightNumber = setFlightNumber();
-        time = this.generateRandomTime();
-        this.booked = false;
 
     }
 
@@ -38,46 +31,6 @@ public class flightStored implements Comparable<flightStored> {
         String location = locations[index];
 
         return location;
-
-    }
-
-    public String getTime() {
-        return this.time;
-    }
-
-    public int getHours() {
-
-        int hours = Integer.parseInt(this.getTime().split(":")[0]);
-
-        return hours;
-    }
-
-    public int getMinutes() {
-
-        int minutes = Integer.parseInt(this.getTime().split(":")[1]);
-
-        return minutes;
-    }
-
-    @Override
-    public int compareTo(flightStored otherFlight) {
-
-        if (this.getHours() > otherFlight.getHours()) {
-            return 1;
-        } else if (this.getHours() < otherFlight.getHours()) {
-            return -1;
-        }
-
-        else if (this.getHours() == otherFlight.getHours()) {
-            if (this.getMinutes() > otherFlight.getMinutes()) {
-                return 1;
-            } else {
-                return -1;
-            }
-
-        }
-
-         return 1;
 
     }
 
@@ -126,33 +79,15 @@ public class flightStored implements Comparable<flightStored> {
 
     @Override
     public String toString() {
-        return "FlightStored [Departure= " + this.time + " start=" + start + ", destination=" + destination
-                + ", flightNumber="
+        return "FlightStored [start=" + start + ", destination=" + destination + ", flightNumber="
                 + flightNumber;
     }
 
     public static void main(String[] args) {
 
-        flightStored f1 = new flightStored();
-        flightStored f2 = new flightStored();
-        flightStored f3 = new flightStored();
-        flightStored f4 = new flightStored();
-        flightStored f5 = new flightStored();
+        FlightStored f1 = new FlightStored();
 
-        List<flightStored> flights = new ArrayList<>();
-
-        flights.add(f1);
-        flights.add(f2);
-        flights.add(f3);
-        flights.add(f4);
-        flights.add(f5);
-
-        System.out.println(flights);
-
-        System.out.println('\n');
-        Collections.sort(flights);
-
-        System.out.println(flights);
+        System.out.println(f1);
 
     }
 

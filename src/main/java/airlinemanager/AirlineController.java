@@ -13,22 +13,21 @@ import javafx.scene.control.TextField;
 
 public class AirlineController {
 
-    flights flight;
+    Flight flight;
 
-    @FXML
-    Button flightView;
-    @FXML
-    ListView<flights> listOfFlights;
+    @FXML Button flightView;
+    @FXML ListView<Flight> listOfFlights;
+
 
     @FXML
     public void initialize() {
-        List<flights> flights = new ArrayList<>();
-
-        flights.add(new flights());
-        flights.add(new flights());
-        flights.add(new flights());
-        flights.add(new flights());
-
+        List<Flight> flights = new ArrayList<>();
+        
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        
         // sorts time based on earliest to late
         Collections.sort(flights);
         listOfFlights.getItems().addAll(flights);
@@ -37,7 +36,10 @@ public class AirlineController {
 
     @FXML
     public void showFlights() {
+        
 
     }
+
+   
 
 }

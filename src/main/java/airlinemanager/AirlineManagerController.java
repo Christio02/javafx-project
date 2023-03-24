@@ -14,21 +14,21 @@ public class AirlineManagerController {
     @FXML
     Button flightView;
     @FXML
-    ListView<flights> showFlights;
+    ListView<Flight> showFlights;
 
     @FXML
     public void initialize() {
-        List<flights> flights = new ArrayList<>();
-        flights.add(new flights());
-        flights.add(new flights());
-        flights.add(new flights());
-        flights.add(new flights());
-        flights.add(new flights());
-        flights.add(new flights());
-        flights.add(new flights());
-        flights.add(new flights());
-        flights.add(new flights());
-        flights.add(new flights());
+        List<Flight> flights = new ArrayList<>();
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
 
     }
 
