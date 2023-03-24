@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airlinemanager.AirlineController">
    <children>
-      <Button layoutX="248.0" layoutY="296.0" mnemonicParsing="false" text="Klikk for flyreiser" />
+      <Button layoutX="248.0" layoutY="296.0" mnemonicParsing="false" text="Klikk for flyreiser" onAction = "#showFlights" />
       <ListView fx:id="listOfFlights" layoutY="66.0" prefHeight="200.0" prefWidth="600.0" />
       <Label fx:id="result1" layoutX="164.0" layoutY="14.0" text="Welcome to this flight app!">
          <font>
@@ -16,4 +16,4 @@
          </font>
       </Label>
    </children>
-</AnchorPane>
+</AnchorPane> 

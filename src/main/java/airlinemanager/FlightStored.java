@@ -6,22 +6,23 @@ public class FlightStored {
 
     protected String start;
     protected String destination;
-    protected String time;
     protected String flightNumber;
+    protected String time;
 
     public FlightStored() {
         this.destination = setStartOrDest();
         this.start = setStartOrDest();
         flightNumber = setFlightNumber();
-        setTime();
 
     }
 
-    public String setStartOrDest() {
+    private String setStartOrDest() {
         Random random = new Random();
         String[] locations = { "Oslo", "Trondheim", "Bergen", "Stavanger", "Kristiansand", "Tromsø",
                 "Bodø", "Malaga", "London", "København", "Stockholm", "Paris", "Barcelona"
         };
+
+        int index; // initzialize index
 
         String location1, location2;
         
@@ -37,16 +38,11 @@ public class FlightStored {
 
     }
 
-    public void setTime() {
-        this.time = generateRandomTime();
-    
-    }
-
-    private String generateRandomTime() {
+    protected String generateRandomTime() {
 
         Random random = new Random();
 
-        int lowerBoundHour = 6; // changed so that we don't have flights at night
+        int lowerBoundHour = 5;
         int upperBoundHour = 23;
 
         int lowerBoundMinutes = 0;
@@ -59,14 +55,32 @@ public class FlightStored {
         String intHour = String.format("%02d", randomTimeHour);
         String intMin = String.format("%02d", randomTimeMinutes);
 
-        String finString = intHour + "." + intMin;
+        String finString = intHour + ":" + intMin;
 
         return finString;
 
     }
 
+    public String getTime() {
+        return this.time;
+    }
+
+    public int getHours() {
+
+        int hours = Integer.parseInt(this.getTime().split(":")[0]);
+
+        return hours;
+    }
+
+    public int getMinutes() {
+
+        int minutes = Integer.parseInt(this.getTime().split(":")[1]);
+
+        return minutes;
+    }
+
     private String setFlightNumber() {
-       
+
         Random random = new Random();
 
         String letterPart = "OY";
@@ -78,10 +92,6 @@ public class FlightStored {
 
     }
 
-    public String getTime() {
-        return this.time;
-    }
-
     public String getStart() {
         return this.start;
     }
@@ -90,14 +100,10 @@ public class FlightStored {
         return this.destination;
     }
 
-
-    
-
-
     @Override
     public String toString() {
-        return "FlightStored [start=" + start + ", destination=" + destination + ", time=" + time + ", flightNumber="
-                + flightNumber + "]";
+        return "[start=" + start + ", destination=" + destination + ", flightNumber="
+                + flightNumber;
     }
 
     public static void main(String[] args) {

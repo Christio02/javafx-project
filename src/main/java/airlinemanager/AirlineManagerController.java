@@ -20,6 +20,15 @@ public class AirlineManagerController {
     public void initialize() {
         List<Flight> flights = new ArrayList<>();
         flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
 
     }
 
