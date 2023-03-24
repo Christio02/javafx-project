@@ -32,6 +32,8 @@ public class AirlineController {
         Collections.sort(flights);
         listOfFlights.getItems().addAll(flights);
 
+        // makes sure that user 
+
     }
 
     @FXML

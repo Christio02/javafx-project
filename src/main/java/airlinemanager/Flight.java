@@ -68,10 +68,9 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     }
 
-
     @Override
     public String toString() {
-        return "Flight [" + flightStored + " departure=" + this.time + "]";
+        return "Flight + [" + flightStored + " departure=" + this.time + "]";
 
     }
 
@@ -98,9 +97,6 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
         System.out.println(flights);
 
-        flights.stream().map(s -> s.getTime()).forEach(System.out::println);
-
-        System.out.println(f1.getTime().getClass());
     }
 
 }

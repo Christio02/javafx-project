@@ -98,7 +98,7 @@ public class FlightStored {
 
     @Override
     public String toString() {
-        return "FlightStored [start=" + start + ", destination=" + destination + ", flightNumber="
+        return "[start=" + start + ", destination=" + destination + ", flightNumber="
                 + flightNumber;
     }
 
