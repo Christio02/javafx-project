@@ -7,6 +7,7 @@ public class FlightStored {
     protected String start;
     protected String destination;
     protected String flightNumber;
+    protected String time;
 
     public FlightStored() {
         this.destination = setStartOrDest();
@@ -54,6 +55,26 @@ public class FlightStored {
 
         return finString;
 
+    }
+
+    
+
+    public String getTime() {
+        return this.time;
+    }
+
+    protected int getHours() {
+
+        int hours = Integer.parseInt(this.getTime().split(":")[0]);
+
+        return hours;
+    }
+
+    protected int getMinutes() {
+
+        int minutes = Integer.parseInt(this.getTime().split(":")[1]);
+
+        return minutes;
     }
 
     private String setFlightNumber() {

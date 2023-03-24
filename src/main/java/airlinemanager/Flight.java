@@ -10,7 +10,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     private String destination;
 
     private String start;
-    private String time;
+   
 
     private int seats;
 
@@ -67,19 +67,6 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     }
 
-    private int getHours() {
-
-        int hours = Integer.parseInt(this.getTime().split(":")[0]);
-
-        return hours;
-    }
-
-    private int getMinutes() {
-
-        int minutes = Integer.parseInt(this.getTime().split(":")[1]);
-
-        return minutes;
-    }
 
     @Override
     public String toString() {
