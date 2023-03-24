@@ -2,6 +2,7 @@ package exampleproject;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +17,7 @@ import airlinemanager.Flight;
 
 public class FlightTest {
 
-    Flight flight;
+    private Flight flight;
 
     
 
@@ -48,7 +49,7 @@ public class FlightTest {
         // e.g. 10:20 is correct, but 10:21, is not correct
         assertTrue(pattern2.matcher(time).matches(), "Time should be in this format!: 'xx:x0'");
 
-        // test if start is not equal tod destination
+        // test if start    is not equal tod destination
         assertNotEquals(dest, start, "Start and end should not be the same!");
         
     }
@@ -56,20 +57,35 @@ public class FlightTest {
     // set up random flight
     @BeforeEach
     public void setUp() {
-        flight = new Flight();
+        Flight flight = new Flight();
     }
 
     @Test
-    @DisplayName("Testing that all flight times are sorted correctly");
+    @DisplayName("Test that all flight times are sorted correctly")
     public void testFlightTimeSort() {
 
-        List<Flight> flights = new ArrayList<>();
+        List<Flight> flights = new ArrayList<>(); // original list
+        flights.add(new Flight()); flights.add(new Flight()); flights.add(new Flight());
+
+    
 
         // should use Collections.sort and check that earlier times are before later times
-
         Collections.sort(flights);
 
+        Flight prev = null; // keeps track of previous flights in list, is null because there are no previous flights for 1.st iteration
+        for (Flight flight : flights) {
+            if (prev != null) { // if flights not null
 
+                if (flight.getHours() == prev.getHours()) { // if hours time is the same
+                    assertTrue(flight.getMinutes() >= prev.getMinutes()); // then check minutes 
+                }
+                // check if this flight hours is larger than previous flight
+                assertTrue(flight.getHours() >= prev.getHours(), "Flights are not sorted correctly, should be sorted in ascending order!");
+            }
+            prev = flight; // so that after each iteration, prev is set to that flight
+        }
     }
+
+    
 
 }

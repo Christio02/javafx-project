@@ -10,7 +10,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     private String destination;
 
     private String start;
-   
+    
+    private String time;
 
     private int seats;
 
@@ -97,6 +98,9 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
         System.out.println(flights);
 
+        flights.stream().map(s -> s.getTime()).forEach(System.out::println);
+
+        System.out.println(f1.getTime().getClass());
     }
 
 }

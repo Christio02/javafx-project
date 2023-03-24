@@ -61,14 +61,14 @@ public class FlightStored {
         return this.time;
     }
 
-    protected int getHours() {
+    public int getHours() {
 
         int hours = Integer.parseInt(this.getTime().split(":")[0]);
 
         return hours;
     }
 
-    protected int getMinutes() {
+    public int getMinutes() {
 
         int minutes = Integer.parseInt(this.getTime().split(":")[1]);
 
