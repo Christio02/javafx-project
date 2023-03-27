@@ -13,6 +13,7 @@ public class FlightStored {
         this.destination = setStartOrDest();
         this.start = setStartOrDest();
         flightNumber = setFlightNumber();
+        this.time = generateRandomTime();
 
     }
 
@@ -102,15 +103,18 @@ public class FlightStored {
 
     @Override
     public String toString() {
-        return "[start=" + start + ", destination=" + destination + ", flightNumber="
-                + flightNumber;
-    }
+       return "Flight: " + flightNumber + "\n" +
+            "From: " + start + "\n" +
+            "To: " + destination + "\n" +
+            "Departure Time: " + getTime();
+}
+
 
     public static void main(String[] args) {
 
         FlightStored f1 = new FlightStored();
 
-        System.out.println(f1);
+        System.out.println(f1.getTime());
 
     }
 

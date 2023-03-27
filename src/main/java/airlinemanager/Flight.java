@@ -20,8 +20,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     private List<Flight> booking = new ArrayList<>();
 
     public Flight() {
-
         flightStored = new FlightStored();
+        
         this.destination = super.getDestination();
         this.start = super.getStart();
         this.time = super.generateRandomTime();
@@ -76,7 +76,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     @Override
     public String toString() {
-        return "Flight + [" + flightStored + " departure=" + this.time + "]";
+        return flightStored.toString();
 
     }
 
