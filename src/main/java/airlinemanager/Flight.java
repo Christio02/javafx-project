@@ -17,6 +17,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     private FlightStored flightStored;
 
+    private List<Flight> booking = new ArrayList<>();
+
     public Flight() {
 
         flightStored = new FlightStored();
@@ -66,6 +68,10 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
         return 1;
 
+    }
+
+    public void bookFlight(Flight name) {
+        this.booking.add(name);
     }
 
     @Override
