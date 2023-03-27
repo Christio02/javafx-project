@@ -7,6 +7,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Flight extends FlightStored implements Comparable<Flight> {
+
+    private WriteBookingToFile file;
+
     private String destination;
 
     private String start;
@@ -17,9 +20,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     private FlightStored flightStored;
 
-    private List<Flight> booking = new ArrayList<>();
-
     public Flight() {
+        this.file = new WriteBookingToFile();
         flightStored = new FlightStored();
         
         this.destination = super.getDestination();
@@ -70,8 +72,17 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     }
 
-    public void bookFlight(Flight name) {
-        this.booking.add(name);
+    public List<Flight> getFlights() {
+        List<Flight> flights = new ArrayList<>();
+        flights.add(this);
+        return flights;
+    }
+
+    
+    public void bookFlight() {
+        this.file.addFlight(this.getFlights()); // adds this flight to file class's list
+        
+        this.file.writeToFile("booking2.txt");
     }
 
     @Override
@@ -89,6 +100,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         Flight f5 = new Flight();
 
         List<Flight> flights = new ArrayList<>();
+        
+        WriteBookingToFile file = new WriteBookingToFile();
 
         flights.add(f1);
         flights.add(f2);
@@ -96,12 +109,9 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         flights.add(f4);
         flights.add(f5);
 
-        System.out.println(flights);
+        
 
-        System.out.println('\n');
-        Collections.sort(flights);
-
-        System.out.println(flights);
+        
 
     }
 

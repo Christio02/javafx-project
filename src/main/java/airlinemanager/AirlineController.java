@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 public class AirlineController {
 
     Flight flight;
+    WriteBookingToFile file;
 
     @FXML Button flightView;
     @FXML ListView<Flight> listOfFlights;
@@ -22,6 +23,8 @@ public class AirlineController {
 
     @FXML
     public void initialize() {
+
+        this.file = new WriteBookingToFile();
         List<Flight> flights = new ArrayList<>();
         
         flights.add(new Flight());
@@ -42,10 +45,11 @@ public class AirlineController {
     }
 
     @FXML
-    public void bookFlight(ActionEvent event) {
-      
-        
-        
+    public void bookFlight() { 
+        List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
+        this.file.addFlight(chosen);
+
+        this.file.writeToFile("testbooking1.txt");
 
     }
 

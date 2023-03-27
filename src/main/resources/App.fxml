@@ -6,14 +6,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airlinemanager.AirlineController">
    <bottom>
-      <Button mnemonicParsing="false" text="Book flight" BorderPane.alignment="CENTER" />
+      <Button mnemonicParsing="false" onAction="#bookFlight" text="Book flight" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
       
-                  <Label fx:id="result1" text="Welcome to this flight app!" BorderPane.alignment="CENTER">
+      <Label fx:id="result1" text="Welcome to this flight app!" BorderPane.alignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
