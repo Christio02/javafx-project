@@ -24,14 +24,17 @@ public class FlightStored {
 
         int index; // initzialize index
 
+        String location1, location2;
+        
+        location1 = locations[random.nextInt(locations.length)];
         do {
-            index = random.nextInt(locations.length); // do, set index to a random index in the array
+            location2 = locations[random.nextInt(locations.length)];
+        } while (location2.equals(location1));
 
-        } while (locations[index].equals(destination)); // continues until unique dest and start is selected
+        start = location1;
+        destination = location2;
 
-        String location = locations[index];
-
-        return location;
+        return location1;
 
     }
 
@@ -47,6 +50,7 @@ public class FlightStored {
 
         int randomTimeHour = random.nextInt(upperBoundHour - lowerBoundHour + 1) + lowerBoundHour;
         int randomTimeMinutes = random.nextInt(upperBoundMinutes - lowerBoundMinutes + 1) * 10 + lowerBoundMinutes;
+
 
         String intHour = String.format("%02d", randomTimeHour);
         String intMin = String.format("%02d", randomTimeMinutes);
