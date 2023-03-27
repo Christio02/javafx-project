@@ -5,9 +5,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
+import java.awt.Point;
 import java.io.IOException;
 import java.util.function.BiConsumer;
-import java.awt.MouseInfo;
+
 javafx.geometry.Point2D
 
 
