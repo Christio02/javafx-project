@@ -70,4 +70,7 @@
 
 #header1 {
     -fx-background-color:  red;  
+    -fx-border-radius: 20 20 20 20; 
+    -fx-background-radius: 10 10 10 10;
+    -fx-width: 100%;  
 };
