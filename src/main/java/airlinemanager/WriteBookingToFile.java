@@ -66,9 +66,7 @@ public class WriteBookingToFile {
         Flight flight3 = new Flight();
 
         System.out.println(fileWrite.getList());
-        
-        fileWrite.writeToFile("booking1.txt");
-
+    
 
     
     }

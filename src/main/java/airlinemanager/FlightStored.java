@@ -114,7 +114,7 @@ public class FlightStored {
 
         FlightStored f1 = new FlightStored();
 
-        System.out.println(f1.getTime());
+        System.out.println(f1);
 
     }
 
