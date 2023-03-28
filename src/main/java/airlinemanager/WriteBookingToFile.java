@@ -66,6 +66,8 @@ public class WriteBookingToFile {
         Flight flight3 = new Flight();
 
         System.out.println(fileWrite.getList());
+
+        System.out.println(System.getProperty("user.dir"));
     
 
     
