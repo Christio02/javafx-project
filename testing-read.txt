@@ -1,2 +1,1 @@
-Flight: OY4953, From: Oslo, To: Tromsø, Departure Time: 17:30
----------------------
+Flight: OY4371, From: København, To: Paris, Departure Time: 15:00
