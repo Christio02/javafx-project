@@ -28,7 +28,7 @@ public class WriteBookingToFile {
             
             for (Flight flight : flightsToDownload) {
                 writer.println(flight.toStringFormatted());
-                writer.println("---------------------");
+                // writer.println("---------------------");
             }
 
             writer.flush();
@@ -52,9 +52,9 @@ public class WriteBookingToFile {
             while(scanner.hasNextLine()) {
                 String line = scanner.nextLine();
 
-                String [] lineInfo = line.split("\\s+");
-
-                // String flightNum = lineInfo[1];
+                String[] lines = line.split("\n");
+                
+            
                 // String from = lineInfo[3];
                 // String to = lineInfo[5];
                 // String departureTime = lineInfo[8] + " " + lineInfo[9];
@@ -64,6 +64,7 @@ public class WriteBookingToFile {
                 // System.out.println(flightNum);
                 // Flight flight = new Flight(flight1);
 
+                System.out.println(lines);
                 
 
                 
@@ -98,8 +99,6 @@ public class WriteBookingToFile {
         
 
         fileWrite.addFlight(testList);
-
-        System.out.println(testList.size());
 
         fileWrite.writeToFile("testing-read.txt");
 
