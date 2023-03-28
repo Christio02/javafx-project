@@ -101,13 +101,19 @@ public class FlightStored {
         return this.destination;
     }
 
+    // for app
     @Override
     public String toString() {
        return "Flight: " + flightNumber + "\n" +
             "From: " + start + "\n" +
             "To: " + destination + "\n" +
             "Departure Time: " + getTime();
-}
+    }
+
+    // for file writing
+    public String toStringFormatted() {
+        return "Flight: " + flightNumber + ", From: " + start + ", To: " + destination + ", Departure Time: " + getTime();
+    }
 
 
     public static void main(String[] args) {

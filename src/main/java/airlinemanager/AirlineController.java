@@ -1,5 +1,6 @@
 package airlinemanager;
 
+import java.lang.StackWalker.Option;
 import java.util.ArrayList;
 
 import java.util.Collections;
@@ -19,7 +20,7 @@ import javafx.scene.control.TextField;
 public class AirlineController {
 
     Flight flight;
-    WriteBookingToFile file;
+    // WriteBookingToFile file;
 
     @FXML Button flightView;
     @FXML ListView<Flight> listOfFlights;
@@ -27,8 +28,6 @@ public class AirlineController {
 
     @FXML
     public void initialize() {
-
-        this.file = new WriteBookingToFile();
         List<Flight> flights = new ArrayList<>();
         
         flights.add(new Flight());
@@ -69,26 +68,33 @@ public class AirlineController {
             confirmationAlert.setContentText("Are you sure you want to book the following flight(s)?\n\n" + chosen.toString());
             
             // Create buttons for the dialog
-            ButtonType downloadButton = new ButtonType("Download booking");
+            ButtonType confirmButton = new ButtonType("Confirm");
             ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-            confirmationAlert.getButtonTypes().setAll(downloadButton, cancelButton);
+            confirmationAlert.getButtonTypes().setAll(confirmButton, cancelButton);
             
             // Handle button actions
             Optional<ButtonType> result = confirmationAlert.showAndWait();
-            if (result.isPresent() && result.get() == downloadButton) {
-                // Download booking to file
-                WriteBookingToFile file = new WriteBookingToFile();
-                this.file.addFlight(chosen);
-                this.file.writeToFile("booking.txt");
+            if (result.isPresent() && result.get() == confirmButton) {
+                Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
+                downloadAlert.setHeaderText("Download flight");
+                downloadAlert.setContentText("Do you want to download the booking?");
+
+                ButtonType downloadButton = new ButtonType("Download");
+                ButtonType noDownloadButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+                downloadAlert.getButtonTypes().setAll(downloadButton, noDownloadButton);
+
+                Optional<ButtonType> result2 = downloadAlert.showAndWait();
+
+                if (result2.isPresent() && result2.get() == downloadButton) {
+                    WriteBookingToFile file = new WriteBookingToFile();
+                    file.addFlight(chosen);
+                    file.writeToFile("booking.txt");
+
+                }
             }
         }
 
     }
-
-   
-
-
-
 }
 
 
