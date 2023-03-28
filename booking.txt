@@ -1,0 +1,5 @@
+Flight: OY4793
+From: Barcelona
+To: Oslo
+Departure Time: 23:50
+---------------------
