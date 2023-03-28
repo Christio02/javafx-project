@@ -13,6 +13,7 @@
 .label {
     -fx-padding: 2px;
     -fx-font-weight: bold;
+    
 
 }
 
@@ -66,3 +67,7 @@
 .listview {
     fx-padding: 5px;
 }
+
+#header1 {
+    -fx-background-color:  red;  
+};
