@@ -1,5 +1,0 @@
-Flight: OY3001
-From: København
-To: Stavanger
-Departure Time: 15:10
----------------------
