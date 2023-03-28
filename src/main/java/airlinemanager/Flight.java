@@ -7,9 +7,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class Flight extends FlightStored implements Comparable<Flight> {
+
+    private WriteBookingToFile file;
+
     private String destination;
 
     private String start;
+    
     private String time;
 
     private int seats;
@@ -17,8 +21,9 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     private FlightStored flightStored;
 
     public Flight() {
-
+        this.file = new WriteBookingToFile();
         flightStored = new FlightStored();
+        
         this.destination = super.getDestination();
         this.start = super.getStart();
         this.time = super.generateRandomTime();
@@ -67,23 +72,22 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     }
 
-    private int getHours() {
-
-        int hours = Integer.parseInt(this.getTime().split(":")[0]);
-
-        return hours;
+    public List<Flight> getFlights() {
+        List<Flight> flights = new ArrayList<>();
+        flights.add(this);
+        return flights;
     }
 
-    private int getMinutes() {
-
-        int minutes = Integer.parseInt(this.getTime().split(":")[1]);
-
-        return minutes;
+    
+    public void bookFlight() {
+        this.file.addFlight(this.getFlights()); // adds this flight to file class's list
+        
+        this.file.writeToFile("booking2.txt");
     }
 
     @Override
     public String toString() {
-        return "Flight [" + flightStored + " departure=" + this.time + "]";
+        return flightStored.toString();
 
     }
 
@@ -96,6 +100,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         Flight f5 = new Flight();
 
         List<Flight> flights = new ArrayList<>();
+        
+        WriteBookingToFile file = new WriteBookingToFile();
 
         flights.add(f1);
         flights.add(f2);
@@ -103,12 +109,9 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         flights.add(f4);
         flights.add(f5);
 
-        System.out.println(flights);
+        
 
-        System.out.println('\n');
-        Collections.sort(flights);
-
-        System.out.println(flights);
+        
 
     }
 

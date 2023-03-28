@@ -7,15 +7,17 @@ public class FlightStored {
     protected String start;
     protected String destination;
     protected String flightNumber;
+    protected String time;
 
     public FlightStored() {
         this.destination = setStartOrDest();
         this.start = setStartOrDest();
         flightNumber = setFlightNumber();
+        this.time = generateRandomTime();
 
     }
 
-    public String setStartOrDest() {
+    private String setStartOrDest() {
         Random random = new Random();
         String[] locations = { "Oslo", "Trondheim", "Bergen", "Stavanger", "Kristiansand", "Tromsø",
                 "Bodø", "Malaga", "London", "København", "Stockholm", "Paris", "Barcelona"
@@ -23,18 +25,21 @@ public class FlightStored {
 
         int index; // initzialize index
 
+        String location1, location2;
+        
+        location1 = locations[random.nextInt(locations.length)];
         do {
-            index = random.nextInt(locations.length); // do, set index to a random index in the array
+            location2 = locations[random.nextInt(locations.length)];
+        } while (location2.equals(location1));
 
-        } while (locations[index].equals(destination)); // continues until unique dest and start is selected
+        start = location1;
+        destination = location2;
 
-        String location = locations[index];
-
-        return location;
+        return location1;
 
     }
 
-    public String generateRandomTime() {
+    protected String generateRandomTime() {
 
         Random random = new Random();
 
@@ -47,6 +52,7 @@ public class FlightStored {
         int randomTimeHour = random.nextInt(upperBoundHour - lowerBoundHour + 1) + lowerBoundHour;
         int randomTimeMinutes = random.nextInt(upperBoundMinutes - lowerBoundMinutes + 1) * 10 + lowerBoundMinutes;
 
+
         String intHour = String.format("%02d", randomTimeHour);
         String intMin = String.format("%02d", randomTimeMinutes);
 
@@ -54,6 +60,24 @@ public class FlightStored {
 
         return finString;
 
+    }
+
+    public String getTime() {
+        return this.time;
+    }
+
+    public int getHours() {
+
+        int hours = Integer.parseInt(this.getTime().split(":")[0]);
+
+        return hours;
+    }
+
+    public int getMinutes() {
+
+        int minutes = Integer.parseInt(this.getTime().split(":")[1]);
+
+        return minutes;
     }
 
     private String setFlightNumber() {
@@ -79,9 +103,12 @@ public class FlightStored {
 
     @Override
     public String toString() {
-        return "FlightStored [start=" + start + ", destination=" + destination + ", flightNumber="
-                + flightNumber;
-    }
+       return "Flight: " + flightNumber + "\n" +
+            "From: " + start + "\n" +
+            "To: " + destination + "\n" +
+            "Departure Time: " + getTime();
+}
+
 
     public static void main(String[] args) {
 
