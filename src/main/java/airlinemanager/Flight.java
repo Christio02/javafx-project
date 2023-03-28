@@ -34,15 +34,11 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     // constructor for read from file
 
-    // public Flight(String flightnumber, String start, String destination, String time) {
-    //     this.flightNumber = flightnumber;
-    //     this.start = start;
-    //     this.destination = destination;
-    //     this.time = time;
-    // }
-
     public Flight(Flight flight) {
         this.flight = flight;
+    }
+
+    public Flight(String flightNum, String from, String to, String departureTime) {
     }
 
     public String getDestination() {

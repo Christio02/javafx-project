@@ -1,5 +1,2 @@
-Flight: OY3437
-From: Stockholm
-To: Barcelona
-Departure Time: 07:40
----------------------
+Flight Number,From,To,Departure Time
+OY4557,Oslo,Bergen,05:20

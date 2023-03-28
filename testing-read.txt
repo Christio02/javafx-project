@@ -1,1 +1,2 @@
-Flight: OY4371, From: København, To: Paris, Departure Time: 15:00
+Flight Number,From,To,Departure Time
+OY5333,Paris,Stockholm,20:40

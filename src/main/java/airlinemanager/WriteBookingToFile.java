@@ -25,19 +25,24 @@ public class WriteBookingToFile {
         
         try {
             PrintWriter writer = new PrintWriter(filename);
-            
+            writer.println("Flight Number,From,To,Departure Time");
+    
             for (Flight flight : flightsToDownload) {
-                writer.println(flight.toStringFormatted());
-                // writer.println("---------------------");
+                String[] fields = {
+                    flight.getFlightNumber(),
+                    flight.getStart(),
+                    flight.getDestination(),
+                    flight.getTime()
+                };
+                writer.println(String.join(",", fields));
             }
-
+    
             writer.flush();
             writer.close();
-            
+    
         } catch (FileNotFoundException e) {
-
             e.printStackTrace();
-        }     
+        }
     }
 
    
@@ -49,25 +54,20 @@ public class WriteBookingToFile {
 
             this.flightsToDownload = new ArrayList<>();
 
+            this.flightsToDownload = new ArrayList<>();
+
             while(scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-
-                String[] lines = line.split("\n");
-                
-            
-                // String from = lineInfo[3];
-                // String to = lineInfo[5];
-                // String departureTime = lineInfo[8] + " " + lineInfo[9];
-                // String dest = fileInfo.get(3); String time = fileInfo.get(4);
-
-
-                // System.out.println(flightNum);
-                // Flight flight = new Flight(flight1);
-
-                System.out.println(lines);
-                
-
-                
+    
+                String [] lineInfo = line.split(", ");
+    
+                String flightNum = lineInfo[0].substring(8);
+                String from = lineInfo[1].substring(6);
+                String to = lineInfo[2].substring(4);
+                String departureTime = lineInfo[3].substring(16);
+    
+                Flight flight = new Flight(flightNum, from, to, departureTime);
+                this.flightsToDownload.add(flight);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
