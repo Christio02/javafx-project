@@ -1,0 +1,15 @@
+Flight: OY3086
+From: Bergen
+To: Bodø
+Departure Time: 17:30
+---------------------
+Flight: OY4123
+From: Tromsø
+To: Paris
+Departure Time: 21:40
+---------------------
+Flight: OY3934
+From: Kristiansand
+To: Bergen
+Departure Time: 23:50
+---------------------
