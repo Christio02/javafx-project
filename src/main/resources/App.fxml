@@ -15,7 +15,7 @@
    </bottom>
    <top>
       
-      <Label fx:id="result1" text="Welcome to this flight app!" BorderPane.alignment="CENTER">
+      <Label fx:id="header1" text="Welcome to Orwegian!" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>

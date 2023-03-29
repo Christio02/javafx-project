@@ -2,7 +2,6 @@ package airlinemanager;
 
 import java.lang.StackWalker.Option;
 import java.util.ArrayList;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -22,25 +21,24 @@ public class AirlineController {
     Flight flight;
     // WriteBookingToFile file;
 
-    @FXML Button flightView;
-    @FXML ListView<Flight> listOfFlights;
-
+    @FXML
+    Button flightView;
+    @FXML
+    ListView<Flight> listOfFlights;
 
     @FXML
     public void initialize() {
         List<Flight> flights = new ArrayList<>();
-        
+
         flights.add(new Flight());
         flights.add(new Flight());
         flights.add(new Flight());
         flights.add(new Flight());
-        
+
         // sorts time based on earliest to late
 
-
         Collections.sort(flights);
-        
-        
+
         listOfFlights.getItems().addAll(flights);
     
     
@@ -48,7 +46,7 @@ public class AirlineController {
     }
 
     @FXML
-    public void bookFlight() { 
+    public void bookFlight() {
         List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
         // this.file.addFlight(chosen);
 

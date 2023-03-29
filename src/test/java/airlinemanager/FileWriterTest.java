@@ -1,4 +1,4 @@
-package exampleproject;
+package airlinemanager;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.BufferedReader;

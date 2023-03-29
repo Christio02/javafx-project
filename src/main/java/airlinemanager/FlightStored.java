@@ -23,10 +23,8 @@ public class FlightStored {
                 "Bodø", "Malaga", "London", "København", "Stockholm", "Paris", "Barcelona"
         };
 
-        int index; // initzialize index
-
         String location1, location2;
-        
+
         location1 = locations[random.nextInt(locations.length)];
         do {
             location2 = locations[random.nextInt(locations.length)];
@@ -51,7 +49,6 @@ public class FlightStored {
 
         int randomTimeHour = random.nextInt(upperBoundHour - lowerBoundHour + 1) + lowerBoundHour;
         int randomTimeMinutes = random.nextInt(upperBoundMinutes - lowerBoundMinutes + 1) * 10 + lowerBoundMinutes;
-
 
         String intHour = String.format("%02d", randomTimeHour);
         String intMin = String.format("%02d", randomTimeMinutes);

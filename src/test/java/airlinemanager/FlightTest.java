@@ -1,4 +1,4 @@
-package exampleproject;
+package airlinemanager;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +14,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import airlinemanager.Flight;
+import airlinemanager.FlightStored;
 
 public class FlightTest {
 
