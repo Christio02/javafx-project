@@ -56,9 +56,7 @@ public class AirlineController {
     @FXML
     public void bookFlight() {
         List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
-        // this.file.addFlight(chosen);
-
-        // this.file.writeToFile("testbooking1.txt");
+        
 
         if (chosen.isEmpty()) {
             // Show error message if no flight is selected
@@ -81,11 +79,12 @@ public class AirlineController {
             // Handle button actions
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             if (result.isPresent() && result.get() == confirmButton) {
+                
                 Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
                 downloadAlert.setHeaderText("Download flight");
                 downloadAlert.setContentText("Do you want to download the booking?");
 
-                ButtonType downloadButton = new ButtonType("Download");
+                ButtonType downloadButton = new ButtonType("Download")  ;
                 ButtonType noDownloadButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
                 downloadAlert.getButtonTypes().setAll(downloadButton, noDownloadButton);
 
@@ -97,6 +96,7 @@ public class AirlineController {
                     file.writeToFile("booking.txt");
                     getBooking.setVisible(true);
                     isBooked = true;
+                    listOfFlights.getItems().removeAll(chosen);
 
                 }
             }
