@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,29 +17,24 @@ public class WriteBookingToFile {
         this.flightsToDownload.addAll(flights);
     }
 
-    public void writeToFile(String filename) {
+    public void writeToFile(String filename){//, List<Flight> flightsList) {
 
-        
+        PrintWriter writer = null;
         try {
-            PrintWriter writer = new PrintWriter(filename);
-            writer.println("Flight Number,From,To,Departure Time");
-    
-            for (Flight flight : flightsToDownload) {
-                String[] fields = {
-                    flight.getFlightNumber(),
-                    flight.getStart(),
-                    flight.getDestination(),
-                    flight.getTime()
-                };
-                writer.println(String.join(",", fields));
+            writer = new PrintWriter(filename);
+            
+            for (FlightStored flight1 : flightsToDownload) {
+                writer.println(flight1.toStringFormatted());
+                writer.println("---------------------");
             }
-    
+
             writer.flush();
             writer.close();
-    
+            
         } catch (FileNotFoundException e) {
+
             e.printStackTrace();
-        }
+        }     
     }
 
    
@@ -52,22 +44,11 @@ public class WriteBookingToFile {
         try {
             scanner = new Scanner(new File(filename));
 
-            this.flightsToDownload = new ArrayList<>();
+            // this.flightsToDownload = new ArrayList<>();
 
-            this.flightsToDownload = new ArrayList<>();
 
             while(scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-    
-                String [] lineInfo = line.split(", ");
-    
-                String flightNum = lineInfo[0].substring(8);
-                String from = lineInfo[1].substring(6);
-                String to = lineInfo[2].substring(4);
-                String departureTime = lineInfo[3].substring(16);
-    
-                Flight flight = new Flight(flightNum, from, to, departureTime);
-                this.flightsToDownload.add(flight);
+            
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -77,9 +58,9 @@ public class WriteBookingToFile {
 
     }
 
-    public List<Flight> getList() {
-        return this.flightsToDownload;
-    }
+    // public List<Flight> getList() {
+    //     return this.flightsToDownload;
+    // }
 
 
 
@@ -91,14 +72,11 @@ public class WriteBookingToFile {
 
         WriteBookingToFile fileWrite = new WriteBookingToFile();
 
-        Flight flight1 = new Flight();
-        Flight flight2 = new Flight();
-        Flight flight3 = new Flight();
+        Flight flight = new Flight();
 
-        testList.add(flight1); 
-        
+        testList.add(flight);
 
-        fileWrite.addFlight(testList);
+        System.out.println(flight);
 
         fileWrite.writeToFile("testing-read.txt");
 

@@ -12,11 +12,11 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     private Flight flight;
 
-    private String destination;
+    // private String destination;
 
-    private String start;
+    // private String start;
     
-    private String time;
+    // private String time;
 
     private int seats;
 
@@ -24,7 +24,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     public Flight() {
         this.file = new WriteBookingToFile();
-        flightStored = new FlightStored();
+        // flightStored = new FlightStored();
         
         this.destination = super.getDestination();
         this.start = super.getStart();
@@ -61,6 +61,12 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return this.flightNumber;
     }
 
+
+
+    public String toStringFile() {
+        return super.toStringFormatted();
+    }
+
     @Override
     public int compareTo(Flight otherFlight) {
 
@@ -90,15 +96,15 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     }
 
     
-    public void bookFlight() {
-        this.file.addFlight(this.getFlights()); // adds this flight to file class's list
+    // public void bookFlight() {
+    //     this.file.addFlight(this.getFlights()); // adds this flight to file class's list
         
-        this.file.writeToFile("booking2.txt");
-    }
+    //     this.file.writeToFile("booking2.txt");
+    // }
 
     @Override
     public String toString() {
-        return flightStored.toString();
+        return super.toString();
 
     }
 
