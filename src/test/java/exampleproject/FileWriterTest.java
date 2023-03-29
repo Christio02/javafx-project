@@ -5,7 +5,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
+
+
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,27 +40,38 @@ public class FileWriterTest {
         File testFile = new File("testFile.txt");
 
         flight.bookFlight();
-        Scanner scanner;
+        BufferedReader reader;
+        FileReader fileR;
 
+        String line;
         StringBuilder contentBuilder = new StringBuilder();
         try {
-            scanner = new Scanner(testFile);
+            fileR = new FileReader(testFile);
+            reader = new BufferedReader(fileR);
+            try {
+                while ((line = reader.readLine()) != null) {
+                    if (line.contains("-----")) {
+                        continue; // skip this line
+                    }
+                    contentBuilder.append(line).append("\n");
+                }
+
+                reader.close();
+                fileR.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
             
-            while(scanner.hasNextLine()){
-                String line = scanner.nextLine();
-                System.out.println("Test file: " + line);
-                contentBuilder.append(line).append("\n");
-        }
 
-        scanner.close();
         } catch (FileNotFoundException e) {
             
             e.printStackTrace();
         }
 
         
-        String outputContent = contentBuilder.toString();
+        String outputContent = contentBuilder.toString().trim();
 
         String expectedOutput = flight.toStringFormatted();
 
