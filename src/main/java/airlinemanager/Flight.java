@@ -96,11 +96,11 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     }
 
     
-    // public void bookFlight() {
-    //     this.file.addFlight(this.getFlights()); // adds this flight to file class's list
+    public void bookFlight() {
+        this.file.addFlight(this.getFlights()); // adds this flight to file class's list
         
-    //     this.file.writeToFile("booking2.txt");
-    // }
+        this.file.writeToFile("booking2.txt");
+    }
 
     @Override
     public String toString() {
