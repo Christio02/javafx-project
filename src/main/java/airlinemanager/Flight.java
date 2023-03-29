@@ -10,6 +10,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     private WriteBookingToFile file;
 
+    private Flight flight;
+
     private String destination;
 
     private String start;
@@ -28,6 +30,15 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         this.start = super.getStart();
         this.time = super.generateRandomTime();
 
+    }
+
+    // constructor for read from file
+
+    public Flight(Flight flight) {
+        this.flight = flight;
+    }
+
+    public Flight(String flightNum, String from, String to, String departureTime) {
     }
 
     public String getDestination() {

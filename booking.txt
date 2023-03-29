@@ -1,0 +1,2 @@
+Flight Number,From,To,Departure Time
+OY4557,Oslo,Bergen,05:20
