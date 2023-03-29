@@ -1,0 +1,2 @@
+Flight: OY4482, From: Oslo, To: Kristiansand, Departure Time: 09:30
+---------------------

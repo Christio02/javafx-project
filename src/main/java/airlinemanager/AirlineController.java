@@ -13,21 +13,29 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class AirlineController {
 
-    Flight flight;
-    // WriteBookingToFile file;
+    private Flight flight;
+    private WriteBookingToFile file;
+
+    private boolean isBooked = false;
 
     @FXML
-    Button flightView;
+    private Button flightView;
     @FXML
-    ListView<Flight> listOfFlights;
+    private ListView<Flight> listOfFlights;
+    @FXML
+    private Button getBooking;
+    @FXML
+    private Label readFileContent;
 
     @FXML
     public void initialize() {
+        getBooking.setVisible(false);
         List<Flight> flights = new ArrayList<>();
 
         flights.add(new Flight());
@@ -84,16 +92,28 @@ public class AirlineController {
                 Optional<ButtonType> result2 = downloadAlert.showAndWait();
 
                 if (result2.isPresent() && result2.get() == downloadButton) {
-                    WriteBookingToFile file = new WriteBookingToFile();
+                    file = new WriteBookingToFile();
                     file.addFlight(chosen);
                     file.writeToFile("booking.txt");
-
-                    Button getFile = new Button("Get booking from file!");
+                    getBooking.setVisible(true);
+                    isBooked = true;
 
                 }
             }
         }
 
+    }
+
+
+    @FXML
+    public void getBooking() {
+        if (isBooked = true) {
+            String flight = this.file.readFromFile("booking.txt");
+            readFileContent.setText(flight);
+            getBooking.setVisible(false);
+
+            
+        }
     }
 }
 

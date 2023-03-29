@@ -43,7 +43,7 @@ public class WriteBookingToFile {
 
    
 
-    public void readFromFile(String filename) {
+    public String readFromFile(String filename) {
         
         File file = new File(filename);
 
@@ -73,8 +73,18 @@ public class WriteBookingToFile {
         String flight = builder.toString().trim();
 
         System.out.println(flight);
+        return flight;
        
 
+    }
+
+    @Override
+    public String toString() {
+        return "Flight: " + flight.flightNumber + "\n" +
+        "From: " + flight.start + "\n" +
+        "To: " + flight.destination + "\n" +
+        "Departure Time: " + flight.getTime();
+        
     }
 
    
@@ -88,7 +98,7 @@ public class WriteBookingToFile {
 
         // System.out.println(fileWrite.getList());
 
-        fileWrite.readFromFile("testFile.txt");
+        fileWrite.readFromFile("booking.txt");
     
 
     
