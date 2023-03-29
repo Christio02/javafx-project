@@ -1,2 +1,2 @@
 Flight Number,From,To,Departure Time
-OY4557,Oslo,Bergen,05:20
+OY4418,Stockholm,Kristiansand,07:10
