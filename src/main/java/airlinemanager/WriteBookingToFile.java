@@ -1,11 +1,15 @@
 package airlinemanager;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.BiConsumer;
 
 public class WriteBookingToFile {
 
@@ -40,49 +44,51 @@ public class WriteBookingToFile {
    
 
     public void readFromFile(String filename) {
-        Scanner scanner;
+        
+        File file = new File(filename);
+
+        BufferedReader reader;
+        FileReader fileReader;
+
+        String line;
+        StringBuilder builder = new StringBuilder();
+
         try {
-            scanner = new Scanner(new File(filename));
+            fileReader = new FileReader(file);
+            reader = new BufferedReader(fileReader);
 
-            // this.flightsToDownload = new ArrayList<>();
-
-
-            while(scanner.hasNextLine()) {
-            
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("-----")) {
+                    continue;
+                }
+                builder.append(line).append("\n");
             }
-        } catch (FileNotFoundException e) {
+
+            reader.close();
+            fileReader.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
+        String flight = builder.toString().trim();
+
+        System.out.println(flight);
        
 
     }
 
-    // public List<Flight> getList() {
-    //     return this.flightsToDownload;
-    // }
-
+   
 
 
 
 
     public static void main(String[] args) {
 
-        List<Flight> testList = new ArrayList<>();
-
         WriteBookingToFile fileWrite = new WriteBookingToFile();
-
-        Flight flight = new Flight();
-
-        testList.add(flight);
-
-        System.out.println(flight);
-
-        fileWrite.writeToFile("testing-read.txt");
 
         // System.out.println(fileWrite.getList());
 
-        fileWrite.readFromFile("testing-read.txt");
+        fileWrite.readFromFile("testFile.txt");
     
 
     

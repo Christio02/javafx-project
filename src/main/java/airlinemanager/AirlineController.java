@@ -90,6 +90,8 @@ public class AirlineController {
                     file.addFlight(chosen);
                     file.writeToFile("booking.txt");
 
+                    Button getFile = new Button("Get booking from file!");
+
                 }
             }
         }
