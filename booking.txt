@@ -1,2 +1,2 @@
-Flight: OY4482, From: Oslo, To: Kristiansand, Departure Time: 09:30
+Flight: OY5158, From: Barcelona, To: Stockholm, Departure Time: 12:10
 ---------------------

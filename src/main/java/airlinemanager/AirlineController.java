@@ -75,12 +75,17 @@ public class AirlineController {
             ButtonType confirmButton = new ButtonType("Confirm");
             ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
             confirmationAlert.getButtonTypes().setAll(confirmButton, cancelButton);
+
+            
             
             // Handle button actions
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             if (result.isPresent() && result.get() == confirmButton) {
                 
                 Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
+                // need to somehow extract flight object from "chosen" list
+                // this.flight.bookFlight();
+                // System.out.println(flight);
                 downloadAlert.setHeaderText("Download flight");
                 downloadAlert.setContentText("Do you want to download the booking?");
 
@@ -92,6 +97,7 @@ public class AirlineController {
 
                 if (result2.isPresent() && result2.get() == downloadButton) {
                     file = new WriteBookingToFile();
+                    // need to call bookFlight method or something
                     file.addFlight(chosen);
                     file.writeToFile("booking.txt");
                     getBooking.setVisible(true);

@@ -15,7 +15,7 @@ public class WriteBookingToFile {
 
     private Flight flight;
 
-    private List<Flight> flightsToDownload = new ArrayList<>();
+    protected List<Flight> flightsToDownload = new ArrayList<>();
 
     public void addFlight(List<Flight> flights) {
         this.flightsToDownload.addAll(flights);
