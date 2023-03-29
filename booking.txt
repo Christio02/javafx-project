@@ -1,2 +1,3 @@
 Flight Number,From,To,Departure Time
+OY5589,Stockholm,Paris,09:50
 OY4418,Stockholm,Kristiansand,07:10
