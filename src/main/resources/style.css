@@ -44,7 +44,7 @@
 .button {
     -fx-background-color: #ff6666;
     -fx-text-fill: white;
-    -fx-font-size: 16px;
+    -fx-font-size: 12px;
     -fx-padding: 10px;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
@@ -64,5 +64,5 @@
 
 
 .listview {
-    fx-padding: 5px;
+    fx-cell-size: 40px;
 }

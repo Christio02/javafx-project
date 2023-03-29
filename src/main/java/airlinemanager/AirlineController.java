@@ -47,6 +47,7 @@ public class AirlineController {
     @FXML
     public void bookFlight() { 
         List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
+        
         this.file.addFlight(chosen);
 
         this.file.writeToFile("testbooking1.txt");

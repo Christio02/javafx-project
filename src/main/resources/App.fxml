@@ -7,18 +7,18 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airlinemanager.AirlineController">
+   <left>
+      <ListView fx:id="listOfFlights" prefHeight="328.0" prefWidth="596.0" BorderPane.alignment="CENTER" />
+   </left>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#bookFlight" text="Book flight" BorderPane.alignment="CENTER" />
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#bookFlight" prefHeight="30.0" prefWidth="100.0" stylesheets="@style.css" text="Book flight" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
       
-      <Label fx:id="header1" text="Welcome to Ournorwegian!" BorderPane.alignment="CENTER">
+      <Label fx:id="result1" text="Welcome to this flight app!" BorderPane.alignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
    </top>
-   <left>
-      <ListView fx:id="listOfFlights" prefHeight="96.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-   </left>
 </BorderPane>
