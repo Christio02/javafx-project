@@ -1,2 +1,2 @@
-Flight: OY5158, From: Barcelona, To: Stockholm, Departure Time: 12:10
+Flight: OY3097, From: Malaga, To: Oslo, Departure Time: 07:00
 ---------------------
