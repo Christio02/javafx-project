@@ -1,2 +1,2 @@
-Flight: OY3097, From: Malaga, To: Oslo, Departure Time: 07:00
+Flight: OY5803, From: Stavanger, To: Kristiansand, Departure Time: 20:00
 ---------------------
