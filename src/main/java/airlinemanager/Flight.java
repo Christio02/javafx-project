@@ -1,44 +1,45 @@
 package airlinemanager;
 
-import java.text.ParsePosition;
+// import statements
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+/* Description:
+ * This class extends the FlightStored class and is responsible for performing different calculations on flight data.
+ * It does not actually create the flight information itself, but inherits it from the FlightStored class.
+ * Futhermore, it implements the interface Comparable<T> for sorting the flight data, using the time fields in the objects
+ */
+
+
 public class Flight extends FlightStored implements Comparable<Flight> {
 
-    private WriteBookingToFile file;
+    // Fields 
 
-    private Flight flight;
+    private WriteBookingToFile file; // used for booking and writing to file
 
-    // private String destination;
-
-    // private String start;
-    
-    // private String time;
+    private Flight flight; 
 
     private int seats;
 
-    private FlightStored flightStored;
+    
+    // Constructors: 
 
-    public Flight() {
+    
+
+    public Flight() { 
+        /*
+        * initializes a new Flight object, which is inherited from the super class
+        * Also creates a file object, for being used in other methods
+         */ 
+        
         this.file = new WriteBookingToFile();
-        // flightStored = new FlightStored();
         
         this.destination = super.getDestination();
         this.start = super.getStart();
         this.time = super.generateRandomTime();
 
-    }
-
-    // constructor for read from file
-
-    public Flight(Flight flight) {
-        this.flight = flight;
-    }
-
-    public Flight(String flightNum, String from, String to, String departureTime) {
     }
 
     public String getDestination() {
@@ -133,6 +134,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     public static void main(String[] args) {
 
+        WriteBookingToFile file = new WriteBookingToFile();
+
         Flight f1 = new Flight();
         Flight f2 = new Flight();
         Flight f3 = new Flight();
@@ -147,12 +150,11 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         flights.add(f4);
         flights.add(f5);
 
-        System.out.println(flights);
+        
 
-        System.out.println('\n');
-        Collections.sort(flights);
+        
+        System.out.println(f1.checkDuplicateBooking(f5));
 
-        System.out.println(flights);
 
     }
 
