@@ -1,2 +1,2 @@
-Flight: OY5803, From: Stavanger, To: Kristiansand, Departure Time: 20:00
+Flight: OY5463, From: Tromsø, To: Stavanger, Departure Time: 06:20
 ---------------------
