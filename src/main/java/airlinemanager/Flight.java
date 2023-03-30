@@ -42,31 +42,63 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     }
 
+    /*
+     * This methods is a getter for destination
+     */
+
     public String getDestination() {
         return this.destination;
     }
+
+    /*
+     * Getter for seats
+     */
 
     public int getSeats() {
         return this.seats;
     }
 
+    /*
+     * Getter for start location
+    */
+
     public String getStart() {
         return this.start;
     }
+
+    /*
+     * Getter for time
+     */
 
     public String getTime() {
         return this.time;
     }
 
+    /*
+     * Getter for flightnumber
+     */
+
     public String getFlightNumber() {
         return this.flightNumber;
     }
 
-
-
+    /*
+     * This is a toString method for file usage
+     * It makes it easier to read from file
+     * It uses the FlightStored toStringFormatted() method
+     */
     public String toStringFile() {
         return super.toStringFormatted();
     }
+
+    /*
+     * CompareTo method implemented from Comparable<T> interface
+     * It compares the current flight object with another flight object bases on departure times
+     * Sorts from low to high
+     * @param otherflight: other flight object that THIS will be compared to
+     * @return 1: if this flight dep time is larger than otherFlight
+     * @return -1: if this flight dep time is lower than otherFlight
+     */
 
     @Override
     public int compareTo(Flight otherFlight) {
@@ -90,12 +122,27 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     }
 
+    /*
+     * Getter for returning hours to be used in compareTo method
+     * Parses getTime (10:20) -> 10 to int
+     * @return integer of hours
+     */
+
     public int getHours() {
 
         int hours = Integer.parseInt(this.getTime().split(":")[0]);
 
         return hours;
     }
+
+
+    /*
+     * Void method that booksFlight by storing it in a list
+     * first checks if user is booking the same flight again
+     * Then if that is true, it uses WriteBookingToFile class (file object) to add it to 
+     * file object's list, then it can be written to file
+     * @throws IllegalStateException if this.flight is already booked
+     */
 
     
     public void bookFlight() {
@@ -105,15 +152,29 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         this.file.addFlight(this.getFlights()); // adds this flight to file class's list
     }
 
+
+    /*
+     * Void method that writes this flight object to file
+     * First checks if the file object has the flight stored
+     * then it writes to a defaulet "booking.txt" file
+     * @throws IllegalStateException if this.flight booking does not exist yet
+     */
+
+
     public void writeFlightToFile() {
-        if (this.file.flightsToDownload.contains(this.flight)) {
-            this.file.writeToFile("testFile.txt");
+        if (checkDuplicateBooking(this)) {
+            throw new IllegalStateException("The booking you're trying to download does not exist!");
         }
-       
+        this.file.writeToFile("booking.txt"); 
     }
 
-    private boolean checkDuplicateBooking(Flight flight) {
-        if (this.equals(flight)) {
+    /*
+     * Boolean method that checks if this flight is the same flight booked before
+     * @return false if this 
+     */
+
+    private boolean checkDuplicateBooking(Flight bookedFlight) {
+        if (this.file.flightsToDownload.contains(bookedFlight)) {
             return false;
         }
 
@@ -150,11 +211,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         flights.add(f4);
         flights.add(f5);
 
-        
-
-        
-        System.out.println(f1.checkDuplicateBooking(f5));
-
+        f1.bookFlight();
+        f1.writeFlightToFile();
 
     }
 
