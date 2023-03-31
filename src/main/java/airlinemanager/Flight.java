@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
+import airlinemanager.FlightStored;
 import util.FlightAlreadyBookedException;
 import util.FlightNotFoundException;
 
@@ -37,15 +37,21 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     */ 
 
     public Flight() { 
-       
-        
         this.file = new WriteBookingToFile();
-        
         this.destination = super.getDestination();
         this.start = super.getStart();
         this.time = super.generateRandomTime();
-
     }
+
+    /*
+     * This constructor is used in GetFlightFromList class, for retrieving flight object from list
+    */
+    // public Flight(String flightnum, String dest, String from, String time) {
+    //     super.flightNumber = flightnum;
+    //     super.destination = dest;
+    //     super.start = from;
+    //     super.time = time;
+    // }
 
     /*
      * This methods is a getter for destination
@@ -144,7 +150,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         if (!checkDuplicateBooking(this)) {
             throw new FlightAlreadyBookedException("Cannot book the same flight again!");
         }
-        this.file.addFlight(this.getFlightsList()); // adds this flight to file class's list
+        this.file.addFlight(this); // adds this flight to file class's list
     }
 
 

@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
+import util.GetFlightObjectFromList;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -55,8 +56,10 @@ public class AirlineController {
 
     @FXML
     public void bookFlight() {
-        List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
+        file = new WriteBookingToFile();
         
+        List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
+        GetFlightObjectFromList listTemp = new GetFlightObjectFromList(chosen);
 
         if (chosen.isEmpty()) {
             // Show error message if no flight is selected
@@ -81,6 +84,14 @@ public class AirlineController {
             // Handle button actions
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             if (result.isPresent() && result.get() == confirmButton) {
+
+                Flight tempFlight = listTemp.flightFromList();
+               
+                tempFlight.bookFlight();
+
+                System.out.println("File list: " + this.file.flightsToDownload);
+
+
                 
                 Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
                 // need to somehow extract flight object from "chosen" list
@@ -96,9 +107,9 @@ public class AirlineController {
                 Optional<ButtonType> result2 = downloadAlert.showAndWait();
 
                 if (result2.isPresent() && result2.get() == downloadButton) {
-                    file = new WriteBookingToFile();
+                    
                     // need to call bookFlight method or something
-                    file.addFlight(chosen);
+                    file.addFlight(tempFlight);
                     file.writeToFile("booking.txt");
                     getBooking.setVisible(true);
                     isBooked = true;
@@ -120,6 +131,15 @@ public class AirlineController {
 
             
         }
+    }
+
+
+    public static void main(String[] args) {
+
+
+
+
+
     }
 }
 
