@@ -23,6 +23,11 @@ public class WriteBookingToFile {
         this.flightsToDownload.add(flight);
     }
 
+    public void removeFlight(Flight flight) {
+        int index = this.flightsToDownload.indexOf(flight);
+        this.flightsToDownload.remove(index);
+    }
+
     public List<Flight> getFlightsToDownload() {
         return this.flightsToDownload;
     }

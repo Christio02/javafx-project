@@ -153,6 +153,14 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         tempFile.addFlight(this); // adds this flight to file class's list
     }
 
+    public void removeBooking(WriteBookingToFile tempFile) {
+        if (!tempFile.flightsToDownload.contains(this)) {
+            throw new FlightNotFoundException("There is no flight to cancel!");
+        }
+
+        tempFile.removeFlight(this);
+    }
+
 
     /*
      * Void method that writes this flight object to file

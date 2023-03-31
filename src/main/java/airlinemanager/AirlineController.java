@@ -12,11 +12,26 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
+import util.FlightNotFoundException;
 import util.GetFlightObjectFromList;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+/**
+ * AirlineController is a JavaFX controller class responsible for handling user interactions
+ * with the airline booking application. It manages the booking process, including selecting
+ * flights, confirming bookings, and downloading booking information.
+ *
+ * The class contains methods for handling button clicks and updating the UI components
+ * such as the ListView of available flights and the booking confirmation dialogs.
+ *
+ * The main methods in this class are:
+ * - bookFlight(): Handles the flight booking process, including user confirmation and downloading the booking information.
+ * - getBooking(): Displays the booking information for the user after a successful booking.
+ * - initialize(): Initializes the UI components and sets up the initial state of the application.
+ */
+
 
 public class AirlineController {
 
@@ -34,6 +49,8 @@ public class AirlineController {
     private Button getBooking;
     @FXML
     private Label readFileContent;
+    @FXML
+    private Button cancelBooking;
 
     @FXML
     public void initialize() {
@@ -59,8 +76,6 @@ public class AirlineController {
 
     @FXML
     public void bookFlight() {
-       
-        
         List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
         GetFlightObjectFromList listTemp = new GetFlightObjectFromList(chosen);
 
@@ -97,9 +112,6 @@ public class AirlineController {
 
                 
                 Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
-                // need to somehow extract flight object from "chosen" list
-                // this.flight.bookFlight();
-                // System.out.println(flight);
                 downloadAlert.setHeaderText("Download flight");
                 downloadAlert.setContentText("Do you want to download the booking?");
 
@@ -131,12 +143,56 @@ public class AirlineController {
         if (isBooked = true) {
             String flight = this.fileBooking.readFromFile("booking.txt");
             readFileContent.setText(flight);
-            getBooking.setVisible(false);
-
-            
+            getBooking.setVisible(false);        
         }
     }
+    /*
 
+    * This method is used to remove a booked flight from the booking list.
+
+    * It first displays a confirmation dialog box to make sure that the user wants to cancel the flight.
+
+    * If the user clicks "Cancel booking", the flight is removed from the booking list.
+
+    * If the flight is not found, an error message is displayed.
+
+    * @throws FlightNotFoundException if the flight is not found in the booking list.
+    */
+    @FXML
+    public void removeBooking() {
+        try {
+            
+            GetFlightObjectFromList listTemp = new GetFlightObjectFromList(this.fileBooking.getFlightsToDownload());
+    
+            
+    
+            Flight flightToRemove = listTemp.flightFromList();
+            Alert confirmRemoval = new Alert(AlertType.CONFIRMATION);
+            confirmRemoval.setHeaderText("Cancel booking");
+            confirmRemoval.setContentText("Are you sure you want to cancel the flight?");
+    
+            ButtonType confirmCancelBooking = new ButtonType("Cancel booking");
+            ButtonType cancelCancelBooking = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+            confirmRemoval.getButtonTypes().setAll(confirmCancelBooking, cancelCancelBooking);
+    
+            Optional<ButtonType> result = confirmRemoval.showAndWait();
+    
+            if (result.isPresent() && result.get() == confirmCancelBooking) {
+                flightToRemove.removeBooking(fileBooking);
+                isBooked = false;
+                System.out.println(fileBooking.getFlightsToDownload());
+            }
+        } catch (FlightNotFoundException e) {
+            Alert cannotCancelError = new Alert(AlertType.ERROR);
+            cannotCancelError.setHeaderText("Error cancelling booking!");
+            cannotCancelError.setContentText("Unable to cancel booking. The flight could not be found.");
+            cannotCancelError.showAndWait();
+           
+        }
+
+
+
+    }
 
     public static void main(String[] args) {
 
