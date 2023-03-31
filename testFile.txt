@@ -1,2 +1,2 @@
-Flight: OY5495, From: Oslo, To: Stockholm, Departure Time: 14:10
+Flight: OY4289, From: Stavanger, To: Malaga, Departure Time: 23:30
 ---------------------
