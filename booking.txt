@@ -1,2 +1,2 @@
-Flight: OY4973, From: Trondheim, To: Bergen, Departure Time: 15:20
+Flight: OY5191, From: Barcelona, To: Paris, Departure Time: 05:10
 ---------------------
