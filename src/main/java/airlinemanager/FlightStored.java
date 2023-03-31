@@ -63,6 +63,12 @@ public class FlightStored {
         return this.time;
     }
 
+     /*
+     * Getter for returning hours to be used in compareTo method
+     * Parses getTime (10:20) -> 10 to int
+     * @return integer of hours
+     */
+
     public int getHours() {
 
         int hours = Integer.parseInt(this.getTime().split(":")[0]);
