@@ -38,8 +38,11 @@ public class FileWriterTest {
     public void testCorrectWrittenFlightBookingToFile() {
 
         File testFile = new File("testFile.txt");
+        
 
         flight.bookFlight(writer);
+        writer.writeToFile("testFile.txt");
+        System.out.println(writer.getFlightsToDownload());
         BufferedReader reader;
         FileReader fileR;
 
