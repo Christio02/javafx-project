@@ -39,7 +39,7 @@ public class FileWriterTest {
 
         File testFile = new File("testFile.txt");
 
-        flight.bookFlight();
+        flight.bookFlight(writer);
         BufferedReader reader;
         FileReader fileR;
 
