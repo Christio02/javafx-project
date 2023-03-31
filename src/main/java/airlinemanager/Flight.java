@@ -146,11 +146,11 @@ public class Flight extends FlightStored implements Comparable<Flight> {
      */
 
     
-    public void bookFlight() {
+    public void bookFlight(WriteBookingToFile tempFile) {
         if (!checkDuplicateBooking(this)) {
             throw new FlightAlreadyBookedException("Cannot book the same flight again!");
         }
-        this.file.addFlight(this); // adds this flight to file class's list
+        tempFile.addFlight(this); // adds this flight to file class's list
     }
 
 

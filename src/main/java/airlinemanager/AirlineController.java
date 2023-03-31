@@ -21,9 +21,10 @@ import javafx.scene.control.TextField;
 public class AirlineController {
 
     private Flight flight;
-    private WriteBookingToFile file;
 
     private boolean isBooked = false;
+
+    private WriteBookingToFile fileBooking;
 
     @FXML
     private Button flightView;
@@ -36,6 +37,8 @@ public class AirlineController {
 
     @FXML
     public void initialize() {
+        this.fileBooking = new WriteBookingToFile();
+        List<Flight> flightsToDownload = fileBooking.getFlightsToDownload();
         getBooking.setVisible(false);
         List<Flight> flights = new ArrayList<>();
 
@@ -56,7 +59,7 @@ public class AirlineController {
 
     @FXML
     public void bookFlight() {
-        file = new WriteBookingToFile();
+       
         
         List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
         GetFlightObjectFromList listTemp = new GetFlightObjectFromList(chosen);
@@ -87,9 +90,9 @@ public class AirlineController {
 
                 Flight tempFlight = listTemp.flightFromList();
                
-                tempFlight.bookFlight();
+                tempFlight.bookFlight(this.fileBooking);
 
-                System.out.println("File list: " + this.file.flightsToDownload);
+                System.out.println("File list: " + this.fileBooking.flightsToDownload);
 
 
                 
@@ -109,8 +112,9 @@ public class AirlineController {
                 if (result2.isPresent() && result2.get() == downloadButton) {
                     
                     // need to call bookFlight method or something
-                    file.addFlight(tempFlight);
-                    file.writeToFile("booking.txt");
+                    // fileBooking.addFlight(tempFlight);
+                    System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
+                    fileBooking.writeToFile("booking.txt");
                     getBooking.setVisible(true);
                     isBooked = true;
                     listOfFlights.getItems().removeAll(chosen);
@@ -125,7 +129,7 @@ public class AirlineController {
     @FXML
     public void getBooking() {
         if (isBooked = true) {
-            String flight = this.file.readFromFile("booking.txt");
+            String flight = this.fileBooking.readFromFile("booking.txt");
             readFileContent.setText(flight);
             getBooking.setVisible(false);
 

@@ -13,12 +13,18 @@ import java.util.function.BiConsumer;
 
 public class WriteBookingToFile {
 
-    private Flight flight;
+    protected List<Flight> flightsToDownload;
 
-    protected List<Flight> flightsToDownload = new ArrayList<>();
+    public WriteBookingToFile() {
+        this.flightsToDownload = new ArrayList<>();
+    }
 
     public void addFlight(Flight flight) {
         this.flightsToDownload.add(flight);
+    }
+
+    public List<Flight> getFlightsToDownload() {
+        return this.flightsToDownload;
     }
 
     public void writeToFile(String filename){//, List<Flight> flightsList) {
@@ -78,14 +84,14 @@ public class WriteBookingToFile {
 
     }
 
-    @Override
-    public String toString() {
-        return "Flight: " + flight.flightNumber + "\n" +
-        "From: " + flight.start + "\n" +
-        "To: " + flight.destination + "\n" +
-        "Departure Time: " + flight.getTime();
+    // @Override
+    // public String toString() {
+    //     return "Flight: " + flight.flightNumber + "\n" +
+    //     "From: " + flight.start + "\n" +
+    //     "To: " + flight.destination + "\n" +
+    //     "Departure Time: " + flight.getTime();
         
-    }
+    // }
 
    
 
