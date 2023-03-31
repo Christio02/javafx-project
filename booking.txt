@@ -1,2 +1,2 @@
-Flight: OY5803, From: Stavanger, To: Kristiansand, Departure Time: 20:00
+Flight: OY4520, From: Paris, To: Bergen, Departure Time: 05:30
 ---------------------
