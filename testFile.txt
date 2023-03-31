@@ -1,2 +1,2 @@
-Flight: OY4034, From: Stavanger, To: London, Departure Time: 10:50
+Flight: OY5495, From: Oslo, To: Stockholm, Departure Time: 14:10
 ---------------------
