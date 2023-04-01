@@ -1,10 +1,13 @@
 package airlinemanager;
 
 import java.lang.StackWalker.Option;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +18,7 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import util.FlightNotFoundException;
 import util.GetFlightObjectFromList;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -51,11 +55,12 @@ public class AirlineController {
     private Label readFileContent;
     @FXML
     private Button cancelBooking;
+    @FXML
+    private DatePicker datePicker;
 
     @FXML
     public void initialize() {
         this.fileBooking = new WriteBookingToFile();
-        List<Flight> flightsToDownload = fileBooking.getFlightsToDownload();
         getBooking.setVisible(false);
         List<Flight> flights = new ArrayList<>();
 
@@ -189,9 +194,23 @@ public class AirlineController {
             cannotCancelError.showAndWait();
            
         }
+    }
 
+    @FXML
+    public void getDate() {
+        LocalDate selectedDate = datePicker.getValue();
+        String date = selectedDate.toString();
+        List<Flight> flightsFilter = this.listOfFlights.getItems();
+        Predicate<Flight> filterByDate = flight -> flight.getDate().equals(date);
+        
+        List<Flight> filteredFlights = flightsFilter.stream()
+        .filter(filterByDate).collect(Collectors.toList());
 
+        System.out.println(filteredFlights);
 
+        this.listOfFlights.getItems().setAll(filteredFlights);
+
+        
     }
 
     public static void main(String[] args) {

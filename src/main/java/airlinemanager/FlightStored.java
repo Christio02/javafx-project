@@ -8,13 +8,28 @@ public class FlightStored {
     protected String destination;
     protected String flightNumber;
     protected String time;
+    protected String date;
 
     public FlightStored() {
         this.destination = setStartOrDest();
         this.start = setStartOrDest();
         flightNumber = setFlightNumber();
         this.time = generateRandomTime();
+        setDate();
 
+    }
+
+    public void setDate() {
+        Random random = new Random();
+
+        int year = random.nextInt(2) + 2023;
+        int month = random.nextInt(12) + 1;
+        int day = random.nextInt(31) +1;
+
+        String monthString = String.format("%02d", month);
+        String dayString = String.format("%02d", day);
+
+        this.date = year + "-" + monthString + "-" + dayString;
     }
 
     private String setStartOrDest() {
@@ -104,18 +119,23 @@ public class FlightStored {
         return this.destination;
     }
 
+    public String getDate() {
+        return this.date;
+    }
+
     // for app
     @Override
     public String toString() {
        return "Flight: " + flightNumber + "\n" +
             "From: " + start + "\n" +
             "To: " + destination + "\n" +
-            "Departure Time: " + getTime();
+            "Departure Time: " + getTime() + "\n" +
+            "Date: " + getDate();
     }
 
     // for file writing
     public String toStringFormatted() {
-        return "Flight: " + flightNumber + ", From: " + start + ", To: " + destination + ", Departure Time: " + getTime();
+        return "Flight: " + flightNumber + ", From: " + start + ", To: " + destination + ", Departure Time: " + getTime() + ", Date: " + getDate();
     }
 
 

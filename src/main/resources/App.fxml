@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -32,6 +33,7 @@
          <children>
             <Button alignment="CENTER" layoutX="127.0" layoutY="133.0" mnemonicParsing="false" onAction="#bookFlight" prefHeight="30.0" prefWidth="100.0" stylesheets="@style.css" text="Book flight" />
             <Button fx:id="cancelBooking" layoutX="569.0" layoutY="139.0" mnemonicParsing="false" onAction="#removeBooking" text="Remove Booking" />
+            <DatePicker fx:id="datePicker" layoutX="320.0" layoutY="139.0" onAction="#getDate" promptText="Enter a date..." />
          </children>
       </AnchorPane>
    </bottom>
