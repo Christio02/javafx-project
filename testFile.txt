@@ -1,2 +1,2 @@
-Flight: OY4289, From: Stavanger, To: Malaga, Departure Time: 23:30
+Flight: OY5742, From: Barcelona, To: Stavanger, Departure Time: 09:40
 ---------------------

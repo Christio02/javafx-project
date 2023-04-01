@@ -11,9 +11,6 @@
    <left>
       <ListView fx:id="listOfFlights" prefHeight="328.0" prefWidth="391.0" BorderPane.alignment="CENTER" />
    </left>
-   <bottom>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#bookFlight" prefHeight="30.0" prefWidth="100.0" stylesheets="@style.css" text="Book flight" BorderPane.alignment="CENTER" />
-   </bottom>
    <top>
       
       <Label fx:id="header1" text="Welcome to Orwegian!" textFill="WHITE" BorderPane.alignment="CENTER">
@@ -30,4 +27,12 @@
          </children>
       </AnchorPane>
    </right>
+   <bottom>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="CENTER" layoutX="127.0" layoutY="133.0" mnemonicParsing="false" onAction="#bookFlight" prefHeight="30.0" prefWidth="100.0" stylesheets="@style.css" text="Book flight" />
+            <Button fx:id="cancelBooking" layoutX="569.0" layoutY="139.0" mnemonicParsing="false" onAction="#removeBooking" text="Remove Booking" />
+         </children>
+      </AnchorPane>
+   </bottom>
 </BorderPane>

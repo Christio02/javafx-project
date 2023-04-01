@@ -1,2 +1,2 @@
-Flight: OY5191, From: Barcelona, To: Paris, Departure Time: 05:10
+Flight: OY4446, From: Oslo, To: København, Departure Time: 05:50
 ---------------------
