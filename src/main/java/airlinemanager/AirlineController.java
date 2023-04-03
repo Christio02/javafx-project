@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -196,22 +197,6 @@ public class AirlineController {
         }
     }
 
-    @FXML
-    public void getDate() {
-        LocalDate selectedDate = datePicker.getValue();
-        String date = selectedDate.toString();
-        List<Flight> flightsFilter = this.listOfFlights.getItems();
-        Predicate<Flight> filterByDate = flight -> flight.getDate().equals(date);
-        
-        List<Flight> filteredFlights = flightsFilter.stream()
-        .filter(filterByDate).collect(Collectors.toList());
-
-        System.out.println(filteredFlights);
-
-        this.listOfFlights.getItems().setAll(filteredFlights);
-
-        
-    }
 
     public static void main(String[] args) {
 

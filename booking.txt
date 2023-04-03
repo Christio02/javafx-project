@@ -1,2 +1,2 @@
-Flight: OY5570, From: Tromsø, To: Bergen, Departure Time: 07:40, Date: 2024-06-11
+Flight: OY4801, From: Bodø, To: Tromsø, Departure Time: 07:30, Date: 2024-03-05
 ---------------------

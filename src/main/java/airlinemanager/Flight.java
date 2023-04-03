@@ -1,10 +1,13 @@
 package airlinemanager;
 
+import java.time.LocalDate;
 // import statements
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+
 import airlinemanager.FlightStored;
 import util.FlightAlreadyBookedException;
 import util.FlightNotFoundException;
@@ -16,7 +19,7 @@ import util.FlightNotFoundException;
  */
 
 
-public class Flight extends FlightStored implements Comparable<Flight> {
+public class Flight extends FlightStored implements Comparable<Flight>{
 
     // Fields 
 
@@ -24,8 +27,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
      * used for booking and writing to file
      */
 
-    private WriteBookingToFile file; 
-
+    private WriteBookingToFile file;
     private int seats;
 
     
@@ -41,6 +43,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         this.destination = super.getDestination();
         this.start = super.getStart();
         this.time = super.generateRandomTime();
+      
     }
 
     /*
@@ -202,6 +205,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return flights;
     }
 
+ 
+
     /*
      * Tostring method that is called from the FlightStored class
      * Used for representing flight objects in app
@@ -214,23 +219,17 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     }
 
+    
+
     public static void main(String[] args) {
 
         WriteBookingToFile file = new WriteBookingToFile();
 
-        Flight f1 = new Flight();
-        Flight f2 = new Flight();
-        Flight f3 = new Flight();
-        Flight f4 = new Flight();
-        Flight f5 = new Flight();
-
         List<Flight> flights = new ArrayList<>();
+        
 
-        flights.add(f1);
-        flights.add(f2);
-        flights.add(f3);
-        flights.add(f4);
-        flights.add(f5);
     }
+
+    
 
 }
