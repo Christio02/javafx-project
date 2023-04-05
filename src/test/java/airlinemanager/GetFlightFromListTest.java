@@ -8,19 +8,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import util.FlightNotFoundException;
 import util.GetFlightObjectFromList;
 
 public class GetFlightFromListTest {
 
-    private Flight flight, flight2;
+    private Flight flight;
 
-    private List<Flight> list;
+    private List<Flight> list, list2;
 
     @BeforeEach
     public void setUp() {
         flight = new Flight();
-        flight2 = new Flight();
         list = new ArrayList<>();
+        list2 = new ArrayList<>();
         list.add(flight);
         
     }
@@ -33,6 +34,19 @@ public class GetFlightFromListTest {
 
         assertEquals(list, object.getList());
 
+    }
+
+    @Test
+    @DisplayName("Testing that the flightFromList method works as expected")
+    public void testFlightFromList() {
+        GetFlightObjectFromList object2 = new GetFlightObjectFromList(list2);
+        GetFlightObjectFromList object3 = new GetFlightObjectFromList(list);
+        
+        assertThrows(FlightNotFoundException.class,
+        () -> object2.flightFromList(), "FlightNotFoundExcpetion expected when list is empty!");
+
+        assertEquals(this.flight, object3.flightFromList(), "Wrong flight returned or flight returned is not the correct object!");
+        
     }
     
 }
