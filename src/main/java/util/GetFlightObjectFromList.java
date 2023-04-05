@@ -19,14 +19,17 @@ public class GetFlightObjectFromList {
         if (this.list2.isEmpty()) {
             throw new FlightNotFoundException("Could not find flight from list!");
         }
-
-
-
         Flight flightFound = list2.get(0);
         return flightFound;
+    }
 
+    @Override
+    public String toString() {
+        return this.list2.get(0).toStringFormatted();
+    }
 
-
+    public List<Flight> getList() {
+        return this.list2;
     }
 
 
@@ -40,7 +43,7 @@ public class GetFlightObjectFromList {
         list.add(new Flight());
         GetFlightObjectFromList list2 = new GetFlightObjectFromList(list);
 
-        System.out.println(list2.flightFromList());
+        System.out.println(list2);
 
         
 
