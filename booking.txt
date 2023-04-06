@@ -1,2 +1,2 @@
-Flight: OY4176, From: Tromsø, To: Stockholm, Departure Time: 12:10, Date: 2024-04-29
+Flight: OY3351, From: Kristiansand, To: Paris, Departure Time: 16:00, Date: 2023-02-24
 ---------------------
