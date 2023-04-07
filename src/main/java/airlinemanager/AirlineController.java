@@ -51,6 +51,7 @@ public class AirlineController {
     private Flight flight;
 
     private boolean isBooked = false;
+    List<Flight> flights = new ArrayList<>();
 
     private WriteBookingToFile fileBooking;
 
@@ -66,6 +67,10 @@ public class AirlineController {
     private Button cancelBooking;
     @FXML
     private DatePicker datePicker;
+    @FXML
+    private TextField searchbar;
+    @FXML
+    private Button searchbutton;
 
     @FXML
     public void initialize() {
@@ -127,6 +132,23 @@ public class AirlineController {
             }
         }
 
+    }
+
+    @FXML
+    public void searchForFlight() {
+        String search = searchbar.getText();
+        List<Flight> flights = listOfFlights.getItems();
+        List<Flight> filteredFlights = new ArrayList<>();
+
+        for (Flight flight : flights) {
+            if (!(search.equals(flight.getDestination()) || search.equals(flight.getStart()))) {
+                filteredFlights.add(flight);
+
+            }
+        }
+        System.out.println(filteredFlights);
+        listOfFlights.getItems().removeAll(filteredFlights);
+        searchbar.clear();
     }
 
     @FXML
