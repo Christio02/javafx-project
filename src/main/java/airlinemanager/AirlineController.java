@@ -24,12 +24,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-/**
+/*
  * AirlineController is a JavaFX controller class responsible for handling user
  * interactions
  * with the airline booking application. It manages the booking process,
  * including selecting
- * flights, confirming bookings, and downloading booking information.
+ * flights and confirming bookings.
  *
  * The class contains methods for handling button clicks and updating the UI
  * components
@@ -38,7 +38,8 @@ import javafx.scene.control.TextField;
  *
  * The main methods in this class are:
  * - bookFlight(): Handles the flight booking process, including user
- * confirmation and downloading the booking information.
+ * confirmation.
+ * - download(): handles the downloading of the flight information.
  * - getBooking(): Displays the booking information for the user after a
  * successful booking.
  * - initialize(): Initializes the UI components and sets up the initial state
@@ -72,6 +73,10 @@ public class AirlineController {
         getBooking.setVisible(false);
         List<Flight> flights = new ArrayList<>();
 
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
         flights.add(new Flight());
         flights.add(new Flight());
         flights.add(new Flight());
@@ -133,19 +138,17 @@ public class AirlineController {
 
         ButtonType downloadButton = new ButtonType("Download");
         ButtonType noDownloadButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-        downloadAlert.getButtonTypes().setAll(downloadButton, noDownloadButton);
+        downloadAlert.getButtonTypes().setAll(noDownloadButton, downloadButton);
 
         Optional<ButtonType> result2 = downloadAlert.showAndWait();
 
         if (result2.isPresent() && result2.get() == downloadButton) {
 
-            // need to call bookFlight method or something
             // fileBooking.addFlight(tempFlight);
             System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
             fileBooking.writeToFile("booking.txt");
             getBooking.setVisible(true);
             isBooked = true;
-            listOfFlights.getItems().removeAll(chosen);
 
         }
     }
