@@ -23,20 +23,27 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+
 /**
- * AirlineController is a JavaFX controller class responsible for handling user interactions
- * with the airline booking application. It manages the booking process, including selecting
+ * AirlineController is a JavaFX controller class responsible for handling user
+ * interactions
+ * with the airline booking application. It manages the booking process,
+ * including selecting
  * flights, confirming bookings, and downloading booking information.
  *
- * The class contains methods for handling button clicks and updating the UI components
- * such as the ListView of available flights and the booking confirmation dialogs.
+ * The class contains methods for handling button clicks and updating the UI
+ * components
+ * such as the ListView of available flights and the booking confirmation
+ * dialogs.
  *
  * The main methods in this class are:
- * - bookFlight(): Handles the flight booking process, including user confirmation and downloading the booking information.
- * - getBooking(): Displays the booking information for the user after a successful booking.
- * - initialize(): Initializes the UI components and sets up the initial state of the application.
+ * - bookFlight(): Handles the flight booking process, including user
+ * confirmation and downloading the booking information.
+ * - getBooking(): Displays the booking information for the user after a
+ * successful booking.
+ * - initialize(): Initializes the UI components and sets up the initial state
+ * of the application.
  */
-
 
 public class AirlineController {
 
@@ -75,8 +82,6 @@ public class AirlineController {
         Collections.sort(flights);
 
         listOfFlights.getItems().addAll(flights);
-    
-    
 
     }
 
@@ -96,93 +101,96 @@ public class AirlineController {
             // Show confirmation dialog with flight information
             Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
             confirmationAlert.setHeaderText("Book Flight");
-            confirmationAlert.setContentText("Are you sure you want to book the following flight(s)?\n\n" + chosen.toString());
-            
+            confirmationAlert
+                    .setContentText("Are you sure you want to book the following flight(s)?\n\n" + chosen.toString());
+
             // Create buttons for the dialog
             ButtonType confirmButton = new ButtonType("Confirm");
             ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
             confirmationAlert.getButtonTypes().setAll(confirmButton, cancelButton);
 
-            
-            
             // Handle button actions
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             if (result.isPresent() && result.get() == confirmButton) {
 
                 Flight tempFlight = listTemp.flightFromList();
-               
+
                 tempFlight.bookFlight(this.fileBooking);
 
                 System.out.println("File list: " + this.fileBooking.flightsToDownload);
 
-
-                
-                Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
-                downloadAlert.setHeaderText("Download flight");
-                downloadAlert.setContentText("Do you want to download the booking?");
-
-                ButtonType downloadButton = new ButtonType("Download")  ;
-                ButtonType noDownloadButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-                downloadAlert.getButtonTypes().setAll(downloadButton, noDownloadButton);
-
-                Optional<ButtonType> result2 = downloadAlert.showAndWait();
-
-                if (result2.isPresent() && result2.get() == downloadButton) {
-                    
-                    // need to call bookFlight method or something
-                    // fileBooking.addFlight(tempFlight);
-                    System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
-                    fileBooking.writeToFile("booking.txt");
-                    getBooking.setVisible(true);
-                    isBooked = true;
-                    listOfFlights.getItems().removeAll(chosen);
-
-                }
             }
         }
 
     }
 
+    @FXML
+    public void download() {
+        List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems();
+        Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
+        downloadAlert.setHeaderText("Download flight");
+        downloadAlert.setContentText("Do you want to download the booking?");
+
+        ButtonType downloadButton = new ButtonType("Download");
+        ButtonType noDownloadButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+        downloadAlert.getButtonTypes().setAll(downloadButton, noDownloadButton);
+
+        Optional<ButtonType> result2 = downloadAlert.showAndWait();
+
+        if (result2.isPresent() && result2.get() == downloadButton) {
+
+            // need to call bookFlight method or something
+            // fileBooking.addFlight(tempFlight);
+            System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
+            fileBooking.writeToFile("booking.txt");
+            getBooking.setVisible(true);
+            isBooked = true;
+            listOfFlights.getItems().removeAll(chosen);
+
+        }
+    }
 
     @FXML
     public void getBooking() {
         if (isBooked = true) {
             String flight = this.fileBooking.readFromFile("booking.txt");
             readFileContent.setText(flight);
-            getBooking.setVisible(false);        
+            getBooking.setVisible(false);
         }
     }
+
     /*
-
-    * This method is used to remove a booked flight from the booking list.
-
-    * It first displays a confirmation dialog box to make sure that the user wants to cancel the flight.
-
-    * If the user clicks "Cancel booking", the flight is removed from the booking list.
-
-    * If the flight is not found, an error message is displayed.
-
-    * @throws FlightNotFoundException if the flight is not found in the booking list.
-    */
+     * 
+     * This method is used to remove a booked flight from the booking list.
+     * 
+     * It first displays a confirmation dialog box to make sure that the user wants
+     * to cancel the flight.
+     * 
+     * If the user clicks "Cancel booking", the flight is removed from the booking
+     * list.
+     * 
+     * If the flight is not found, an error message is displayed.
+     * 
+     * @throws FlightNotFoundException if the flight is not found in the booking
+     * list.
+     */
     @FXML
     public void removeBooking() {
         try {
-            
+
             GetFlightObjectFromList listTemp = new GetFlightObjectFromList(this.fileBooking.getFlightsToDownload());
-    
-            
-    
+
             Flight flightToRemove = listTemp.flightFromList();
             Alert confirmRemoval = new Alert(AlertType.CONFIRMATION);
             confirmRemoval.setHeaderText("Cancel booking");
             confirmRemoval.setContentText("Are you sure you want to cancel the flight?");
-    
+
             ButtonType confirmCancelBooking = new ButtonType("Cancel booking");
             ButtonType cancelCancelBooking = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
             confirmRemoval.getButtonTypes().setAll(confirmCancelBooking, cancelCancelBooking);
-    
+
             Optional<ButtonType> result = confirmRemoval.showAndWait();
-    
+
             if (result.isPresent() && result.get() == confirmCancelBooking) {
                 flightToRemove.removeBooking(fileBooking);
                 isBooked = false;
@@ -193,19 +201,11 @@ public class AirlineController {
             cannotCancelError.setHeaderText("Error cancelling booking!");
             cannotCancelError.setContentText("Unable to cancel booking. The flight could not be found.");
             cannotCancelError.showAndWait();
-           
+
         }
     }
 
-
     public static void main(String[] args) {
-
-
-
-
 
     }
 }
-
-
-
