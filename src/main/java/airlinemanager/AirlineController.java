@@ -71,6 +71,8 @@ public class AirlineController {
     private TextField searchbar;
     @FXML
     private Button searchbutton;
+    @FXML
+    private ListView bookedFlights;
 
     @FXML
     public void initialize() {
@@ -126,6 +128,7 @@ public class AirlineController {
                 Flight tempFlight = listTemp.flightFromList();
 
                 tempFlight.bookFlight(this.fileBooking);
+                bookedFlights.getItems().add(chosen);
 
                 System.out.println("File list: " + this.fileBooking.flightsToDownload);
 
@@ -202,7 +205,7 @@ public class AirlineController {
     @FXML
     public void removeBooking() {
         try {
-
+            List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems();
             GetFlightObjectFromList listTemp = new GetFlightObjectFromList(this.fileBooking.getFlightsToDownload());
 
             Flight flightToRemove = listTemp.flightFromList();
@@ -220,6 +223,7 @@ public class AirlineController {
                 flightToRemove.removeBooking(fileBooking);
                 isBooked = false;
                 System.out.println(fileBooking.getFlightsToDownload());
+                bookedFlights.getItems().remove(chosen);
             }
         } catch (FlightNotFoundException e) {
             Alert cannotCancelError = new Alert(AlertType.ERROR);

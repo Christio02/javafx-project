@@ -1,2 +1,4 @@
-Flight: OY4292, From: Kristiansand, To: Stavanger, Departure Time: 05:20, Date: 2024-04-26
+Flight: OY3245, From: Tromsø, To: Kristiansand, Departure Time: 09:20, Date: 2023-10-27
+---------------------
+Flight: OY3331, From: Stavanger, To: Stockholm, Departure Time: 07:00, Date: 2023-03-08
 ---------------------
