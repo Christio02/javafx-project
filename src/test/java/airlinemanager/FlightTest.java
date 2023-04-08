@@ -20,8 +20,6 @@ public class FlightTest {
 
     private Flight flight;
 
-    
-
     @Test
     @DisplayName("Checking for correct constructor")
     public void TestConstructor() {
@@ -35,24 +33,24 @@ public class FlightTest {
         String time = flight.getTime();
 
         assertNotEquals(flight.getStart(), flight.getDestination(), "Start and destination should not be the same!");
-        
+
         assertEquals("OY", flightNumber.substring(0, 2), "Flightnumber letters should be 'OY'!");
-        
+
         // checks if there are only numbers after 'OY'
         Pattern pattern = Pattern.compile("^OY\\d{4}$"); // using pattern, that implies 4 digits after 'OY'
 
         assertTrue(pattern.matcher(flightNumber).matches(), "FlightNumber should only contain numbers after 'OY'!");
-              
 
         // time checker
 
-        Pattern pattern2 = Pattern.compile("^\\d{2}.\\d{1}0$"); // this pattern cheks if there ate 2 digits, then ':', then 1 digit and then 0
+        Pattern pattern2 = Pattern.compile("^\\d{2}.\\d{1}0$"); // this pattern cheks if there ate 2 digits, then ':',
+                                                                // then 1 digit and then 0
         // e.g. 10:20 is correct, but 10:21, is not correct
         assertTrue(pattern2.matcher(time).matches(), "Time should be in this format!: 'xx:x0'");
 
-        // test if start    is not equal tod destination
+        // test if start is not equal tod destination
         assertNotEquals(dest, start, "Start and end should not be the same!");
-        
+
     }
 
     // set up random flight
@@ -66,27 +64,28 @@ public class FlightTest {
     public void testFlightTimeSort() {
 
         List<Flight> flights = new ArrayList<>(); // original list
-        flights.add(new Flight()); flights.add(new Flight()); flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
 
-    
-
-        // should use Collections.sort and check that earlier times are before later times
+        // should use Collections.sort and check that earlier times are before later
+        // times
         Collections.sort(flights);
 
-        Flight prev = null; // keeps track of previous flights in list, is null because there are no previous flights for 1.st iteration
+        Flight prev = null; // keeps track of previous flights in list, is null because there are no
+                            // previous flights for 1.st iteration
         for (Flight flight : flights) {
             if (prev != null) { // if flights not null
 
                 if (flight.getHours() == prev.getHours()) { // if hours time is the same
-                    assertTrue(flight.getMinutes() >= prev.getMinutes()); // then check minutes 
+                    assertTrue(flight.getMinutes() >= prev.getMinutes()); // then check minutes
                 }
                 // check if this flight hours is larger than previous flight
-                assertTrue(flight.getHours() >= prev.getHours(), "Flights are not sorted correctly, should be sorted in ascending order!");
+                assertTrue(flight.getHours() >= prev.getHours(),
+                        "Flights are not sorted correctly, should be sorted in ascending order!");
             }
             prev = flight; // so that after each iteration, prev is set to that flight
         }
     }
-
-    
 
 }

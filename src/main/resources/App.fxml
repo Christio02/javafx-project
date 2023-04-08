@@ -33,19 +33,19 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button alignment="CENTER" layoutX="363.0" layoutY="133.0" mnemonicParsing="false" onAction="#bookFlight" prefHeight="30.0" prefWidth="100.0" stylesheets="@style.css" text="Book flight" />
-            <Button fx:id="cancelBooking" layoutX="569.0" layoutY="139.0" mnemonicParsing="false" onAction="#removeBooking" text="Remove Booking" />
+            <Button fx:id="cancelBooking" layoutX="479.0" layoutY="133.0" mnemonicParsing="false" onAction="#removeBooking" stylesheets="@style.css" text="Remove Booking" />
             <DatePicker fx:id="datePicker" layoutX="323.0" layoutY="88.0" promptText="Enter a date..." />
-            <Button fx:id="download" layoutX="718.0" layoutY="139.0" mnemonicParsing="false" onAction="#download" text="Download" />
-            <TextField fx:id="searchbar" layoutX="569.0" layoutY="74.0" promptText="Filter flights..." />
-            <Button fx:id="searchbutton" layoutX="735.0" layoutY="74.0" mnemonicParsing="false" onAction="#searchForFlight" text="Search" />
-            <Button fx:id="getBooking" layoutX="329.0" layoutY="39.0" mnemonicParsing="false" onAction="#getBooking" text="Click for current booking" />
-            <ListView fx:id="bookedFlights" layoutX="19.0" layoutY="65.0" prefHeight="98.0" prefWidth="276.0" />
-            <Text fx:id="yourbookingstext" layoutX="31.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your bookings">
+            <Button fx:id="download" layoutX="690.0" layoutY="150.0" mnemonicParsing="false" onAction="#download" stylesheets="@style.css" text="Download" />
+            <TextField fx:id="searchbar" layoutX="638.0" layoutY="75.0" promptText="Filter flights..." />
+            <Button fx:id="searchbutton" layoutX="662.0" layoutY="107.0" mnemonicParsing="false" onAction="#searchForFlight" stylesheets="@style.css" text="Search" />
+            <Button fx:id="getBooking" layoutX="329.0" layoutY="39.0" mnemonicParsing="false" onAction="#getBooking" stylesheets="@style.css" text="Click for current booking" />
+            <ListView fx:id="bookedFlights" layoutX="2.0" layoutY="65.0" prefHeight="98.0" prefWidth="276.0" />
+            <Text fx:id="yourbookingstext" layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your bookings">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button fx:id="resetbutton" layoutX="624.0" layoutY="101.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
+            <Button fx:id="resetbutton" layoutX="742.0" layoutY="107.0" mnemonicParsing="false" onAction="#reset" stylesheets="@style.css" text="Reset" />
          </children>
       </AnchorPane>
    </bottom>

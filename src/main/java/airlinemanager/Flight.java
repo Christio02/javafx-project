@@ -190,7 +190,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
      * @return true if this is not the case
      */
 
-    private boolean checkDuplicateBooking(Flight bookedFlight) {
+    public boolean checkDuplicateBooking(Flight bookedFlight) {
         if (this.file.flightsToDownload.contains(bookedFlight)) {
             return false;
         }

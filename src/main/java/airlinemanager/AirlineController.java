@@ -38,12 +38,13 @@ import javafx.scene.control.TextField;
  *
  * The main methods in this class are:
  * - bookFlight(): Handles the flight booking process, including user
- * confirmation.
+ * confirmation and displaying on the "your bookings" textField.
  * - download(): handles the downloading of the flight information.
  * - getBooking(): Displays the booking information for the user after a
  * successful booking.
  * - initialize(): Initializes the UI components and sets up the initial state
  * of the application.
+ * -reset(): resets the listOfFlights view to have all the previous flights before filter on location was applied. 
  */
 
 public class AirlineController {
@@ -151,6 +152,7 @@ public class AirlineController {
 
             }
         }
+
         System.out.println(filteredFlights);
         this.filteredFlights = filteredFlights;
         listOfFlights.getItems().removeAll(filteredFlights);
