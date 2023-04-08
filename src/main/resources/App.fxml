@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airlinemanager.AirlineController">
    <left>
@@ -35,10 +36,16 @@
             <Button fx:id="cancelBooking" layoutX="569.0" layoutY="139.0" mnemonicParsing="false" onAction="#removeBooking" text="Remove Booking" />
             <DatePicker fx:id="datePicker" layoutX="323.0" layoutY="88.0" promptText="Enter a date..." />
             <Button fx:id="download" layoutX="718.0" layoutY="139.0" mnemonicParsing="false" onAction="#download" text="Download" />
-            <TextField fx:id="searchbar" layoutX="569.0" layoutY="88.0" promptText="Filter flights..." />
-            <Button fx:id="searchbutton" layoutX="735.0" layoutY="87.0" mnemonicParsing="false" onAction="#searchForFlight" text="Search" />
-            <Button fx:id="getBooking" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#getBooking" text="Click for current booking" />
+            <TextField fx:id="searchbar" layoutX="569.0" layoutY="74.0" promptText="Filter flights..." />
+            <Button fx:id="searchbutton" layoutX="735.0" layoutY="74.0" mnemonicParsing="false" onAction="#searchForFlight" text="Search" />
+            <Button fx:id="getBooking" layoutX="329.0" layoutY="39.0" mnemonicParsing="false" onAction="#getBooking" text="Click for current booking" />
             <ListView fx:id="bookedFlights" layoutX="19.0" layoutY="65.0" prefHeight="98.0" prefWidth="276.0" />
+            <Text fx:id="yourbookingstext" layoutX="31.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your bookings">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="resetbutton" layoutX="624.0" layoutY="101.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
          </children>
       </AnchorPane>
    </bottom>

@@ -52,6 +52,7 @@ public class AirlineController {
 
     private boolean isBooked = false;
     List<Flight> flights = new ArrayList<>();
+    List<Flight> filteredFlights = new ArrayList<>();
 
     private WriteBookingToFile fileBooking;
 
@@ -128,6 +129,7 @@ public class AirlineController {
                 Flight tempFlight = listTemp.flightFromList();
 
                 tempFlight.bookFlight(this.fileBooking);
+                listOfFlights.getItems().remove(chosen);
                 bookedFlights.getItems().add(chosen);
 
                 System.out.println("File list: " + this.fileBooking.flightsToDownload);
@@ -150,8 +152,16 @@ public class AirlineController {
             }
         }
         System.out.println(filteredFlights);
+        this.filteredFlights = filteredFlights;
         listOfFlights.getItems().removeAll(filteredFlights);
         searchbar.clear();
+    }
+
+    @FXML
+    public void reset() {
+        List<Flight> flights = this.filteredFlights;
+
+        listOfFlights.getItems().addAll(flights);
     }
 
     @FXML
@@ -224,6 +234,8 @@ public class AirlineController {
                 isBooked = false;
                 System.out.println(fileBooking.getFlightsToDownload());
                 bookedFlights.getItems().remove(chosen);
+                listOfFlights.getItems().add((Flight) chosen);
+
             }
         } catch (FlightNotFoundException e) {
             Alert cannotCancelError = new Alert(AlertType.ERROR);
