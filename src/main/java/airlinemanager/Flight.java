@@ -174,10 +174,12 @@ public class Flight extends FlightStored implements Comparable<Flight>{
 
 
     public void writeFlightToFile() {
-        if (checkDuplicateBooking(this)) {
-            throw new FlightNotFoundException("Flight not found, maybe its not been booked yet?");
+        if (!checkIfBooked()) {
+            throw new FlightNotFoundException("Flight found, maybe its not been booked yet?");
         }
-        this.file.writeToFile("booking.txt"); 
+        this.file.writeToFile("booking.txt");
+
+         
     }
 
     /*
@@ -192,6 +194,13 @@ public class Flight extends FlightStored implements Comparable<Flight>{
         }
 
         return true;
+    }
+
+    private boolean checkIfBooked() {
+        if (this.file.flightsToDownload.isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
     /*
@@ -225,7 +234,15 @@ public class Flight extends FlightStored implements Comparable<Flight>{
 
         WriteBookingToFile file = new WriteBookingToFile();
 
-        List<Flight> flights = new ArrayList<>();
+        Flight f1 = new Flight();
+        f1.bookFlight(file);
+        System.out.println(file.getFlightsToDownload().isEmpty());
+
+        f1.writeFlightToFile();
+
+
+        
+
         
 
     }
