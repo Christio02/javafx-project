@@ -127,35 +127,39 @@ public class AirlineController {
     @FXML
     public void download() {
         try {
-            List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems();
+            GetFlightObjectFromList listTemp = new GetFlightObjectFromList(this.fileBooking.getFlightsToDownload());
+
+            Flight tempFlight = listTemp.flightFromList();
+
+            Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
+            downloadAlert.setHeaderText("Download flight");
+            downloadAlert.setContentText("Do you want to download the booking?");
+
+            ButtonType downloadButton = new ButtonType("Download");
+            ButtonType noDownloadButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+            downloadAlert.getButtonTypes().setAll(downloadButton, noDownloadButton);
+
+            Optional<ButtonType> result2 = downloadAlert.showAndWait();
+
+            if (result2.isPresent() && result2.get() == downloadButton) {
+
+                System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
+                tempFlight.writeFlightToFile();
+                getBooking.setVisible(true);
+                isBooked = true;
+                // listOfFlights.getItems().removeAll(chosen);
+            }
+
             
-        } catch (Exception e) {
-            // TODO: handle exception
+        } catch (FlightNotFoundException e) {
+            Alert noFlight = new Alert(AlertType.ERROR);
+            noFlight.setHeaderText("No flight booked!");
+            noFlight.setContentText("There is no flight booked, you cannot download a booking that does not exist!");
+            noFlight.showAndWait();
         }
-       
-        if (chosen.isEmpty()) {
-            throw new FlightNotFoundException("No flight booked, cannot download!");
-        }
-        Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
-        downloadAlert.setHeaderText("Download flight");
-        downloadAlert.setContentText("Do you want to download the booking?");
-
-        ButtonType downloadButton = new ButtonType("Download");
-        ButtonType noDownloadButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-        downloadAlert.getButtonTypes().setAll(downloadButton, noDownloadButton);
-
-        Optional<ButtonType> result2 = downloadAlert.showAndWait();
-
-        if (result2.isPresent() && result2.get() == downloadButton) {
-
-            System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
-            fileBooking.writeToFile("booking.txt");
-            getBooking.setVisible(true);
-            isBooked = true;
-            listOfFlights.getItems().removeAll(chosen);
-
-        }
+        
     }
+
 
     @FXML
     public void getBooking() {
