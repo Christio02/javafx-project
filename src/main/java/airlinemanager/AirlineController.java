@@ -126,7 +126,16 @@ public class AirlineController {
 
     @FXML
     public void download() {
-        List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems();
+        try {
+            List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems();
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+       
+        if (chosen.isEmpty()) {
+            throw new FlightNotFoundException("No flight booked, cannot download!");
+        }
         Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
         downloadAlert.setHeaderText("Download flight");
         downloadAlert.setContentText("Do you want to download the booking?");
@@ -139,8 +148,6 @@ public class AirlineController {
 
         if (result2.isPresent() && result2.get() == downloadButton) {
 
-            // need to call bookFlight method or something
-            // fileBooking.addFlight(tempFlight);
             System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
             fileBooking.writeToFile("booking.txt");
             getBooking.setVisible(true);
