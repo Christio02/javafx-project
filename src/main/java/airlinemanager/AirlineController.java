@@ -146,8 +146,6 @@ public class AirlineController {
                 System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
                 tempFlight.writeFlightToFile();
                 getBooking.setVisible(true);
-                isBooked = true;
-                // listOfFlights.getItems().removeAll(chosen);
             }
 
             
