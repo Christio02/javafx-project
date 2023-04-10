@@ -131,6 +131,10 @@ public class AirlineController {
 
             Flight tempFlight = listTemp.flightFromList();
 
+            System.out.println("\n");
+
+            System.out.println(fileBooking.getFlightsToDownload());
+
             Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
             downloadAlert.setHeaderText("Download flight");
             downloadAlert.setContentText("Do you want to download the booking?");

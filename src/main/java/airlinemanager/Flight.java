@@ -11,6 +11,7 @@ import java.util.List;
 import airlinemanager.FlightStored;
 import util.FlightAlreadyBookedException;
 import util.FlightNotFoundException;
+import util.GetFlightObjectFromList;
 
 /* Description:
  * This class extends the FlightStored class and is responsible for performing different calculations on flight data.
@@ -29,6 +30,7 @@ public class Flight extends FlightStored implements Comparable<Flight>{
 
     private WriteBookingToFile file;
     private int seats;
+    private GetFlightObjectFromList tempFlight;
 
     
     // Constructor:
@@ -173,7 +175,9 @@ public class Flight extends FlightStored implements Comparable<Flight>{
      */
 
 
-    public void writeFlightToFile() {
+    public void writeFlightToFile(Flight flight) {
+        this.tempFlight = new GetFlightObjectFromList(this.file.getFlightsToDownload());
+        Flight flightToDownload = tempFlight.flightFromList();
         if (!checkIfBooked()) {
             throw new FlightNotFoundException("Flight found, maybe its not been booked yet?");
         }
