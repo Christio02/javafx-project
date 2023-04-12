@@ -219,8 +219,6 @@ public class AirlineController {
         try {
             List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems();
             GetFlightObjectFromList listTemp = new GetFlightObjectFromList(this.fileBooking.getFlightsToDownload());
-
-            Flight flightToRemove = listTemp.flightFromList();
             Alert confirmRemoval = new Alert(AlertType.CONFIRMATION);
             confirmRemoval.setHeaderText("Cancel booking");
             confirmRemoval.setContentText("Are you sure you want to cancel the flight?");
@@ -232,13 +230,15 @@ public class AirlineController {
             Optional<ButtonType> result = confirmRemoval.showAndWait();
 
             if (result.isPresent() && result.get() == confirmCancelBooking) {
-                flightToRemove.removeBooking(fileBooking);
-                isBooked = false;
-                System.out.println(fileBooking.getFlightsToDownload());
-                bookedFlights.getItems().remove(chosen);
-                listOfFlights.getItems().add((Flight) chosen);
-
+                for (Flight flightToRemove : chosen) {
+                    flightToRemove.removeBooking(fileBooking);
+                    isBooked = false;
+                    System.out.println(fileBooking.getFlightsToDownload());
+                    bookedFlights.getItems().remove(flightToRemove);
+                    listOfFlights.getItems().add(flightToRemove);
+                }
             }
+
         } catch (FlightNotFoundException e) {
             Alert cannotCancelError = new Alert(AlertType.ERROR);
             cannotCancelError.setHeaderText("Error cancelling booking!");
