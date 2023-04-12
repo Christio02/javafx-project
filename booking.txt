@@ -1,3 +1,2 @@
-Flight: OY4515, From: Tromsø, To: Bergen, Departure Time: 18:40, Date: 2024-02-23
+Flight: OY5535, From: London, To: Tromsø, Departure Time: 11:20, Date: 2024-05-17
 ---------------------
-Flight: OY3504, From: København, To: Barcelona, Departure Time: 05:00, 
