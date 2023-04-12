@@ -12,10 +12,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
-
-
 
 /**
  * JavaFX App
@@ -25,13 +22,13 @@ public class App extends Application {
     @Override
     public void start(final Stage primaryStage) throws IOException {
         primaryStage.setTitle("Airline booking!");
-    
+
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/App.fxml")));
-        // primaryStage.setScene(new Sceneø(FXMLLoader.load(getClass().getResource("/App.fxml"))));
+        // primaryStage.setScene(new
+        // Sceneø(FXMLLoader.load(getClass().getResource("/App.fxml"))));
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         primaryStage.setScene(scene);
 
-        
         primaryStage.show();
     }
 

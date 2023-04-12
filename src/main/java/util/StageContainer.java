@@ -14,8 +14,10 @@ public abstract class StageContainer {
 
     public Stage getStage() {
         if (this.stage == null) {
-            // Istedenfor å jakte ned en null-pointer en eller annen plass får vi her en mye
-            // tidligere error som også forteller oss hva problemet er!
+            /*
+             * Istedenfor å jakte ned en null-pointer en eller annen plass får vi her en mye
+             * tidligere error som også forteller oss hva problemet er!
+             */
             throw new IllegalStateException("Stage isn't set yet!");
         }
 
@@ -26,4 +28,3 @@ public abstract class StageContainer {
         this.stage = stage;
     }
 }
-
