@@ -1,2 +1,2 @@
-Flight: OY5535, From: London, To: Tromsø, Departure Time: 11:20, Date: 2024-05-17
+Flight: OY3342, From: Trondheim, To: Bergen, Departure Time: 05:10, Date: 2024-10-05
 ---------------------
