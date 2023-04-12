@@ -170,16 +170,21 @@ public class AirlineController {
         listOfFlights.getItems().addAll(flights);
     }
 
+    /**
+     * This FXML method is used when the user clicks the download button
+     * The logic here is that a pop up appears to make sure the user acutally wants to download the flight
+     * When the user clicks the confirm button, the method calss the 
+     */
+
     @FXML
     public void download() {
         try {
             GetFlightObjectFromList listTemp = new GetFlightObjectFromList(this.fileBooking.getFlightsToDownload());
+            System.out.println(listTemp);
 
             Flight tempFlight = listTemp.flightFromList();
 
             System.out.println("\n");
-
-            System.out.println(fileBooking.getFlightsToDownload());
 
             Alert downloadAlert = new Alert(AlertType.CONFIRMATION);
             downloadAlert.setHeaderText("Download flight");
@@ -192,10 +197,9 @@ public class AirlineController {
             Optional<ButtonType> result2 = downloadAlert.showAndWait();
 
             if (result2.isPresent() && result2.get() == downloadButton) {
-
-            // fileBooking.addFlight(tempFlight);
+                
             System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
-            fileBooking.writeToFile("booking.txt");
+            tempFlight.writeFlightToFile(fileBooking);
             getBooking.setVisible(true);
 
             }  
@@ -220,7 +224,7 @@ public class AirlineController {
         }
     }
 
-    /*
+    /**
      * 
      * This method is used to remove a booked flight from the booking list.
      * 
@@ -242,7 +246,6 @@ public class AirlineController {
             if (isBooked == false) {
                 throw new FlightNotFoundException("Cannot remove booking, because flight does not exist!");
             }
-            // List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems();
             List<Flight> bookings = bookedFlights.getItems();
             GetFlightObjectFromList listTemp = new GetFlightObjectFromList(this.fileBooking.getFlightsToDownload());
            
@@ -261,7 +264,8 @@ public class AirlineController {
                     flightToRemove.removeBooking(fileBooking);
                     isBooked = false;
                     System.out.println(fileBooking.getFlightsToDownload());
-                    listOfFlights.getItems().add(flightToRemove);
+                    listOfFlights.getItems().addAll(flightToRemove);
+                    Collections.sort(listOfFlights.getItems());
 
                 }
                 bookedFlights.getItems().removeAll(bookings);

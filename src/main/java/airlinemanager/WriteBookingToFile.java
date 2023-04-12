@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-/* 
+/**
  * This class provides functionality for reading and writing flight bookings to and from text files.
  * Bookings can be added to a list using the addFlight method, and then written to a file using the writeToFile method.
  * The readFromFile method can be used to read bookings from a file and return them as a string.
@@ -18,7 +18,7 @@ public class WriteBookingToFile {
 
     // Fields
 
-    /*
+    /**
      * This field is setting a protected List, for use in the flight.java class, by
      * adding the booking to this list
      */
@@ -27,7 +27,7 @@ public class WriteBookingToFile {
 
     // Constructor
 
-    /*
+    /**
      * Initializes a new WriteBookingToFile object with an empty list of flights to
      * download.
      */
@@ -36,7 +36,7 @@ public class WriteBookingToFile {
         this.flightsToDownload = new ArrayList<>();
     }
 
-    /*
+    /**
      * This method is responsible for adding the flight object to the list,
      * it is called in a bookFlight method in the flight.java class
      * 
@@ -47,7 +47,7 @@ public class WriteBookingToFile {
         this.flightsToDownload.add(flight);
     }
 
-    /*
+    /**
      * This method is responsible for removing a booking (i.e. canceling the
      * booking)
      * It is called in a separate method in the flight.java class
@@ -60,7 +60,7 @@ public class WriteBookingToFile {
         this.flightsToDownload.remove(index);
     }
 
-    /*
+    /**
      * A method that returns the current list of flights for download to list
      * 
      * @return List of flight objects
@@ -70,7 +70,7 @@ public class WriteBookingToFile {
         return this.flightsToDownload;
     }
 
-    /*
+    /**
      * This methdod writes bookings to a textfile using a specified file name
      * It will then create a txt file with the name, and then write the flight
      * object
@@ -92,7 +92,6 @@ public class WriteBookingToFile {
                 writer.println(flight1.toStringFormatted());
                 writer.println("---------------------");
             }
-
             writer.close();
 
         } catch (FileNotFoundException e) {
@@ -101,7 +100,7 @@ public class WriteBookingToFile {
         }
     }
 
-    /*
+    /**
      * This method is used for reading a booking which is stored on a file, it uses
      * the specified filename
      * and then utilizes bufferedreader and filereader classes for reading from the

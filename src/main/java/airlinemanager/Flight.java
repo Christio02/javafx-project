@@ -169,12 +169,12 @@ public class Flight extends FlightStored implements Comparable<Flight> {
      */
 
 
-    public void writeFlightToFile(Flight flight) {
-        this.tempFlight = new GetFlightObjectFromList(this.file.getFlightsToDownload());
+    public void writeFlightToFile(WriteBookingToFile tempFile) {
+        // this.tempFlight = new GetFlightObjectFromList(this.file.getFlightsToDownload());
         if (!checkIfBooked()) {
             throw new FlightNotFoundException("Flight found, maybe its not been booked yet?");
         }
-        this.file.writeToFile("booking.txt");
+        tempFile.writeToFile("booking.txt");
 
          
     }
