@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 Flight: OY5668, From: Malaga, To: København, Departure Time: 07:20, Date: 2023-07-25
 ---------------------
 Flight: OY5706, From: Malaga, To: Stockholm, Departure Time: 07:30, Date: 2024-09-25
 ---------------------
+=======
+>>>>>>> mats
