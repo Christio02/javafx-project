@@ -24,12 +24,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-/**
+/*
  * AirlineController is a JavaFX controller class responsible for handling user
  * interactions
  * with the airline booking application. It manages the booking process,
  * including selecting
- * flights, confirming bookings, and downloading booking information.
+ * flights and confirming bookings.
  *
  * The class contains methods for handling button clicks and updating the UI
  * components
@@ -38,11 +38,13 @@ import javafx.scene.control.TextField;
  *
  * The main methods in this class are:
  * - bookFlight(): Handles the flight booking process, including user
- * confirmation and downloading the booking information.
+ * confirmation and displaying on the "your bookings" textField.
+ * - download(): handles the downloading of the flight information.
  * - getBooking(): Displays the booking information for the user after a
  * successful booking.
  * - initialize(): Initializes the UI components and sets up the initial state
  * of the application.
+ * -reset(): resets the listOfFlights view to have all the previous flights before filter on location was applied. 
  */
 
 public class AirlineController {
@@ -50,6 +52,8 @@ public class AirlineController {
     private Flight flight;
 
     private boolean isBooked = false;
+    List<Flight> flights = new ArrayList<>();
+    List<Flight> filteredFlights = new ArrayList<>();
 
     private WriteBookingToFile fileBooking;
 
@@ -65,6 +69,12 @@ public class AirlineController {
     private Button cancelBooking;
     @FXML
     private DatePicker datePicker;
+    @FXML
+    private TextField searchbar;
+    @FXML
+    private Button searchbutton;
+    @FXML
+    private ListView bookedFlights;
 
     @FXML
     public void initialize() {
@@ -72,6 +82,10 @@ public class AirlineController {
         getBooking.setVisible(false);
         List<Flight> flights = new ArrayList<>();
 
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
+        flights.add(new Flight());
         flights.add(new Flight());
         flights.add(new Flight());
         flights.add(new Flight());
@@ -116,12 +130,40 @@ public class AirlineController {
                 Flight tempFlight = listTemp.flightFromList();
 
                 tempFlight.bookFlight(this.fileBooking);
+                listOfFlights.getItems().remove(chosen);
+                bookedFlights.getItems().add(chosen);
 
                 System.out.println("File list: " + this.fileBooking.flightsToDownload);
 
             }
         }
 
+    }
+
+    @FXML
+    public void searchForFlight() {
+        String search = searchbar.getText();
+        List<Flight> flights = listOfFlights.getItems();
+        List<Flight> filteredFlights = new ArrayList<>();
+
+        for (Flight flight : flights) {
+            if (!(search.equals(flight.getDestination()) || search.equals(flight.getStart()))) {
+                filteredFlights.add(flight);
+
+            }
+        }
+
+        System.out.println(filteredFlights);
+        this.filteredFlights = filteredFlights;
+        listOfFlights.getItems().removeAll(filteredFlights);
+        searchbar.clear();
+    }
+
+    @FXML
+    public void reset() {
+        List<Flight> flights = this.filteredFlights;
+
+        listOfFlights.getItems().addAll(flights);
     }
 
     @FXML
@@ -139,24 +181,20 @@ public class AirlineController {
             downloadAlert.setHeaderText("Download flight");
             downloadAlert.setContentText("Do you want to download the booking?");
 
-            ButtonType downloadButton = new ButtonType("Download");
-            ButtonType noDownloadButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-            downloadAlert.getButtonTypes().setAll(downloadButton, noDownloadButton);
+        ButtonType downloadButton = new ButtonType("Download");
+        ButtonType noDownloadButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+        downloadAlert.getButtonTypes().setAll(noDownloadButton, downloadButton);
 
             Optional<ButtonType> result2 = downloadAlert.showAndWait();
 
             if (result2.isPresent() && result2.get() == downloadButton) {
 
-                System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
-                getBooking.setVisible(true);
-            }
+            // fileBooking.addFlight(tempFlight);
+            System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
+            fileBooking.writeToFile("booking.txt");
+            getBooking.setVisible(true);
+            isBooked = true;
 
-            
-        } catch (FlightNotFoundException e) {
-            Alert noFlight = new Alert(AlertType.ERROR);
-            noFlight.setHeaderText("No flight booked!");
-            noFlight.setContentText("There is no flight booked, you cannot download a booking that does not exist!");
-            noFlight.showAndWait();
         }
         
     }
@@ -189,10 +227,8 @@ public class AirlineController {
     @FXML
     public void removeBooking() {
         try {
-
+            List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems();
             GetFlightObjectFromList listTemp = new GetFlightObjectFromList(this.fileBooking.getFlightsToDownload());
-
-            Flight flightToRemove = listTemp.flightFromList();
             Alert confirmRemoval = new Alert(AlertType.CONFIRMATION);
             confirmRemoval.setHeaderText("Cancel booking");
             confirmRemoval.setContentText("Are you sure you want to cancel the flight?");
@@ -204,10 +240,17 @@ public class AirlineController {
             Optional<ButtonType> result = confirmRemoval.showAndWait();
 
             if (result.isPresent() && result.get() == confirmCancelBooking) {
-                flightToRemove.removeBooking(fileBooking);
-                isBooked = false;
-                System.out.println(fileBooking.getFlightsToDownload());
+                for (Flight flightToRemove : chosen) {
+                    flightToRemove.removeBooking(fileBooking);
+                    isBooked = false;
+                    System.out.println(fileBooking.getFlightsToDownload());
+                    listOfFlights.getItems().add(flightToRemove);
+
+                }
+                bookedFlights.getItems().remove(chosen);
+
             }
+
         } catch (FlightNotFoundException e) {
             Alert cannotCancelError = new Alert(AlertType.ERROR);
             cannotCancelError.setHeaderText("Error cancelling booking!");
