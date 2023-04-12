@@ -148,7 +148,6 @@ public class AirlineController {
             if (result2.isPresent() && result2.get() == downloadButton) {
 
                 System.out.println("File list: " + this.fileBooking.getFlightsToDownload());
-                tempFlight.writeFlightToFile();
                 getBooking.setVisible(true);
             }
 
