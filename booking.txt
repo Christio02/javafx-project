@@ -1,4 +1,4 @@
-Flight: OY5892, From: Paris, To: København, Departure Time: 12:10, Date: 2024-01-04
+Flight: OY5668, From: Malaga, To: København, Departure Time: 07:20, Date: 2023-07-25
 ---------------------
-Flight: OY4160, From: Tromsø, To: Paris, Departure Time: 11:20, Date: 2023-08-31
+Flight: OY5706, From: Malaga, To: Stockholm, Departure Time: 07:30, Date: 2024-09-25
 ---------------------
