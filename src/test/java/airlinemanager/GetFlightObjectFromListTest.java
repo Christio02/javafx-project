@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import util.FlightNotFoundException;
 import util.GetFlightObjectFromList;
 
-public class GetFlightFromListTest {
+public class GetFlightObjectFromListTest {
 
     private Flight flight;
 

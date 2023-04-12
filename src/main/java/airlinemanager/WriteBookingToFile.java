@@ -20,7 +20,7 @@ public class WriteBookingToFile {
 
     // Fields
 
-    /*
+    /**
      * This field is setting a protected List, for use in the flight.java class, by adding the booking to this list
      */
 
@@ -28,7 +28,7 @@ public class WriteBookingToFile {
 
     // Constructor
 
-    /*
+    /**
      * Initializes a new WriteBookingToFile object with an empty list of flights to download.
      */
 
@@ -36,7 +36,7 @@ public class WriteBookingToFile {
         this.flightsToDownload = new ArrayList<>();
     }
 
-    /*
+    /**
      * This method is responsible for adding the flight object to the list, 
      * it is called in a bookFlight method in the flight.java class
      * @param Flight object from flight.java class
@@ -46,7 +46,7 @@ public class WriteBookingToFile {
         this.flightsToDownload.add(flight);
     }
 
-    /*
+    /**
      * This method is responsible for removing a booking (i.e. canceling the booking)
      * It is called in a separate method in the flight.java class
      * @param Flight object to be removed
@@ -66,7 +66,7 @@ public class WriteBookingToFile {
         return this.flightsToDownload;
     }
 
-    /*
+    /**
      * This methdod writes bookings to a textfile using a specified file name 
      * It will then create a txt file with the name, and then write the flight object
      * in the list to a toString representation. This representation is a special case, 

@@ -1,2 +1,2 @@
-Flight: OY5742, From: Barcelona, To: Stavanger, Departure Time: 09:40
+Flight: OY3333, From: Stockholm, To: Trondheim, Departure Time: 10:00, Date: 2024-02-18
 ---------------------

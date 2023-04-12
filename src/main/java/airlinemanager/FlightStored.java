@@ -84,7 +84,7 @@ public class FlightStored {
      * @return string time
      */
 
-    protected String generateRandomTime() {
+    private String generateRandomTime() {
 
         Random random = new Random();
 

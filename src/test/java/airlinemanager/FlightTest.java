@@ -20,7 +20,11 @@ public class FlightTest {
 
     private Flight flight;
 
-    
+    // set up random flight
+    @BeforeEach
+    public void setUp() {
+        flight = new Flight();
+    }
 
     @Test
     @DisplayName("Checking for correct constructor")
@@ -55,11 +59,7 @@ public class FlightTest {
         
     }
 
-    // set up random flight
-    @BeforeEach
-    public void setUp() {
-        Flight flight = new Flight();
-    }
+    
 
     @Test
     @DisplayName("Test that all flight times are sorted correctly")

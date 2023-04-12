@@ -29,7 +29,6 @@ public class Flight extends FlightStored implements Comparable<Flight>{
      */
 
     private WriteBookingToFile file;
-    private int seats;
     private GetFlightObjectFromList tempFlight;
 
     
@@ -44,7 +43,7 @@ public class Flight extends FlightStored implements Comparable<Flight>{
         this.file = new WriteBookingToFile();
         this.destination = super.getDestination();
         this.start = super.getStart();
-        this.time = super.generateRandomTime();
+        this.time = super.getTime();
       
     }
 
@@ -64,14 +63,6 @@ public class Flight extends FlightStored implements Comparable<Flight>{
 
     public String getDestination() {
         return this.destination;
-    }
-
-    /*
-     * Getter for seats
-     */
-
-    public int getSeats() {
-        return this.seats;
     }
 
     /*
@@ -177,7 +168,6 @@ public class Flight extends FlightStored implements Comparable<Flight>{
 
     public void writeFlightToFile(Flight flight) {
         this.tempFlight = new GetFlightObjectFromList(this.file.getFlightsToDownload());
-        Flight flightToDownload = tempFlight.flightFromList();
         if (!checkIfBooked()) {
             throw new FlightNotFoundException("Flight found, maybe its not been booked yet?");
         }
@@ -209,7 +199,7 @@ public class Flight extends FlightStored implements Comparable<Flight>{
 
     /*
      * Getter for returning a flight in a list, for use in booking, since file object only takes in lists
-     * @return a n arraylist of this flight
+     * @return an arraylist of this flight
      */
 
     private List<Flight> getFlightsList() {
@@ -241,9 +231,6 @@ public class Flight extends FlightStored implements Comparable<Flight>{
         Flight f1 = new Flight();
         f1.bookFlight(file);
         System.out.println(file.getFlightsToDownload().isEmpty());
-
-        f1.writeFlightToFile();
-
 
         
 
