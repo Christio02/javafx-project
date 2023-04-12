@@ -234,9 +234,11 @@ public class AirlineController {
                     flightToRemove.removeBooking(fileBooking);
                     isBooked = false;
                     System.out.println(fileBooking.getFlightsToDownload());
-                    bookedFlights.getItems().remove(flightToRemove);
                     listOfFlights.getItems().add(flightToRemove);
+
                 }
+                bookedFlights.getItems().remove(chosen);
+
             }
 
         } catch (FlightNotFoundException e) {
