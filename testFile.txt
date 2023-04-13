@@ -1,2 +1,2 @@
-Flight: OY3333, From: Stockholm, To: Trondheim, Departure Time: 10:00, Date: 2024-02-18
+Flight: OY3620, From: Tromsø, To: Trondheim, Departure Time: 10:50, Date: 2023-11-15
 ---------------------
