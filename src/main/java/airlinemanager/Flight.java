@@ -127,10 +127,10 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     /**
      * Void method that booksFlight by storing it in a list
      * first checks if user is booking the same flight again
-     * Then if that is true, it uses WriteBookingToFile class (file object) to add
+     * Then if that is false, it uses WriteBookingToFile class (file object) to add
      * it to
      * file object's list, then it can be written to file
-     * 
+     * @param tempFile file object from the WriteBookingToFile class
      * @throws FlightAlreadyBookedException if this.flight is already booked
      */
 
@@ -140,6 +140,14 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         }
         tempFile.addFlight(this); // adds this flight to file class's list
     }
+
+    /**
+     * This void method is called from the removebooking button, and removes
+     * the flight object from the file's list
+     * Essentially calls the file class' removeFlight method
+     * @param tempFile file object from the WriteBookingToFile class
+     * @throws FlightNotFoundException if the flight this method is called upon, is not in the list (E.g. not booked)
+     */
 
     public void removeBooking(WriteBookingToFile tempFile) {
         if (!tempFile.flightsToDownload.contains(this)) {
@@ -152,8 +160,8 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     /**
      * Void method that writes this flight object to file
      * First checks if the file object has the flight stored
-     * then it writes to a defaulet "booking.txt" file
-     * 
+     * then it writes to a default "booking.txt" file, using the file object method
+     * @param tempFile file object from the WriteBookingToFile class
      * @throws FlightNotFoundException if this.flight booking does not exist yet
      */
 
@@ -184,6 +192,13 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return true;
     }
 
+    /**
+     * This boolean method checks if the flight is booked
+     * It does this by making sure that the file class' list is empty
+     * @return true if empty
+     * @return false otherwise
+     */
+
     private boolean checkIfBooked() {
         if (this.file.flightsToDownload.isEmpty()) {
             return true;
@@ -191,21 +206,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return false;
     }
 
-    /**
-     * Getter for returning a flight in a list, for use in booking, since file
-     * object only takes in lists
-     * 
-     * @return an arraylist of this flight
-     * Getter for returning a flight in a list, for use in booking, since file object only takes in lists
-     * @return an arraylist of this flight
-     */
-
-    // private List<Flight> getFlightsList() {
-    //     List<Flight> flights = new ArrayList<>();
-    //     flights.add(this);
-    //     return flights;
-    // }
-
+    
     /**
      * Tostring method that is called from the FlightStored class
      * Used for representing flight objects in app

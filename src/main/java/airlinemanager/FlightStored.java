@@ -1,7 +1,7 @@
 package airlinemanager;
 
 import java.util.Random;
-/* Description:
+/** Description:
  * This is a class that creates objects that stores flightinformation
  * The only calculation it does is by generating random flightnumber, destinations and from fields
  *
@@ -19,7 +19,7 @@ public class FlightStored {
     protected String date;
 
     // Constructor:
-    /*
+    /**
      * Creates flightstored object by using; destination, start, flightnumber, time and date fields
      * Is used by flight object to handle booking etc
      */
@@ -33,10 +33,10 @@ public class FlightStored {
 
     }
 
-    /*
+    /**
      * Using Java.util.Random
-     * Creates a random date string
-     * Sets the date
+     * Creates a random date string between 2023 and 2025
+     * Sets this date
      */
 
     public void setDate() {
@@ -52,7 +52,7 @@ public class FlightStored {
         this.date = year + "-" + monthString + "-" + dayString;
     }
 
-    /*
+    /**
      * Using random class, retrieves random location from the String array
      * the two locations should be different, which is logical
      * @return random string location from array
@@ -78,7 +78,7 @@ public class FlightStored {
 
     }
 
-    /*
+    /**
      * Generates a random time in 24 hour format using random class
      * Is generated between 06.00 and 24.00 hour
      * @return string time
@@ -105,7 +105,7 @@ public class FlightStored {
         return finString;
 
     }
-    /*
+    /**
      * Getter for return time
      * @return time string
      */
@@ -114,7 +114,7 @@ public class FlightStored {
         return this.time;
     }
 
-     /*
+     /**
      * Getter for returning hours to be used in compareTo method
      * Parses getTime (10:20) -> 10 to int
      * @return integer of hours
@@ -127,7 +127,7 @@ public class FlightStored {
         return hours;
     }
 
-    /*
+    /**
      * getter for returning minutes used in compareTo method in flight.java class
      * Parses the minutes by splitting string
      * @return integer of minutes
@@ -140,7 +140,7 @@ public class FlightStored {
         return minutes;
     }
 
-    /*
+    /**
      * Private method that generates a random flightnumber in the allowed format
      * Does not need validation, since we are using Junit, and the correct format is generated
      * each time
@@ -161,7 +161,7 @@ public class FlightStored {
 
     }
 
-    /*
+    /**
      * Getter for returning start location
      * @return string of a location
      */
@@ -169,7 +169,7 @@ public class FlightStored {
     public String getStart() {
         return this.start;
     }
-      /*
+      /**
      * Getter for returning destination location
      * @return string of a location
      */
@@ -178,7 +178,7 @@ public class FlightStored {
         return this.destination;
     }
 
-    /*
+    /**
      * Getter for returning date for that flight
      * @return string of date format
      */
@@ -186,13 +186,15 @@ public class FlightStored {
     public String getDate() {
         return this.date;
     }
-    /*
+    
+
+    // for app
+    /**
      * To-string method that is used in the app for displaying flight information
      * in an intuitive way
      * @return to-string of flightstored object
      */
-
-    // for app
+    
     @Override
     public String toString() {
        return "Flight: " + flightNumber + "\n" +
@@ -202,10 +204,11 @@ public class FlightStored {
             "Date: " + getDate();
     }
 
-    /*
+    /**
      * To string method which is only used for writing to file
      * Is used in WriteBookingToFile.java class
      * Makes it easier to read from file
+     * @return toString of flightStored object
      */
 
     // for file writing

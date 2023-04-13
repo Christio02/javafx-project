@@ -5,7 +5,7 @@ import java.util.List;
 
 import airlinemanager.Flight;
 
-/*
+/**
  * This class is responsible for retrieving a flight object from a list of flight objects.
  * The class has a constructor that takes a list of flight objects as a parameter and a method 
  * that returns the flight object from the list. 
@@ -18,7 +18,7 @@ public class GetFlightObjectFromList {
     private List<Flight> list2; // list
     // Constructor:
 
-    /*
+    /**
      * Constructs a new instance of the GetFlightObjectFromList class with the specified 
      * list of flight objects.
      * 
@@ -29,7 +29,7 @@ public class GetFlightObjectFromList {
         this.list2 = listofFlights;
     }
 
-    /*
+    /**
      * This method returns a flight object from the list set in the constructor
      * It first checks if the list is empty, if its not it will use list.get(0) method, there will always be only one flight 
      * object in the list, hence (0).
@@ -44,7 +44,7 @@ public class GetFlightObjectFromList {
         return flightFound;
     }
 
-    /*
+    /**
      * Returns a string representation of the flight object from the list.
      * 
      * @return a formatted string representation of the flight object from the list
@@ -55,7 +55,7 @@ public class GetFlightObjectFromList {
         return this.list2.get(0).toStringFormatted();
     }
 
-    /*
+    /**
      * This is a getter for the list, used in the Junit test
      * @return list of flight object
      */
