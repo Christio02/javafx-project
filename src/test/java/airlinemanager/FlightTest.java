@@ -53,7 +53,7 @@ public class FlightTest {
 
         // time checker
 
-        Pattern pattern2 = Pattern.compile("^\\d{2}.\\d{1}0$"); // this pattern cheks if there ate 2 digits, then ':',
+        Pattern pattern2 = Pattern.compile("^\\d{2}.\\d{1}0$"); // this pattern cheks if there aree 2 digits, then ':',
                                                                 // then 1 digit and then 0
         // e.g. 10:20 is correct, but 10:21, is not correct
         assertTrue(pattern2.matcher(time).matches(), "Time should be in this format!: 'xx:x0'");
