@@ -1,2 +1,2 @@
-Flight: OY3342, From: Trondheim, To: Bergen, Departure Time: 05:10, Date: 2024-10-05
+Flight: OY3341, From: Tromsø, To: Oslo, Departure Time: 07:30, Date: 2023-08-29
 ---------------------
