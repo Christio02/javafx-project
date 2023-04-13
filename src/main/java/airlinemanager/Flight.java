@@ -12,7 +12,7 @@ import util.FlightAlreadyBookedException;
 import util.FlightNotFoundException;
 import util.GetFlightObjectFromList;
 
-/* Description:
+/** Description:
  * This class extends the FlightStored class and is responsible for performing different calculations on flight data.
  * It does not actually create the flight information itself, but inherits it from the FlightStored class.
  * Futhermore, it implements the interface Comparable<T> for sorting the flight data, using the time fields in the objects
@@ -22,7 +22,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     // Fields
 
-    /*
+    /**
      * used for booking and writing to file
      */
 
@@ -31,7 +31,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     // Constructor:
 
-    /*
+    /**
      * initializes a new Flight object, which is inherited from the super class
      * Also creates a file object, for being used in other methods
      */
@@ -44,18 +44,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
       
     }
 
-    /*
-     * This constructor is used in GetFlightFromList class, for retrieving flight
-     * object from list
-     */
-    // public Flight(String flightnum, String dest, String from, String time) {
-    // super.flightNumber = flightnum;
-    // super.destination = dest;
-    // super.start = from;
-    // super.time = time;
-    // }
-
-    /*
+    /**
      * This methods is a getter for destination
      */
 
@@ -63,7 +52,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return this.destination;
     }
 
-    /*
+    /**
      * Getter for start location
      */
 
@@ -71,7 +60,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return this.start;
     }
 
-    /*
+    /**
      * Getter for time
      */
 
@@ -79,7 +68,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return this.time;
     }
 
-    /*
+    /**
      * Getter for flightnumber
      */
 
@@ -87,7 +76,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return this.flightNumber;
     }
 
-    /*
+    /**
      * This is a toString method for file usage
      * It makes it easier to read from file
      * It uses the FlightStored toStringFormatted() method
@@ -98,7 +87,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return super.toStringFormatted();
     }
 
-    /*
+    /**
      * CompareTo method implemented from Comparable<T> interface
      * It compares the current flight object with another flight object bases on
      * departure times
@@ -135,7 +124,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     }
 
-    /*
+    /**
      * Void method that booksFlight by storing it in a list
      * first checks if user is booking the same flight again
      * Then if that is true, it uses WriteBookingToFile class (file object) to add
@@ -160,7 +149,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         tempFile.removeFlight(this);
     }
 
-    /*
+    /**
      * Void method that writes this flight object to file
      * First checks if the file object has the flight stored
      * then it writes to a defaulet "booking.txt" file
@@ -179,7 +168,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
          
     }
 
-    /*
+    /**
      * Boolean method that checks if this flight is the same flight booked before
      * 
      * @return false if this.file list contains the same flight
@@ -202,7 +191,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         return false;
     }
 
-    /*
+    /**
      * Getter for returning a flight in a list, for use in booking, since file
      * object only takes in lists
      * 
@@ -211,13 +200,13 @@ public class Flight extends FlightStored implements Comparable<Flight> {
      * @return an arraylist of this flight
      */
 
-    private List<Flight> getFlightsList() {
-        List<Flight> flights = new ArrayList<>();
-        flights.add(this);
-        return flights;
-    }
+    // private List<Flight> getFlightsList() {
+    //     List<Flight> flights = new ArrayList<>();
+    //     flights.add(this);
+    //     return flights;
+    // }
 
-    /*
+    /**
      * Tostring method that is called from the FlightStored class
      * Used for representing flight objects in app
      * 

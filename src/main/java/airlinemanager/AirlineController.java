@@ -24,7 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-/*
+/**
  * AirlineController is a JavaFX controller class responsible for handling user
  * interactions
  * with the airline booking application. It manages the booking process,
