@@ -15,15 +15,18 @@ import org.junit.jupiter.api.Test;
 
 import airlinemanager.Flight;
 import airlinemanager.FlightStored;
+import util.FlightAlreadyBookedException;
 
 public class FlightTest {
 
     private Flight flight;
+    private WriteBookingToFile fileList;
 
     // set up random flight
     @BeforeEach
     public void setUp() {
         flight = new Flight();
+        fileList = new WriteBookingToFile();
     }
 
 
@@ -91,4 +94,32 @@ public class FlightTest {
         }
     }
 
+    @Test
+    @DisplayName("Testing that the flight is being correcly added to writer list, during booking")
+    public void testBookFlightMethodAddsFLight() {
+
+        List<Flight> tempList = new ArrayList<>();
+        tempList.add(flight);
+        flight.bookFlight(fileList);
+
+        assertEquals(tempList.get(0), fileList.getFlightsToDownload().get(0));
+
+        assertDoesNotThrow(() -> flight.bookFlight(fileList), "The method should not throw when only one instance of flight is added to the booking!");
+
+            
+        assertThrows(FlightAlreadyBookedException.class, () -> flight.bookFlight(fileList), "The method should throw this exception when duplicate booking is detected!");
+    }
+        
+
+    @Test
+    @DisplayName("Testing that the flight booking is correctly removed from the writers list")
+    public void testFlightIsCorreclyRemoved() {
+        List<Flight> tempList = new ArrayList<>();
+        flight.bookFlight(fileList);
+        flight.removeBooking(fileList);
+        assertEquals(tempList.isEmpty(), fileList.getFlightsToDownload().isEmpty());
+
+    }
+
+    
 }
