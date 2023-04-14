@@ -131,7 +131,7 @@ public class AirlineController {
                 Flight tempFlight = listTemp.flightFromList();
 
                 tempFlight.bookFlight(this.fileBooking);
-                listOfFlights.getItems().remove(chosen);
+                listOfFlights.getItems().removeAll(chosen);
                 bookedFlights.getItems().add(tempFlight);
                 isBooked = true;
 
@@ -176,7 +176,11 @@ public class AirlineController {
 
     @FXML
     public void download() {
+        
         try {
+            if (isBooked == false) {
+                throw new FlightNotFoundException("You have not yet booked fligh! Can therefore not download!");
+            }
             GetFlightObjectFromList listTemp = new GetFlightObjectFromList(this.fileBooking.getFlightsToDownload());
             System.out.println(listTemp);
 
