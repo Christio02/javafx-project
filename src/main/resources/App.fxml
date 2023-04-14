@@ -3,48 +3,71 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airlinemanager.AirlineController">
+<BorderPane fx:id="" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airlinemanager.AirlineController">
    <left>
       <ListView fx:id="listOfFlights" prefHeight="328.0" prefWidth="391.0" BorderPane.alignment="CENTER" />
    </left>
-   <top>
-      
-      <Label fx:id="header1" text="Welcome to Orwegian!" textFill="WHITE" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-   </top>
-   <right>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="readFileContent" layoutX="-1.0" layoutY="58.0" prefHeight="110.0" prefWidth="435.0" />
-         </children>
-      </AnchorPane>
-   </right>
    <bottom>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" layoutX="363.0" layoutY="125.0" mnemonicParsing="false" onAction="#bookFlight" prefHeight="30.0" prefWidth="100.0" stylesheets="@style.css" text="Book flight" />
-            <Button fx:id="cancelBooking" layoutX="482.0" layoutY="125.0" mnemonicParsing="false" onAction="#removeBooking" stylesheets="@style.css" text="Remove Booking" />
-            <Button fx:id="download" layoutX="690.0" layoutY="150.0" mnemonicParsing="false" onAction="#download" stylesheets="@style.css" text="Download" />
-            <TextField fx:id="searchbar" layoutX="638.0" layoutY="75.0" promptText="Filter flights..." />
-            <Button fx:id="searchbutton" layoutX="662.0" layoutY="107.0" mnemonicParsing="false" onAction="#searchForFlight" stylesheets="@style.css" text="Search" />
-            <Button fx:id="getBooking" layoutX="392.0" layoutY="71.0" mnemonicParsing="false" onAction="#getBooking" stylesheets="@style.css" text="Click for current booking" />
-            <ListView fx:id="bookedFlights" layoutX="2.0" layoutY="65.0" prefHeight="98.0" prefWidth="276.0" />
-            <Text fx:id="yourbookingstext" layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your bookings">
+            <Button fx:id="bookBtn" alignment="CENTER" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#bookFlight" prefHeight="48.0" prefWidth="142.0" stylesheets="@style.css" text="Add to bookings" />
+            <Button fx:id="cancelBooking" layoutX="170.0" layoutY="9.0" mnemonicParsing="false" onAction="#removeBooking" prefHeight="48.0" prefWidth="128.0" stylesheets="@style.css" text="Cancel booking" />
+            <ListView fx:id="bookedFlights" layoutX="22.0" layoutY="88.0" prefHeight="98.0" prefWidth="276.0" />
+            <Text fx:id="yourbookingstext" layoutX="45.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your bookings">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="resetbutton" layoutX="737.0" layoutY="107.0" mnemonicParsing="false" onAction="#reset" stylesheets="@style.css" text="Reset" />
+            <Text layoutX="447.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextArea fx:id="readFileContent" layoutX="338.0" layoutY="110.0" prefHeight="67.0" prefWidth="344.0" />
+            <Text layoutX="400.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Downloaded bookings">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <Button fx:id="download" layoutX="349.0" layoutY="6.0" mnemonicParsing="false" onAction="#download" prefHeight="53.0" prefWidth="141.0" stylesheets="@style.css" text="Download booking" />
+            <Button fx:id="getBooking" layoutX="525.0" layoutY="14.0" mnemonicParsing="false" onAction="#getBooking" stylesheets="@style.css" text="Click for current bookings" />
          </children>
       </AnchorPane>
    </bottom>
+   <top>
+      <AnchorPane prefHeight="133.0" prefWidth="786.0" BorderPane.alignment="CENTER">
+         <children>
+            
+                  <Label fx:id="header1" layoutX="185.0" layoutY="14.0" text="Welcome to Orwegian!" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Text layoutX="32.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available bookings">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <TextField fx:id="searchbar" layoutX="459.0" layoutY="84.0" promptText="Filter flights..." />
+         </children>
+      </AnchorPane>
+   </top>
+   <right>
+      <AnchorPane prefHeight="67.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <AnchorPane prefHeight="67.0" prefWidth="323.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="searchbutton" layoutX="31.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchForFlight" prefHeight="47.0" prefWidth="114.0" stylesheets="@style.css" text="Search" />
+            <Button fx:id="resetbutton" layoutX="174.0" layoutY="12.0" mnemonicParsing="false" onAction="#reset" prefHeight="43.0" prefWidth="92.0" stylesheets="@style.css" text="Reset" />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>

@@ -1,2 +1,2 @@
-Flight: OY4233, From: Oslo, To: Trondheim, Departure Time: 09:30, Date: 2023-11-08
+Flight: OY3709, From: Malaga, To: Bodø, Departure Time: 10:20, Date: 2023-11-17
 ---------------------

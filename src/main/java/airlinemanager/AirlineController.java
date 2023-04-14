@@ -22,6 +22,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /**
@@ -64,11 +65,11 @@ public class AirlineController {
     @FXML
     private Button getBooking;
     @FXML
-    private Label readFileContent;
+    private TextArea readFileContent;
     @FXML
     private Button cancelBooking;
-    @FXML
-    private DatePicker datePicker;
+    @FXML 
+    private Button bookBTN;
     @FXML
     private TextField searchbar;
     @FXML
@@ -103,7 +104,6 @@ public class AirlineController {
     public void bookFlight() {
         List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
         GetFlightObjectFromList listTemp = new GetFlightObjectFromList(chosen);
-        Flight selectedFlight = bookedFlights.getSelectionModel().getSelectedItem();
 
         if (chosen.isEmpty()) {
             // Show error message if no flight is selected
