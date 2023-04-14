@@ -1,13 +1,6 @@
 package airlinemanager;
 
-import java.time.LocalDate;
-// import statements
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-
-import airlinemanager.FlightStored;
+// import statments
 import util.FlightAlreadyBookedException;
 import util.FlightNotFoundException;
 import util.GetFlightObjectFromList;
