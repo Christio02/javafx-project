@@ -23,7 +23,7 @@ public class App extends Application {
     public void start(final Stage primaryStage) throws IOException {
         primaryStage.setTitle("Airline booking!");
 
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("App.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/App.fxml")));
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm()); // sets the style sheet
         primaryStage.setScene(scene);
 
