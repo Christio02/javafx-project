@@ -74,7 +74,7 @@ public class AirlineController {
     @FXML
     private Button searchbutton;
     @FXML
-    private ListView bookedFlights;
+    private ListView<Flight> bookedFlights;
 
     @FXML
     public void initialize() {
@@ -103,6 +103,7 @@ public class AirlineController {
     public void bookFlight() {
         List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
         GetFlightObjectFromList listTemp = new GetFlightObjectFromList(chosen);
+        Flight selectedFlight = bookedFlights.getSelectionModel().getSelectedItem();
 
         if (chosen.isEmpty()) {
             // Show error message if no flight is selected
@@ -131,7 +132,7 @@ public class AirlineController {
 
                 tempFlight.bookFlight(this.fileBooking);
                 listOfFlights.getItems().remove(chosen);
-                bookedFlights.getItems().add(chosen);
+                bookedFlights.getItems().add(tempFlight);
 
                 System.out.println("File list: " + this.fileBooking.flightsToDownload);
 
@@ -217,7 +218,10 @@ public class AirlineController {
     @FXML
     public void removeBooking() {
         try {
-            List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems();
+            List<Flight> chosen = new ArrayList<>(bookedFlights.getSelectionModel().getSelectedItems()); // Create a
+                                                                                                         // copy of
+                                                                                                         // selected
+                                                                                                         // items
             GetFlightObjectFromList listTemp = new GetFlightObjectFromList(this.fileBooking.getFlightsToDownload());
             Alert confirmRemoval = new Alert(AlertType.CONFIRMATION);
             confirmRemoval.setHeaderText("Cancel booking");
@@ -237,7 +241,7 @@ public class AirlineController {
                     listOfFlights.getItems().add(flightToRemove);
 
                 }
-                bookedFlights.getItems().remove(chosen);
+                bookedFlights.getItems().removeAll(chosen); // Use removeAll() to remove all selected items
 
             }
 
@@ -246,7 +250,6 @@ public class AirlineController {
             cannotCancelError.setHeaderText("Error cancelling booking!");
             cannotCancelError.setContentText("Unable to cancel booking. The flight could not be found.");
             cannotCancelError.showAndWait();
-
         }
     }
 
