@@ -103,6 +103,7 @@ public class AirlineController {
     public void bookFlight() {
         List<Flight> chosen = listOfFlights.getSelectionModel().getSelectedItems(); // gets selected flight
         GetFlightObjectFromList listTemp = new GetFlightObjectFromList(chosen);
+        Flight selectedFlight = bookedFlights.getSelectionModel().getSelectedItem();
 
         if (chosen.isEmpty()) {
             // Show error message if no flight is selected
@@ -130,12 +131,9 @@ public class AirlineController {
                 Flight tempFlight = listTemp.flightFromList();
 
                 tempFlight.bookFlight(this.fileBooking);
-                bookedFlights.getItems().addAll(chosen);
-                listOfFlights.getItems().removeAll(chosen);
-                
+                listOfFlights.getItems().remove(chosen);
+                bookedFlights.getItems().add(tempFlight);
                 isBooked = true;
-
-
 
                 System.out.println("File list: " + this.fileBooking.flightsToDownload);
 
@@ -268,7 +266,7 @@ public class AirlineController {
                     Collections.sort(listOfFlights.getItems());
 
                 }
-                bookedFlights.getItems().removeAll(bookings);
+                bookedFlights.getItems().removeAll(bookings); // Use removeAll() to remove all selected items
 
             }
 
@@ -277,7 +275,6 @@ public class AirlineController {
             cannotCancelError.setHeaderText("Error cancelling booking!");
             cannotCancelError.setContentText("Unable to cancel booking. The flight could not be found.");
             cannotCancelError.showAndWait();
-
         }
     }
 

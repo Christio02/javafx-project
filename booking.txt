@@ -1,2 +1,2 @@
-Flight: OY3389, From: Stavanger, To: Bergen, Departure Time: 05:00, Date: 2023-04-28
+Flight: OY4841, From: Trondheim, To: Kristiansand, Departure Time: 14:00, Date: 2023-06-10
 ---------------------
