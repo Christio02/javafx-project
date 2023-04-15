@@ -56,7 +56,7 @@ public class AirlineController {
 
     private Flight flight;
 
-    // private boolean controllerIsBooked = false;
+    
     List<Flight> flights = new ArrayList<>();
     List<Flight> filteredFlights = new ArrayList<>();
 

@@ -1,4 +1,4 @@
-Flight: OY5450, From: København, To: Kristiansand, Departure Time: 11:00, Date: 2023-12-07
+Flight: OY3006, From: London, To: Barcelona, Departure Time: 05:30, Date: 2023-06-27
 ---------------------
-Flight: OY5330, From: Stockholm, To: Stavanger, Departure Time: 12:50, Date: 2024-09-01
+Flight: OY4619, From: London, To: Stockholm, Departure Time: 06:30, Date: 2023-10-06
 ---------------------
