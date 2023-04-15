@@ -36,5 +36,4 @@ public class App extends Application {
         Application.launch(args);
 
     }
-
 }
