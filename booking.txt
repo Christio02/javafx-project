@@ -1,4 +1,2 @@
-Flight: OY3006, From: London, To: Barcelona, Departure Time: 05:30, Date: 2023-06-27
----------------------
-Flight: OY4619, From: London, To: Stockholm, Departure Time: 06:30, Date: 2023-10-06
+Flight: OY4944, From: Malaga, To: Paris, Departure Time: 05:50, Date: 2024-03-19
 ---------------------
