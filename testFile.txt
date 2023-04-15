@@ -1,2 +1,2 @@
-Flight: OY3620, From: Tromsø, To: Trondheim, Departure Time: 10:50, Date: 2023-11-15
+Flight: OY3081, From: Tromsø, To: Stockholm, Departure Time: 21:20, Date: 2023-11-20
 ---------------------

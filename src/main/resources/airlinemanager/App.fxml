@@ -12,7 +12,7 @@
 
 <BorderPane fx:id="" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airlinemanager.AirlineController">
    <left>
-      <ListView fx:id="listOfFlights" prefHeight="328.0" prefWidth="391.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="listOfFlights" prefHeight="91.0" prefWidth="412.0" BorderPane.alignment="CENTER" />
    </left>
    <bottom>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -42,7 +42,7 @@
       </AnchorPane>
    </bottom>
    <top>
-      <AnchorPane prefHeight="133.0" prefWidth="786.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="88.0" prefWidth="682.0" BorderPane.alignment="CENTER">
          <children>
             
                   <Label fx:id="header1" layoutX="185.0" layoutY="14.0" text="Welcome to Orwegian!" textFill="WHITE">
@@ -50,7 +50,7 @@
                   <Font size="32.0" />
                </font>
             </Label>
-            <Text layoutX="32.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available bookings">
+            <Text layoutX="14.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available bookings">
                <font>
                   <Font size="21.0" />
                </font>
@@ -65,8 +65,8 @@
    <center>
       <AnchorPane prefHeight="67.0" prefWidth="323.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="searchbutton" layoutX="31.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchForFlight" prefHeight="47.0" prefWidth="114.0" stylesheets="@style.css" text="Search" />
-            <Button fx:id="resetbutton" layoutX="174.0" layoutY="12.0" mnemonicParsing="false" onAction="#reset" prefHeight="43.0" prefWidth="92.0" stylesheets="@style.css" text="Reset" />
+            <Button fx:id="searchbutton" layoutX="23.0" layoutY="22.0" mnemonicParsing="false" onAction="#searchForFlight" prefHeight="47.0" prefWidth="114.0" stylesheets="@style.css" text="Search" />
+            <Button fx:id="resetbutton" layoutX="167.0" layoutY="24.0" mnemonicParsing="false" onAction="#reset" prefHeight="43.0" prefWidth="92.0" stylesheets="@style.css" text="Reset" />
          </children>
       </AnchorPane>
    </center>

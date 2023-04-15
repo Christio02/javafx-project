@@ -104,9 +104,11 @@ public class FlightTest {
 
         assertEquals(tempList.get(0), fileList.getFlightsToDownload().get(0));
 
+        flight.removeBooking(fileList);
+
         assertDoesNotThrow(() -> flight.bookFlight(fileList), "The method should not throw when only one instance of flight is added to the booking!");
 
-            
+       
         assertThrows(FlightAlreadyBookedException.class, () -> flight.bookFlight(fileList), "The method should throw this exception when duplicate booking is detected!");
     }
         

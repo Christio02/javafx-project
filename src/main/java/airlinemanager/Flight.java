@@ -21,6 +21,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     private WriteBookingToFile file;
     private GetFlightObjectFromList tempFlight;
+    private boolean isBooked;
 
     // Constructor:
 
@@ -34,6 +35,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         this.destination = super.getDestination();
         this.start = super.getStart();
         this.time = super.getTime();
+        isBooked = false;
       
     }
 
@@ -128,10 +130,11 @@ public class Flight extends FlightStored implements Comparable<Flight> {
      */
 
     public void bookFlight(WriteBookingToFile tempFile) {
-        if (!checkDuplicateBooking(this)) {
+        if (isBooked = true) {
             throw new FlightAlreadyBookedException("Cannot book the same flight again!");
         }
         tempFile.addFlight(this); // adds this flight to file class's list
+        isBooked = true;
     }
 
     /**
@@ -148,6 +151,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
         }
 
         tempFile.removeFlight(this);
+        isBooked = false;
     }
 
     /**
@@ -169,21 +173,6 @@ public class Flight extends FlightStored implements Comparable<Flight> {
          
     }
 
-    /**
-     * Boolean method that checks if this flight is the same flight booked before
-     * 
-     * @return false if this.file list contains the same flight
-     * 
-     * @return true if this is not the case
-     */
-
-    public boolean checkDuplicateBooking(Flight bookedFlight) {
-        if (this.file.flightsToDownload.contains(bookedFlight)) {
-            return false;
-        }
-
-        return true;
-    }
 
     /**
      * This boolean method checks if the flight is booked
