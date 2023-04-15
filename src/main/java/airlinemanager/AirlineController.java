@@ -1,6 +1,8 @@
 package airlinemanager;
 
+
 import java.lang.StackWalker.Option;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -53,7 +56,7 @@ public class AirlineController {
 
     private Flight flight;
 
-    private boolean controllerIsBooked = false;
+    // private boolean controllerIsBooked = false;
     List<Flight> flights = new ArrayList<>();
     List<Flight> filteredFlights = new ArrayList<>();
 
@@ -75,6 +78,8 @@ public class AirlineController {
     private TextField searchbar;
     @FXML
     private Button searchbutton;
+    @FXML
+    private DatePicker datePicker;
     @FXML
     private ListView<Flight> bookedFlights;
 
@@ -98,6 +103,8 @@ public class AirlineController {
         Collections.sort(flights);
 
         listOfFlights.getItems().addAll(flights);
+        getBooking.setVisible(false);
+        
 
     }
 
@@ -235,11 +242,9 @@ public class AirlineController {
 
     @FXML
     public void getBooking() {
-        if (controllerIsBooked = true) {
             String flight = this.fileBooking.readFromFile("booking.txt");
             readFileContent.setText(flight);
             getBooking.setVisible(false);
-        }
     }
 
     /**
