@@ -21,7 +21,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
     private WriteBookingToFile file;
     private GetFlightObjectFromList tempFlight;
-    private boolean isBooked;
+    protected boolean isBooked;
 
     // Constructor:
 
@@ -130,7 +130,7 @@ public class Flight extends FlightStored implements Comparable<Flight> {
      */
 
     public void bookFlight(WriteBookingToFile tempFile) {
-        if (isBooked = true) {
+        if (!checkIfBooked()) {
             throw new FlightAlreadyBookedException("Cannot book the same flight again!");
         }
         tempFile.addFlight(this); // adds this flight to file class's list
@@ -206,9 +206,9 @@ public class Flight extends FlightStored implements Comparable<Flight> {
 
         WriteBookingToFile file = new WriteBookingToFile();
 
-        Flight f1 = new Flight();
-        f1.bookFlight(file);
-        System.out.println(file.getFlightsToDownload().isEmpty());
+        Flight f1 = new Flight(); Flight f2 = new Flight(); Flight f3 = new Flight();
+        f1.bookFlight(file); f2.bookFlight(file); f3.bookFlight(file);
+        System.out.println(file.getFlightsToDownload());
 
         
 

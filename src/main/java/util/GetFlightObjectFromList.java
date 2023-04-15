@@ -42,6 +42,7 @@ public class GetFlightObjectFromList {
         }
         Flight flightFound = list2.get(0);
         return flightFound;
+       
     }
 
     /**
@@ -72,9 +73,10 @@ public class GetFlightObjectFromList {
 
 
         list.add(new Flight());
+        list.add(new Flight());
         GetFlightObjectFromList list2 = new GetFlightObjectFromList(list);
-
-        System.out.println(list2);
+        System.out.println("\n");
+        System.out.println(list2.flightFromList());
 
         
 

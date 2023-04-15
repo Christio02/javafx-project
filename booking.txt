@@ -1,2 +1,4 @@
-Flight: OY3709, From: Malaga, To: Bodø, Departure Time: 10:20, Date: 2023-11-17
+Flight: OY5450, From: København, To: Kristiansand, Departure Time: 11:00, Date: 2023-12-07
+---------------------
+Flight: OY5330, From: Stockholm, To: Stavanger, Departure Time: 12:50, Date: 2024-09-01
 ---------------------
