@@ -2,19 +2,18 @@ package airlinemanager;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.text.CollationElementIterator;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import airlinemanager.Flight;
-import airlinemanager.FlightStored;
+
 import util.FlightAlreadyBookedException;
 
 public class FlightTest {

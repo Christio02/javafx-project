@@ -3,7 +3,6 @@ package airlinemanager;
 // import statments
 import util.FlightAlreadyBookedException;
 import util.FlightNotFoundException;
-import util.GetFlightObjectFromList;
 
 /** Description:
  * This class extends the FlightStored class and is responsible for performing different calculations on flight data.
@@ -16,22 +15,19 @@ public class Flight extends FlightStored implements Comparable<Flight> {
     // Fields
 
     /**
-     * used for booking and writing to file
+     * A boolean field responsible for throwing exceptions when needed
+     * Protected because it needs to be accessed from controller
      */
 
-    private WriteBookingToFile file;
-    private GetFlightObjectFromList tempFlight;
     protected boolean isBooked;
 
     // Constructor:
 
     /**
      * initializes a new Flight object, which is inherited from the super class
-     * Also creates a file object, for being used in other methods
      */
 
     public Flight() {
-        this.file = new WriteBookingToFile();
         this.destination = super.getDestination();
         this.start = super.getStart();
         this.time = super.getTime();

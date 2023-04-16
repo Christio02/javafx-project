@@ -1,19 +1,14 @@
 package airlinemanager;
 
 
-import java.lang.StackWalker.Option;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -24,7 +19,7 @@ import util.FlightNotFoundException;
 import util.GetFlightObjectFromList;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -140,13 +135,13 @@ public class AirlineController {
                 confirmationAlert.getButtonTypes().setAll(confirmButton, cancelButton);
     
                 // Handle button actions
-                Optional<ButtonType> result = confirmationAlert.showAndWait();
+                Optional<ButtonType> result = confirmationAlert.showAndWait(); // waits for user to click either buttons before resuming code
                 if (result.isPresent() && result.get() == confirmButton) {
     
-                    Flight tempFlight2 = listTemp.flightFromList();
+                    
     
                     tempFlight.bookFlight(this.fileBooking);
-                    // controllerIsBooked = true;
+            
                     bookedFlights.getItems().add(tempFlight);
     
                     System.out.println("File list: " + this.fileBooking.flightsToDownload);

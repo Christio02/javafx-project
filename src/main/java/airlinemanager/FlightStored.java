@@ -39,7 +39,7 @@ public class FlightStored {
      * Sets this date
      */
 
-    public void setDate() {
+    private void setDate() {
         Random random = new Random();
 
         int year = random.nextInt(2) + 2023;

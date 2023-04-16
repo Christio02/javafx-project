@@ -1,2 +1,4 @@
-Flight: OY3221, From: Paris, To: Tromsø, Departure Time: 06:20, Date: 2024-09-24
+Flight: OY3653, From: Oslo, To: Stockholm, Departure Time: 06:10, Date: 2023-03-31
+---------------------
+Flight: OY5712, From: Malaga, To: Tromsø, Departure Time: 07:20, Date: 2024-10-29
 ---------------------
