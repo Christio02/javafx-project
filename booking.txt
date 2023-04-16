@@ -1,2 +1,2 @@
-Flight: OY4979, From: Barcelona, To: Paris, Departure Time: 20:00, Date: 2023-08-12
+Flight: OY3221, From: Paris, To: Tromsø, Departure Time: 06:20, Date: 2024-09-24
 ---------------------
