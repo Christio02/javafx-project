@@ -166,21 +166,34 @@ public class AirlineController {
 
     @FXML
     public void searchForFlight() {
-        String search = searchbar.getText();
-        List<Flight> flights = listOfFlights.getItems();
-        List<Flight> filteredFlights = new ArrayList<>();
-
-        for (Flight flight : flights) {
-            if (!(search.equals(flight.getDestination()) || search.equals(flight.getStart()))) {
-                filteredFlights.add(flight);
-
+        try {
+            if (searchbar.getText() == "") {
+                throw new FlightNotFoundException("Cannot search for empty flight!");
             }
+            String search = searchbar.getText();
+            List<Flight> flights = listOfFlights.getItems();
+            List<Flight> filteredFlights = new ArrayList<>();
+    
+            for (Flight flight : flights) {
+                if (!(search.equals(flight.getDestination()) || search.equals(flight.getStart()))) {
+                    filteredFlights.add(flight);
+    
+                }
+            }
+    
+            System.out.println(filteredFlights);
+            this.filteredFlights = filteredFlights;
+            listOfFlights.getItems().removeAll(filteredFlights);
+            searchbar.clear();
+            
+        } catch (FlightNotFoundException e) {
+            Alert noFlightSearch = new Alert(AlertType.ERROR);
+            noFlightSearch.setHeaderText("You cannot leave the searchbar empty!");
+            noFlightSearch.setContentText("You must input text for destination before searching!");
+            noFlightSearch.showAndWait();
         }
-
-        System.out.println(filteredFlights);
-        this.filteredFlights = filteredFlights;
-        listOfFlights.getItems().removeAll(filteredFlights);
-        searchbar.clear();
+     
+      
     }
 
     @FXML

@@ -39,6 +39,18 @@ public class Flight extends FlightStored implements Comparable<Flight> {
       
     }
 
+    /*
+     * For jUNit testing
+     */
+
+    public Flight(String destination, String start, String time, String flightNumber, String date) {
+        this.destination = destination;
+        this.start = start;
+        this.time = time;
+        this.flightNumber = flightNumber;
+        this.date = date;
+    }
+
     /**
      * This methods is a getter for destination
      */

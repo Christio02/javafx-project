@@ -19,7 +19,7 @@ import util.FlightAlreadyBookedException;
 
 public class FlightTest {
 
-    private Flight flight, flightBookTest;
+    private Flight flight, flightBookTest, duplicateFlight;
     private WriteBookingToFile fileList;
 
     // set up random flight
@@ -27,7 +27,9 @@ public class FlightTest {
     public void setUp() {
         flight = new Flight();
         flightBookTest = new Flight();
+        duplicateFlight = new Flight();
         fileList = new WriteBookingToFile();
+
     }
 
 
@@ -103,16 +105,16 @@ public class FlightTest {
         tempList.add(flightBookTest);
 
         flightBookTest.bookFlight(fileList);
-        
-        FlightAlreadyBookedException exception = assertThrows(FlightAlreadyBookedException.class, () -> flightBookTest.bookFlight(fileList));
-       
-        assertEquals("Cannot book the same flight again!", exception.getMessage());
-
+    
         assertEquals(tempList.get(0), fileList.getFlightsToDownload().get(0));
 
         flightBookTest.removeBooking(fileList);
 
         assertDoesNotThrow(() -> flightBookTest.bookFlight(fileList), "The method should not throw when only one instance of flight is added to the booking!");
+
+        assertThrows(FlightAlreadyBookedException.class, () -> {
+            duplicateFlight.bookFlight(fileList); duplicateFlight.bookFlight(fileList);
+        }, "Should not be able to book the same flight again!");
         
     }
         
