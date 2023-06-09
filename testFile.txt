@@ -1,2 +1,2 @@
-Flight: OY3081, From: Tromsø, To: Stockholm, Departure Time: 21:20, Date: 2023-11-20
+Flight: OY5683, From: Malaga, To: Stavanger, Departure Time: 10:20, Date: 2024-10-10
 ---------------------

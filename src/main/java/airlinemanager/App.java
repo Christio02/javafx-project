@@ -27,7 +27,7 @@ public class App extends Application {
 
     }
 
-    public static void main(final String[] args) {
+     public static void main(final String[] args) {
         Application.launch(args);
 
     }

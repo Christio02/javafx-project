@@ -322,7 +322,4 @@ public class AirlineController {
         }
     }
 
-    public static void main(String[] args) {
-
-    }
 }
